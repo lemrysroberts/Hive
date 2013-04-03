@@ -1,23 +1,54 @@
 using UnityEngine;
 using System.Collections;
+using System.Xml;
 
-[RequireComponent(typeof(MeshRenderer))]
-public class Tile : MonoBehaviour 
+public class Tile 
 {
-	private MeshRenderer m_renderer;
-	// Use this for initialization
-	void Start () 
+
+	public int ID {	get; set; }
+	public string TextureID	{ get; set;	}
+	
+	private Texture m_texture;
+	private Material m_material;
+	
+	public void Save(XmlTextWriter writer)
 	{
-		m_renderer = GetComponent<MeshRenderer>();
-		transform.position = m_position + new Vector2(0.5f, 0.5f);
+		writer.WriteStartElement("tile");
 		
-	}
+		writer.WriteAttributeString("id", ID.ToString());
+		writer.WriteAttributeString("texture_id", TextureID);
+		
+		writer.WriteEndElement(); // tile
+	} 
 	
-	// Update is called once per frame
-	void Update () 
+	public Texture GetTexture()
 	{
-	
+		return m_texture;	
 	}
 	
-	public Vector2 m_position = new Vector2();
+	public void SetTexture(Texture newTexture)
+	{
+		if(newTexture != m_texture)
+		{
+			if(m_material == null || TileManager.TileMaterial == null)
+			{
+				m_material = new Material(TileManager.TileMaterial);
+			}
+			
+			
+			m_texture = newTexture;
+			m_material.mainTexture = m_texture;
+			// TODO: Extract the path	
+		}
+	}
+	
+	public void LoadResources()
+	{
+		SetTexture( AssetHelper.Instance.GetAsset<Texture>(TextureID) as Texture );
+	}
+	
+	public Material GetMaterial()
+	{
+		return m_material;	
+	}
 }

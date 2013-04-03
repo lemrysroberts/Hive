@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -39,65 +39,86 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			meshObject.transform.position = m_origin;	
 		}
 		
-		for(int i = 0; i < 2; i++)
+		List<TilePointPair> pairs = new List<TilePointPair>();
+		
+		for(int x = 0; x < m_sectionSize; x++)
 		{
-			List<Vector2> points = new List<Vector2>();
-			
-			for(int x = 0; x < m_sectionSize; x++)
+			for(int y = 0; y < m_sectionSize; y++)
 			{
-				for(int y = 0; y < m_sectionSize; y++)
+				TilePointPair pair = null;
+				foreach(var currentPair in pairs)
 				{
-					if(m_tileIDs[x * m_sectionSize + y] == i)
+					if(currentPair.m_tileID == m_tileIDs[x * m_sectionSize + y])
 					{
-						points.Add(new Vector2(x, y));	
+						pair = currentPair;
+						break;
 					}
 				}
+				
+				if(pair == null)
+				{
+					pair = new TilePointPair();
+					pair.m_tileID = m_tileIDs[x * m_sectionSize + y];
+					pairs.Add(pair);
+				}
+				
+				pair.m_points.Add(new Vector2(x, y));	
 			}
+		}
+		
+		foreach(var pair in pairs)
+		{
 			
-			Material wallMaterial = (Material)AssetDatabase.LoadAssetAtPath("Assets/Materials/Tile_" + i + ".mat", typeof(Material));
-			
-			Mesh newMesh = new Mesh();
-			
-			Vector3[] vertices = new Vector3[points.Count * 4];
-			Vector2[] uvs = new Vector2[points.Count * 4];
-			int[] triangles = new int[points.Count * 6];
-			
-			for(int id = 0; id < points.Count; id++)
-			{
-				vertices[id * 4] = points[id];
-				vertices[id * 4 + 1] = points[id] + new Vector2(0.0f, 1.0f);
-				vertices[id * 4 + 2] = points[id] + new Vector2(1.0f, 0.0f);
-				vertices[id * 4 + 3] = points[id] + new Vector2(1.0f, 1.0f);
+				Tile targetTile = TileManager.Instance.GetTile(pair.m_tileID);
+				if(targetTile == null)
+					continue;
+				Material wallMaterial = targetTile.GetMaterial();
 				
-				uvs[id * 4] = new Vector2(0.0f, 0.0f);
-				uvs[id * 4 + 1] = new Vector2(0.0f, 1.0f);
-				uvs[id * 4 + 2] = new Vector2(1.0f, 0.0f);
-				uvs[id * 4 + 3] = new Vector2(1.0f, 1.0f);
+				Mesh newMesh = new Mesh();
 				
-				triangles[id * 6] = id * 4;
-				triangles[id * 6 + 1] = id * 4 + 1;
-				triangles[id * 6 + 2] = id * 4 + 2;
+				Vector3[] vertices = new Vector3[pair.m_points.Count * 4];
+				Vector2[] uvs = new Vector2[pair.m_points.Count * 4];
+				int[] triangles = new int[pair.m_points.Count * 6];
 				
-				triangles[id * 6 + 3] = id * 4 + 2;
-				triangles[id * 6 + 4] = id * 4 + 1;
-				triangles[id * 6 + 5] = id * 4 + 3;
-			}
+				int id = 0;
+				foreach(var point in pair.m_points)
+				{
+					vertices[id * 4] = point;
+					vertices[id * 4 + 1] = point + new Vector2(0.0f, 1.0f);
+					vertices[id * 4 + 2] = point + new Vector2(1.0f, 0.0f);
+					vertices[id * 4 + 3] = point + new Vector2(1.0f, 1.0f);
+					
+					uvs[id * 4] = new Vector2(0.0f, 0.0f);
+					uvs[id * 4 + 1] = new Vector2(0.0f, 1.0f);
+					uvs[id * 4 + 2] = new Vector2(1.0f, 0.0f);
+					uvs[id * 4 + 3] = new Vector2(1.0f, 1.0f);
+					
+					triangles[id * 6] = id * 4;
+					triangles[id * 6 + 1] = id * 4 + 1;
+					triangles[id * 6 + 2] = id * 4 + 2;
+					
+					triangles[id * 6 + 3] = id * 4 + 2;
+					triangles[id * 6 + 4] = id * 4 + 1;
+					triangles[id * 6 + 5] = id * 4 + 3;
+					id++;
+				}
+				
+				newMesh.vertices = vertices;
+				newMesh.triangles = triangles;
+				newMesh.uv = uvs;
+				
+				GameObject newObject = new GameObject();
+				newObject.transform.parent = meshObject.transform;
+				newObject.transform.position = meshObject.transform.position;
+				
+				MeshRenderer renderer = newObject.AddComponent<MeshRenderer>();
+				MeshFilter filter = newObject.AddComponent<MeshFilter>();
+				m_visReporter = newObject.AddComponent<VisibilityReporter>();
+							
+				//newMesh.Optimize();
+				filter.mesh = newMesh;
+				renderer.material = wallMaterial;
 			
-			newMesh.vertices = vertices;
-			newMesh.triangles = triangles;
-			newMesh.uv = uvs;
-			
-			GameObject newObject = new GameObject();
-			newObject.transform.parent = meshObject.transform;
-			newObject.transform.position = meshObject.transform.position;
-			
-			MeshRenderer renderer = newObject.AddComponent<MeshRenderer>();
-			MeshFilter filter = newObject.AddComponent<MeshFilter>();
-			m_visReporter = newObject.AddComponent<VisibilityReporter>();
-						
-			//newMesh.Optimize();
-			filter.mesh = newMesh;
-			renderer.material = wallMaterial;
 		}
 	}
 	 
@@ -162,4 +183,10 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 	
 	[SerializeField]
 	private List<int> m_tileIDs;
+	
+	private class TilePointPair
+	{
+		public List<Vector2> m_points = new List<Vector2>();
+		public int m_tileID = -1;
+	}
 }

@@ -27,6 +27,12 @@ public class LayoutEditor : Editor
 			HandleUtility.Repaint();
 		}
 		
+		if(GUILayout.Button("Rebuild all sections"))
+		{
+			level.Reload(true);
+			HandleUtility.Repaint();
+		}
+		
 		if(GUILayout.Button("Save"))
 		{
 			string levelFile = EditorUtility.SaveFilePanel("Save Level", "Levels", "newlevel", "xml");
@@ -37,6 +43,11 @@ public class LayoutEditor : Editor
 		{
 			string levelFile = EditorUtility.OpenFilePanel("Load Level", "Levels", "xml");
 			level.Load(levelFile);
+		}
+		
+		if(GUILayout.Button("test"))
+		{
+			EditorWindow.GetWindow(typeof(TileEditor));	
 		}
 	}
 	
@@ -82,7 +93,7 @@ public class LayoutEditor : Editor
 		
 		if(position.x > 0.0f && position.y > 0.0f && position.x < (level.SectionCountX * Level.m_sectionSize) && position.y < (level.SectionCountY * Level.m_sectionSize))
 		{
-			level.SetTileID((int)position.x, (int)position.y, 1);
+			level.SetTileID((int)position.x, (int)position.y, TileManager.Instance.SelectedTile.ID);
 		}
 		
 	}
