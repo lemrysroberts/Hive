@@ -29,7 +29,7 @@ public class LayoutEditor : Editor
 		
 		if(GUILayout.Button("Rebuild all sections"))
 		{
-			level.Reload(true);
+			level.RebuildAllSections();
 			HandleUtility.Repaint();
 		}
 		
@@ -93,7 +93,7 @@ public class LayoutEditor : Editor
 		
 		if(position.x > 0.0f && position.y > 0.0f && position.x < (level.SectionCountX * Level.m_sectionSize) && position.y < (level.SectionCountY * Level.m_sectionSize))
 		{
-			level.SetTileID((int)position.x, (int)position.y, TileManager.Instance.SelectedTile.ID);
+			level.SetTileID((int)position.x, (int)position.y, TileManager.Instance.SelectedTile.ID, true);
 		}
 		
 	}

@@ -21,18 +21,13 @@ public class TileManager
 	
 	public void Init()
 	{
+		ReloadTileMaterial();
+		Load("C:/Unity/Hive/Assets/tileset.xml");
+	}
+	
+	public void ReloadTileMaterial()
+	{
 		TileMaterial = AssetHelper.Instance.GetAsset<Material>("Assets/Materials/tilematerial.mat") as Material;
-		
-		Tile newTile1 = AddTile();
-		Tile newTile2 = AddTile();
-		
-		newTile1.TextureID = "Assets/Textures/brick.png";
-		newTile2.TextureID = "Assets/Textures/floor1.png";
-		
-		newTile1.LoadResources(); 
-		newTile2.LoadResources();
-		
-		SelectedTile = newTile1;
 	}
 	
 	public Tile GetTile(int tileID)
@@ -98,7 +93,25 @@ public class TileManager
 	
 	public void Load(string tileDatabasePath)
 	{
+		XmlDocument doc = new XmlDocument();
+		doc.Load(tileDatabasePath);
 		
+		XmlNodeList tileNodes = doc.GetElementsByTagName("tile");
+		foreach(XmlNode tileNode in tileNodes)
+		{
+			Tile newTile = new Tile();
+			newTile.Load(tileNode);
+			newTile.LoadResources();
+			
+			m_tiles.Add(newTile.ID, newTile);
+			
+			m_maxFreeID = Mathf.Max(newTile.ID + 1, m_maxFreeID);
+		}
+		
+		if(m_tiles.Count > 0)
+		{
+			SelectedTile = m_tiles[0];	
+		}
 	}
 	
 	private static TileManager s_instance = null;	

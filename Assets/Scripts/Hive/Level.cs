@@ -86,7 +86,7 @@ public partial class Level : MonoBehaviour
 		}
 	}
 	
-	public void SetTileID(int x, int y, int tileID)
+	public void SetTileID(int x, int y, int tileID, bool rebuild)
 	{
 		int sectionIDX = x / m_sectionSize;
 		int sectionIDY = y / m_sectionSize;
@@ -97,7 +97,9 @@ public partial class Level : MonoBehaviour
 		LevelSection section = m_sections[sectionIDX * SectionCountY + sectionIDY];
 		
 		section.TileIDs[localIDX * m_sectionSize + localIDY] = tileID; 
-		section.RebuildData();
+		
+		if(rebuild)
+			section.RebuildData();
 	}
 	
 	private void DeleteSections(bool fullReload)

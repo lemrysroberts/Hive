@@ -20,9 +20,10 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 	public void RebuildData()
 	{
 		if(m_tileIDs == null)	
+		{
 			m_tileIDs = new List<int>(m_sectionSize * m_sectionSize);
-		
-		for(int i = m_tileIDs.Count; i < m_sectionSize * m_sectionSize; i++) m_tileIDs.Add(0);
+			for(int i = m_tileIDs.Count; i < m_sectionSize * m_sectionSize; i++) m_tileIDs.Add(0);
+		}
 		
 		Transform meshObject = transform.FindChild("meshes");
 		if(meshObject != null)
@@ -111,6 +112,7 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 				newObject.transform.parent = meshObject.transform;
 				newObject.transform.position = meshObject.transform.position;
 				
+				AnimatedTileMesh tileMesh = newObject.AddComponent<AnimatedTileMesh>();
 				MeshRenderer renderer = newObject.AddComponent<MeshRenderer>();
 				MeshFilter filter = newObject.AddComponent<MeshFilter>();
 				m_visReporter = newObject.AddComponent<VisibilityReporter>();
@@ -118,7 +120,7 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 				//newMesh.Optimize();
 				filter.mesh = newMesh;
 				renderer.material = wallMaterial;
-			
+				tileMesh.SpriteDataPath = targetTile.SpriteDataPath;
 		}
 	}
 	 
@@ -137,12 +139,6 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			Gizmos.DrawLine(new Vector3(m_origin.x, m_origin.y + size, 0.0f), new Vector3(m_origin.x + m_sectionSize, m_origin.y + size, 0.0f));
 		}
 	}
-	
-	public void FixedUpdate()
-	{
-		
-	}
-
 	
 	public void ElementVisible()
 	{

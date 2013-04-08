@@ -33,8 +33,8 @@ public class SpriteAnimation
 		m_frames = new FrameData[m_frameCount];
 		
 		int currentFrame = 0;
+
 		// Parse per-frame data
-		XmlNodeList frameNodes= node.ChildNodes;
 		foreach(XmlNode frameNode in node.ChildNodes)
 		{
 			FrameData data = new FrameData();

@@ -21,15 +21,13 @@ public class TileEditor : EditorWindow
 		
 		List<int> toDelete = new List<int>();
 		
-		
-		
 		int maxHeight = manager.Tiles.Count * 71; // 71 is the per-item height
 		maxHeight += 60;
 		 
 		// Menu
 		if(GUI.Button(new Rect(5, 3, 50, 20), "Save"))
 		{
-			string levelFile = EditorUtility.SaveFilePanel("Save Tiles", "Tiles", "tileset", "xml");
+			string levelFile = "C:/Unity/Hive/Assets/tileset.xml";
 			TileManager.Instance.Save(levelFile);
 		}
 		
@@ -49,7 +47,7 @@ public class TileEditor : EditorWindow
 			
 			if(tile == manager.SelectedTile)
 			{
-				GUI.Box(new Rect(0.0f, y, position.width, 71.0f), "");	
+				GUI.Box(new Rect(0.0f, y, position.width, 71.0f), "");	 
 			}
 		
 			y += 5;
@@ -68,7 +66,15 @@ public class TileEditor : EditorWindow
 				TileManager.Instance.SelectedTile = tile;	
 			}
 			
-			tile.SetTexture( EditorGUI.ObjectField(new Rect(10, y , 50, 50), tile.GetTexture(), typeof(Texture)) as Texture);
+			if(GUI.Button(new Rect(160, y + 25, 150, 20), tile.SpriteDataPath == null ? "No Sprite Data" : tile.SpriteDataPath))
+			{
+				string spriteData = EditorUtility.OpenFilePanel("Sprite Data", "Sprite Data", "xml");
+				tile.SpriteDataPath = spriteData;
+			}
+			
+			TileManager.Instance.SelectedTile.Animated = GUI.Toggle(new Rect(160, y, 100, 20), TileManager.Instance.SelectedTile.Animated, "Animated");
+			
+			tile.SetTexture( EditorGUI.ObjectField(new Rect(10, y , 50, 50), tile.GetTexture(), typeof(Texture), false) as Texture);
 			y += 50;
 			
 		}
