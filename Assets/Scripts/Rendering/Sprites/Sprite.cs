@@ -18,7 +18,7 @@ public class Sprite : MonoBehaviour
 	public Texture2D SpriteTexture 	= null;
 	public float updateSpeed 		= 0.1f;
 	
-	private SpriteData m_data;
+	private SpriteAnimationSet m_data;
 	private float timeProgress = 0.0f;
 		
 	void Start () 
@@ -45,7 +45,7 @@ public class Sprite : MonoBehaviour
 		if(timeProgress > updateSpeed)
 		{
 			timeProgress = 0.0f;
-			if(m_data.CurrentAnimation != null)
+			if(m_data != null && m_data.CurrentAnimation != null)
 			{
 				Vector4 offset = m_data.CurrentAnimation.Advance();
 				meshRenderer.material.SetTextureOffset("_MainTex", new Vector2(offset.x, offset.y));
@@ -57,7 +57,7 @@ public class Sprite : MonoBehaviour
 	
 	public bool LoadSpriteData(string spriteData)
 	{
-		m_data = new SpriteData();
+		m_data = new SpriteAnimationSet();
 		m_data.SetTexture(SpriteTexture);
 		
 		return m_data.Load(spriteData);

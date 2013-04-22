@@ -1,6 +1,8 @@
 using System;
+using System.IO;
 using System.Text;
 using System.Xml;
+//using System.Text.
 using UnityEngine;
 
 public partial class Level : MonoBehaviour 
@@ -38,8 +40,23 @@ public partial class Level : MonoBehaviour
 	public void Load(string path)
 	{
 		XmlDocument levelDoc = new XmlDocument();
-		levelDoc.Load(path);
 		
+		TextAsset levelAsset = Resources.Load(path) as TextAsset;
+		if(levelAsset != null)
+		{
+			levelDoc.LoadXml(levelAsset.text);
+		}
+		else
+		{
+			Debug.Log("Failed to load level: " + path);
+			return;	
+		}
+		
+		LoadXml(levelDoc);
+	}
+	
+	private void LoadXml(XmlDocument levelDoc)
+	{
 		XmlNodeList levelNodes = levelDoc.GetElementsByTagName("level");
 		if(levelNodes.Count == 0) return;
 		
@@ -62,5 +79,35 @@ public partial class Level : MonoBehaviour
 			m_sections[sectionID].Load(sectionNode);	
 			sectionID++;
 		}
+	}
+	
+	[RPC]
+	public void ReceiveLevel(byte[] levelData)
+	{
+		Debug.LogWarning("Received RPC data");
+		String levelString = System.Text.Encoding.UTF8.GetString(levelData);
+		XmlDocument levelDoc = new XmlDocument();
+		levelDoc.LoadXml(levelString);
+		
+		LoadXml(levelDoc);
+	}
+	
+	public void SerialiseToNetwork(string path)
+	{
+		Debug.Log("Serialising RPC data...");
+		TextAsset levelAsset = Resources.Load(path) as TextAsset;
+		if(levelAsset != null)
+		{
+			byte[] bytes = System.Text.Encoding.UTF8.GetBytes(levelAsset.text);
+			
+			networkView.RPC("ReceiveLevel", RPCMode.Others, bytes);
+		}
+		else
+		{
+			Debug.Log("Failed to serialise level: " + path);
+			return;	
+		}
+		
+		Debug.Log("Done");
 	}
 }

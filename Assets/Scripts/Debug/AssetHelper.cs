@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.IO;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -8,15 +9,19 @@ using System.Collections;
 
 public class AssetHelper 
 {
-
-	
 	public UnityEngine.Object GetAsset<T>(string assetPath)
 	{
-#if UNITY_EDITOR
-		UnityEngine.Object asset = AssetDatabase.LoadAssetAtPath(assetPath, typeof(T));
-#else
+		assetPath = StripResourcePath(assetPath);
+		
+		string extension = System.IO.Path.GetExtension(assetPath);
+		assetPath = assetPath.Substring(0, assetPath.Length - extension.Length);
+		
 		UnityEngine.Object asset = Resources.Load(assetPath);
-#endif
+		
+		if(asset == null)
+		{
+			Debug.LogError("Failed to load asset: " + assetPath);	
+		}
 		
 		return asset;
 	}
@@ -32,6 +37,17 @@ public class AssetHelper
 			
 			return s_instance;
 		}
+	}
+	
+	public static string StripResourcePath(string path)
+	{
+		// Strip the application data-path
+		int assetPathIndex = path.IndexOf(Application.dataPath + "/Resources");
+		if(assetPathIndex != -1)
+		{
+			path = path.Remove(assetPathIndex, (Application.dataPath + "/Resources").Length + 1);
+		}
+		return path;
 	}
 	
 	private AssetHelper() {}

@@ -7,7 +7,7 @@ public class AnimatedTileMesh : MonoBehaviour
 	{
 		if(SpriteDataPath != null && SpriteDataPath != string.Empty)
 		{
-			m_spriteData = new SpriteData();
+			m_spriteData = new SpriteAnimationSet();
 			m_spriteData.Load(SpriteDataPath);
 		}
 	}
@@ -24,7 +24,7 @@ public class AnimatedTileMesh : MonoBehaviour
 			{
 				MeshRenderer renderer = GetComponent<MeshRenderer>();
 				
-				Vector4 offset = m_spriteData.CurrentAnimation.Advance();
+				Vector4 offset = m_spriteData.Advance();
 				renderer.material.SetTextureOffset("_MainTex", new Vector2(offset.x, offset.y));
 				renderer.material.SetTextureScale("_MainTex", new Vector2(offset.z, offset.w));
 			}
@@ -34,5 +34,5 @@ public class AnimatedTileMesh : MonoBehaviour
 	private float timeProgress = 0;
 	
 	public string SpriteDataPath 	= null;
-	private SpriteData m_spriteData = null;
+	private SpriteAnimationSet m_spriteData = null;
 }

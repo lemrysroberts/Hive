@@ -1,4 +1,4 @@
-Initialize engine version: 4.1.0f4 (88f3bc4c76f9)
+Initialize engine version: 4.1.2f1 (911c7369eeac)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.1422]
@@ -11,8 +11,34 @@ Platform assembly: C:\Unity\Hive\Hive_Data\Managed\UnityEngine.dll (this message
 Loading C:\Unity\Hive\Hive_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Unity\Hive\Hive_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Unity\Hive\Hive_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.389 seconds
+- Completed reload, in  0.420 seconds
 desktop: 1680x1050 60Hz; virtual: 3360x1050 at -1680,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: C:\Unity\Hive\Hive_Data\Managed\System.Xml.dll (this message is harmless)
+Profiler is only supported with Pro License
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Profiler/ProfilerConnection.cpp Line: 197)
+
+System memory in use before: 1.7 MB.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 1.5 MB.
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 143.
+Total: 13.664589 ms (FindLiveObjects: 0.031717 ms CreateObjectMapping: 0.028072 ms MarkObjects: 1.091169 ms  DeleteObjects: 0.018228 ms)
+
+Platform assembly: C:\Unity\Hive\Hive_Data\Managed\System.dll (this message is harmless)
+Loading: Levels/newlevel
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:38)
+ 
+(Filename: C Line: 0)
+
+Received RPC data
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:87)
+ 
+(Filename: C Line: 0)
+

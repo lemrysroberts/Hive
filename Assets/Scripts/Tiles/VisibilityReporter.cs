@@ -9,6 +9,7 @@ public interface IVisibilityReceiver
 
 public class VisibilityReporter : MonoBehaviour 
 {
+	[SerializeField]
 	private IVisibilityReceiver m_receiver = null;
 	
 	public void RegisterReceiver(IVisibilityReceiver receiver)
@@ -16,21 +17,19 @@ public class VisibilityReporter : MonoBehaviour
 		m_receiver = receiver;
 	}
 		
-	public void OnBecameVisible()
+	public void OnTriggerEnter(Collider other)
 	{
-		if(m_receiver != null)
+		if(other.gameObject.tag == "MainCamera" && m_receiver != null)
 		{
 			m_receiver.ElementVisible();
 		}
 	}
 	
-	public void OnBecameInvisible()
+	public void OnTriggerExit(Collider other)
 	{
-		if(m_receiver != null)
+		if(other.gameObject.tag == "MainCamera" && m_receiver != null)
 		{
 			m_receiver.ElementInvisible();	
 		}
-		
-		
 	}
 }

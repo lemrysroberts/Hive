@@ -2,6 +2,12 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+public enum NavState
+{
+	Open,
+	LayoutBlocked,
+	ThingBlocked
+}
 
 [ExecuteInEditMode]
 public partial class Level : MonoBehaviour 
@@ -60,7 +66,23 @@ public partial class Level : MonoBehaviour
 					GameObject newSection = new GameObject("Section " + x + ", " + y);
 					newSection.transform.parent = sectionsTransform;
 					
+					
+					
 					LevelSection section = newSection.AddComponent<LevelSection>();
+					
+					newSection.tag = "level_section";
+			
+					BoxCollider collider 	= newSection.AddComponent<BoxCollider>();
+					Rigidbody rigidBody 	= newSection.AddComponent<Rigidbody>(); // I hate this
+					m_visReporter 			= newSection.AddComponent<VisibilityReporter>();
+					m_visReporter.RegisterReceiver(section);
+					
+					rigidBody.isKinematic = true;
+					
+					collider.isTrigger = true;
+					collider.center = new Vector3(m_sectionSize / 2, m_sectionSize / 2, 0.0f);
+					collider.size 	= new Vector3(m_sectionSize, m_sectionSize, 10.0f); // The 5.0f is fairly arbitrary
+					
 					section.Origin = new Vector2(x * m_sectionSize, y * m_sectionSize);
 					section.SectionSize = m_sectionSize;
 					section.Tile = TileType;
@@ -97,6 +119,7 @@ public partial class Level : MonoBehaviour
 		LevelSection section = m_sections[sectionIDX * SectionCountY + sectionIDY];
 		
 		section.TileIDs[localIDX * m_sectionSize + localIDY] = tileID; 
+//		section.NavStates[localIDX * m_sectionSize + localIDY] = TileManager.Instance.GetTile(tileID).NavBlock ? NavState.LayoutBlocked : NavState.Open;
 		
 		if(rebuild)
 			section.RebuildData();
@@ -153,7 +176,6 @@ public partial class Level : MonoBehaviour
 			}
 		}
 	}
-	
 		
 	public void OnGUI()
 	{
@@ -167,6 +189,32 @@ public partial class Level : MonoBehaviour
 		}
 		
 		GUI.Label(new Rect(0, 0, 300, 300), "Updating " + sections + " sections");	
+	}
+	
+	public NavState GetNavState(int x, int y)
+	{
+		int sectionIDX = x / m_sectionSize;
+		int sectionIDY = y / m_sectionSize;
+		
+		int localIDX = x % m_sectionSize;
+		int localIDY = y % m_sectionSize; 
+		
+		LevelSection section = m_sections[sectionIDX * SectionCountY + sectionIDY];
+		
+		return section.NavStates[localIDX * m_sectionSize + localIDY]; 
+	}
+	
+	public void SetNavState(int x, int y, NavState state)
+	{
+		int sectionIDX = x / m_sectionSize;
+		int sectionIDY = y / m_sectionSize;
+		
+		int localIDX = x % m_sectionSize;
+		int localIDY = y % m_sectionSize; 
+		
+		LevelSection section = m_sections[sectionIDX * SectionCountY + sectionIDY];
+		
+		section.NavStates[localIDX * m_sectionSize + localIDY] = state; 
 	}
 
 	
@@ -186,4 +234,7 @@ public partial class Level : MonoBehaviour
 	
 	[SerializeField]
 	private int m_previousSectionCountY = 30;
+	
+	[SerializeField]
+	private VisibilityReporter m_visReporter = null;
 }

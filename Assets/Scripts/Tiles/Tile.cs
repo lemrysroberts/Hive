@@ -1,35 +1,63 @@
+#if UNITY_EDITOR
+	using UnityEditor;
+#endif
+
 using UnityEngine;
-using UnityEditor;
 using System.Collections;
 using System.Xml;
 
 public class Tile 
 {
-	public int ID {	get; set; }
-	public string TextureID	{ get; set;	}
-	public bool Animated { get; set; }
-	public string SpriteDataPath { get; set; }
-	
+#region Properties
+	public int ID 					{ get; set; }
+	public string TextureID			{ get; set;	}
+	public bool Animated 			{ get; set; }
+	public string SpriteDataPath 	{ get; set; }
+	public bool NavBlock 			{ get; set; }
+#endregion
+
+#region Fields
 	private Texture m_texture;
 	private Material m_material;
+#endregion
 	
+	/// <summary>
+	/// Saves the tile. 
+	/// This should only be called from the TileManager.
+	/// </summary>
 	public void Save(XmlTextWriter writer)
 	{
 		writer.WriteStartElement("tile");
-		
-		writer.WriteAttributeString("id", ID.ToString());
+		writer.WriteAttributeString("id", 		ID.ToString());
 		writer.WriteAttributeString("texture_id", TextureID);
-		if(SpriteDataPath != null) writer.WriteAttributeString("sprite_data_path", SpriteDataPath);
+		writer.WriteAttributeString("nav_block", NavBlock.ToString());
 		
-		writer.WriteEndElement(); // tile
+		if(SpriteDataPath != null)
+		{
+			writer.WriteAttributeString("sprite_data_path", SpriteDataPath);
+		}
+		
+		writer.WriteEndElement(); 
 	} 
 	
+	/// <summary>
+	/// Loads a tile from the given XML.
+	/// </summary>
 	public void Load(XmlNode node)
 	{
 		XmlNode spritePathNode = node.Attributes.GetNamedItem("sprite_data_path");
-		if(spritePathNode != null)
-		{
+		XmlNode navBlockNode = node.Attributes.GetNamedItem("nav_block");
+		
+		if(spritePathNode != null) 	
+		{ 
 			SpriteDataPath = spritePathNode.Value;	
+		}
+		
+		if(navBlockNode != null) 	
+		{ 
+			bool navBlockOut = false;
+			bool.TryParse(navBlockNode.Value, out navBlockOut); 
+			NavBlock = navBlockOut;
 		}
 		
 		string idNode = node.Attributes.GetNamedItem("id").Value;
@@ -38,14 +66,20 @@ public class Tile
 		int newID = -1;
 		int.TryParse(idNode, out newID);
 		
-		ID = newID;
+		ID = newID; 
 	}
 	
+	/// <summary>
+	/// Gets the tile's texture.
+	/// </summary>
 	public Texture GetTexture()
 	{
 		return m_texture;	
 	}
 	
+	/// <summary>
+	/// Sets the tile's texture and builds a material from that texture using the global tile-material from the TileManager.
+	/// </summary>
 	public void SetTexture(Texture newTexture)
 	{
 		if(newTexture != m_texture)
@@ -55,18 +89,28 @@ public class Tile
 				m_material = new Material(TileManager.TileMaterial);
 			}
 			
-			m_texture = newTexture;
-			m_material.mainTexture = m_texture;
+			m_texture 				= newTexture;
+			m_material.mainTexture 	= m_texture;
 			
+#if UNITY_EDITOR
+			// In the editor, store the path of the given texture for use when saving the tile-set.
 			TextureID = AssetDatabase.GetAssetPath(newTexture);
+			TextureID = TextureID.Remove(0, "Assets/Resources/".Length);
+#endif
 		}
 	}
 	
+	/// <summary>
+	/// Loads the tile's texture from its given texture-ID.
+	/// </summary>
 	public void LoadResources()
 	{
 		SetTexture( AssetHelper.Instance.GetAsset<Texture>(TextureID) as Texture );
 	}
 	
+	/// <summary>
+	/// Gets the material of the tile, comprised of the material from the TileManager and the tile's texture.
+	/// </summary>
 	public Material GetMaterial()
 	{
 		// This should only be necessary in the editor.
@@ -74,9 +118,11 @@ public class Tile
 		// Force a refresh.
 		if(m_material == null)
 		{
-			TileManager.Instance.ReloadTileMaterial();
-			m_material = new Material(TileManager.TileMaterial);
-			m_material.mainTexture = m_texture;
+			if(TileManager.TileMaterial != null)
+			{
+				m_material = new Material(TileManager.TileMaterial);
+				m_material.mainTexture = m_texture;
+			}
 		}
 		
 		return m_material;	

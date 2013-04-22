@@ -57,7 +57,6 @@ public class SpriteAnimation
 			
 			m_frames[currentFrame] = data;
 			currentFrame++;
-			
 		}
 		
 		return true;
@@ -77,7 +76,6 @@ public class SpriteAnimation
 	// Static animation values
 	private FrameData[] m_frames;
 	private int m_frameCount = 0;
-	private Vector2 m_texOffset = new Vector2();
 	
 	string m_name;
 }

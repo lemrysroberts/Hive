@@ -27,8 +27,15 @@ public class TileEditor : EditorWindow
 		// Menu
 		if(GUI.Button(new Rect(5, 3, 50, 20), "Save"))
 		{
-			string levelFile = "C:/Unity/Hive/Assets/tileset.xml";
-			TileManager.Instance.Save(levelFile);
+			string tileset = EditorUtility.SaveFilePanel("Save Tileset", "Resources", "tiles", "xml");
+			TileManager.Instance.Save(tileset);
+		}
+		
+		if(GUI.Button(new Rect(60, 3, 50, 20), "Load"))
+		{
+			string tileset = EditorUtility.OpenFilePanel("Load Tileset", "Resources", "xml");	
+			TileManager.TileSetFilename = tileset;
+			TileManager.Instance.Init();
 		}
 		
 		GUI.Box(new Rect(5, 25, position.width - 10, 1),"");
@@ -69,14 +76,18 @@ public class TileEditor : EditorWindow
 			if(GUI.Button(new Rect(160, y + 25, 150, 20), tile.SpriteDataPath == null ? "No Sprite Data" : tile.SpriteDataPath))
 			{
 				string spriteData = EditorUtility.OpenFilePanel("Sprite Data", "Sprite Data", "xml");
+				spriteData = AssetHelper.StripResourcePath(spriteData);
+				
 				tile.SpriteDataPath = spriteData;
 			}
 			
-			TileManager.Instance.SelectedTile.Animated = GUI.Toggle(new Rect(160, y, 100, 20), TileManager.Instance.SelectedTile.Animated, "Animated");
+			tile.NavBlock = GUI.Toggle(new Rect(270, y, 100, 20), tile.NavBlock, "Nav-Block");
+			
+			tile.Animated = GUI.Toggle(new Rect(160, y, 100, 20), tile.Animated, "Animated");
 			
 			tile.SetTexture( EditorGUI.ObjectField(new Rect(10, y , 50, 50), tile.GetTexture(), typeof(Texture), false) as Texture);
 			y += 50;
-			
+			 
 		}
 		
 		foreach(int toDeleteID in toDelete)

@@ -9,12 +9,9 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 {
 	public GameObject Tile;
 	
-	[SerializeField]
-	private VisibilityReporter m_visReporter = null;
-	
 	public void Start()
 	{
-		m_visReporter.RegisterReceiver(this);
+		
 	}
 	
 	public void RebuildData()
@@ -22,7 +19,13 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 		if(m_tileIDs == null)	
 		{
 			m_tileIDs = new List<int>(m_sectionSize * m_sectionSize);
-			for(int i = m_tileIDs.Count; i < m_sectionSize * m_sectionSize; i++) m_tileIDs.Add(0);
+			m_tileNavStates = new List<NavState>(m_sectionSize * m_sectionSize);
+			
+			for(int i = m_tileIDs.Count; i < m_sectionSize * m_sectionSize; i++)
+			{
+				m_tileIDs.Add(0);
+				m_tileNavStates.Add(NavState.LayoutBlocked);
+			}
 		}
 		
 		Transform meshObject = transform.FindChild("meshes");
@@ -38,6 +41,7 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			meshObject = new GameObject("meshes").transform;
 			meshObject.transform.parent = transform;
 			meshObject.transform.position = m_origin;	
+			
 		}
 		
 		List<TilePointPair> pairs = new List<TilePointPair>();
@@ -69,58 +73,58 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 		
 		foreach(var pair in pairs)
 		{
+			Tile targetTile = TileManager.Instance.GetTile(pair.m_tileID);
 			
-				Tile targetTile = TileManager.Instance.GetTile(pair.m_tileID);
-				if(targetTile == null)
-					continue;
-				Material wallMaterial = targetTile.GetMaterial();
+			if(targetTile == null)
+				continue;
+			
+			Material wallMaterial = targetTile.GetMaterial();
+			
+			Mesh newMesh = new Mesh();
+			
+			Vector3[] vertices = new Vector3[pair.m_points.Count * 4];
+			Vector2[] uvs = new Vector2[pair.m_points.Count * 4];
+			int[] triangles = new int[pair.m_points.Count * 6];
+			
+			int id = 0;
+			foreach(var point in pair.m_points)
+			{
+				vertices[id * 4] = point;
+				vertices[id * 4 + 1] = point + new Vector2(0.0f, 1.0f);
+				vertices[id * 4 + 2] = point + new Vector2(1.0f, 0.0f);
+				vertices[id * 4 + 3] = point + new Vector2(1.0f, 1.0f);
 				
-				Mesh newMesh = new Mesh();
+				uvs[id * 4] = new Vector2(0.0f, 0.0f);
+				uvs[id * 4 + 1] = new Vector2(0.0f, 1.0f);
+				uvs[id * 4 + 2] = new Vector2(1.0f, 0.0f);
+				uvs[id * 4 + 3] = new Vector2(1.0f, 1.0f);
 				
-				Vector3[] vertices = new Vector3[pair.m_points.Count * 4];
-				Vector2[] uvs = new Vector2[pair.m_points.Count * 4];
-				int[] triangles = new int[pair.m_points.Count * 6];
+				triangles[id * 6] = id * 4;
+				triangles[id * 6 + 1] = id * 4 + 1;
+				triangles[id * 6 + 2] = id * 4 + 2;
 				
-				int id = 0;
-				foreach(var point in pair.m_points)
-				{
-					vertices[id * 4] = point;
-					vertices[id * 4 + 1] = point + new Vector2(0.0f, 1.0f);
-					vertices[id * 4 + 2] = point + new Vector2(1.0f, 0.0f);
-					vertices[id * 4 + 3] = point + new Vector2(1.0f, 1.0f);
-					
-					uvs[id * 4] = new Vector2(0.0f, 0.0f);
-					uvs[id * 4 + 1] = new Vector2(0.0f, 1.0f);
-					uvs[id * 4 + 2] = new Vector2(1.0f, 0.0f);
-					uvs[id * 4 + 3] = new Vector2(1.0f, 1.0f);
-					
-					triangles[id * 6] = id * 4;
-					triangles[id * 6 + 1] = id * 4 + 1;
-					triangles[id * 6 + 2] = id * 4 + 2;
-					
-					triangles[id * 6 + 3] = id * 4 + 2;
-					triangles[id * 6 + 4] = id * 4 + 1;
-					triangles[id * 6 + 5] = id * 4 + 3;
-					id++;
-				}
-				
-				newMesh.vertices = vertices;
-				newMesh.triangles = triangles;
-				newMesh.uv = uvs;
-				
-				GameObject newObject = new GameObject();
-				newObject.transform.parent = meshObject.transform;
-				newObject.transform.position = meshObject.transform.position;
-				
-				AnimatedTileMesh tileMesh = newObject.AddComponent<AnimatedTileMesh>();
-				MeshRenderer renderer = newObject.AddComponent<MeshRenderer>();
-				MeshFilter filter = newObject.AddComponent<MeshFilter>();
-				m_visReporter = newObject.AddComponent<VisibilityReporter>();
-							
-				//newMesh.Optimize();
-				filter.mesh = newMesh;
-				renderer.material = wallMaterial;
-				tileMesh.SpriteDataPath = targetTile.SpriteDataPath;
+				triangles[id * 6 + 3] = id * 4 + 2;
+				triangles[id * 6 + 4] = id * 4 + 1;
+				triangles[id * 6 + 5] = id * 4 + 3;
+				id++;
+			}
+			
+			newMesh.vertices = vertices;
+			newMesh.triangles = triangles;
+			newMesh.uv = uvs;
+			
+			GameObject newObject 			= new GameObject();
+			newObject.transform.parent 		= meshObject.transform;
+			newObject.transform.position 	= meshObject.transform.position;
+			
+			AnimatedTileMesh tileMesh 	= newObject.AddComponent<AnimatedTileMesh>();
+			MeshRenderer renderer 		= newObject.AddComponent<MeshRenderer>();
+			MeshFilter filter 			= newObject.AddComponent<MeshFilter>();
+			
+			newMesh.Optimize();						
+			filter.mesh 			= newMesh;
+			renderer.material 		= wallMaterial;
+			tileMesh.SpriteDataPath = targetTile.SpriteDataPath;
 		}
 	}
 	 
@@ -169,6 +173,12 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 		set { m_tileIDs = value; }
 	}
 	
+	public List<NavState> NavStates
+	{
+		get { return m_tileNavStates; }
+		set { m_tileNavStates = value; }	
+	}
+	
 	[SerializeField]
 	private Vector2 m_origin = new Vector2();
 	
@@ -179,6 +189,9 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 	
 	[SerializeField]
 	private List<int> m_tileIDs;
+	
+	[SerializeField]
+	private List<NavState> m_tileNavStates;
 	
 	private class TilePointPair
 	{
