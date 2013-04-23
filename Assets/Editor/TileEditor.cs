@@ -15,93 +15,106 @@ public class TileEditor : EditorWindow
 	Vector2 scrollPos = Vector2.zero;
 	void OnGUI()
 	{
-		int y = 0;
+		GUILayout.BeginHorizontal();
 		
-		TileManager manager = TileManager.Instance;
-		
-		List<int> toDelete = new List<int>();
-		
-		int maxHeight = manager.Tiles.Count * 71; // 71 is the per-item height
-		maxHeight += 60;
-		 
-		// Menu
-		if(GUI.Button(new Rect(5, 3, 50, 20), "Save"))
+		if(GUILayout.Button("Save", GUILayout.Width(100)))
 		{
 			string tileset = EditorUtility.SaveFilePanel("Save Tileset", "Resources", "tiles", "xml");
 			TileManager.Instance.Save(tileset);
 		}
 		
-		if(GUI.Button(new Rect(60, 3, 50, 20), "Load"))
+		if(GUILayout.Button("Load", GUILayout.Width(100)))
 		{
 			string tileset = EditorUtility.OpenFilePanel("Load Tileset", "Resources", "xml");	
 			TileManager.TileSetFilename = tileset;
 			TileManager.Instance.Init();
 		}
 		
-		GUI.Box(new Rect(5, 25, position.width - 10, 1),"");
+		GUILayout.EndHorizontal();
 		
-        // Set up a scroll view
-        scrollPos = GUI.BeginScrollView (new Rect (0, 30, position.width, position.height), scrollPos, new Rect (0, 0, 1000, maxHeight));
+		GUILayout.BeginHorizontal();
 		
-		y = 5;
-		GUI.Label(new Rect(10, y, 100, 20), "Tiles");
 		
-		y += 20; // Label height
+		
+		DrawTileList();
+		GUILayout.Box("", GUILayout.Height(position.height - 30), GUILayout.Width(1));
+		
+		DrawDetails();
+		
+		GUILayout.EndHorizontal();
+	}
+	
+	private void DrawTileList()
+	{
+		GUI.depth = 100;
+		TileManager manager = TileManager.Instance;
+	
+		scrollPos = GUILayout.BeginScrollView(scrollPos, GUILayout.Width(m_listWidth));
+		
 		
 		foreach(var tilePair in manager.Tiles)
 		{
 			Tile tile = tilePair.Value;
 			
-			if(tile == manager.SelectedTile)
-			{
-				GUI.Box(new Rect(0.0f, y, position.width, 71.0f), "");	 
-			}
-		
-			y += 5;
+			GUILayout.BeginHorizontal();
 			
-			GUI.Box(new Rect(5, y, position.width - 10, 1),"");
+			tile.SetTexture( EditorGUILayout.ObjectField( tile.GetTexture(), typeof(Texture), false, GUILayout.Width(40), GUILayout.Height(40)) as Texture);
 			
-			y += 6;
+			GUILayout.BeginVertical(GUILayout.Width(100));
+				
 	
-			if(GUI.Button(new Rect(70, y + 25, 80, 20), "Delete"))
-			{ 
-				toDelete.Add(tile.ID);
-			}
 			
-			if(GUI.Button(new Rect(70, y, 80, 20), "Select"))
+			if(GUILayout.Button("Select", GUILayout.Width(80)))
 			{
 				TileManager.Instance.SelectedTile = tile;	
 			}
 			
-			if(GUI.Button(new Rect(160, y + 25, 150, 20), tile.SpriteDataPath == null ? "No Sprite Data" : tile.SpriteDataPath))
-			{
-				string spriteData = EditorUtility.OpenFilePanel("Sprite Data", "Sprite Data", "xml");
-				spriteData = AssetHelper.StripResourcePath(spriteData);
-				
-				tile.SpriteDataPath = spriteData;
-			}
+			GUILayout.EndHorizontal();
 			
-			tile.NavBlock = GUI.Toggle(new Rect(270, y, 100, 20), tile.NavBlock, "Nav-Block");
 			
-			tile.Animated = GUI.Toggle(new Rect(160, y, 100, 20), tile.Animated, "Animated");
-			
-			tile.SetTexture( EditorGUI.ObjectField(new Rect(10, y , 50, 50), tile.GetTexture(), typeof(Texture), false) as Texture);
-			y += 50;
-			 
+			GUILayout.EndHorizontal();
+			GUILayout.Box("", GUILayout.Height(1), GUILayout.Width(120));
 		}
 		
-		foreach(int toDeleteID in toDelete)
+		//if(GUI.Button( new Rect(10, y + 10, 100, 20), "+"))
 		{
-			manager.RemoveTile(toDeleteID);	
+		//	Tile newTile = manager.AddTile();
+			//newTile.TextureID = "sdf";
 		}
 		
-		if(GUI.Button( new Rect(10, y + 10, 100, 20), "+"))
-		{
-			Tile newTile = manager.AddTile();
-			newTile.TextureID = "sdf";
-		}
+		GUILayout.EndScrollView();
 		
-		GUI.EndScrollView();
 	}
 	
+	private void DrawDetails()
+	{
+		TileManager manager = TileManager.Instance;
+		
+		Tile tile = manager.SelectedTile;
+		
+		GUILayout.BeginVertical();
+		
+		GUILayout.BeginHorizontal();
+		tile.SetTexture( EditorGUILayout.ObjectField( tile.GetTexture(), typeof(Texture), false, GUILayout.Width(100), GUILayout.Height(100)) as Texture);
+		EditorGUILayout.LabelField(tile.TextureID);
+		
+		GUILayout.EndHorizontal();
+		
+		GUILayout.Box("", GUILayout.Width(position.width - m_listWidth - 10), GUILayout.Height(1));
+		
+		tile.NavBlock = GUILayout.Toggle(tile.NavBlock, "Nav-Block");
+		tile.Animated = GUILayout.Toggle(tile.Animated, "Animated");
+		
+		if(GUILayout.Button(tile.SpriteDataPath == null ? "No Sprite Data" : tile.SpriteDataPath))
+		{
+			string spriteData = EditorUtility.OpenFilePanel("Sprite Data", "Sprite Data", "xml");
+			spriteData = AssetHelper.StripResourcePath(spriteData);
+				
+			tile.SpriteDataPath = spriteData;
+		}
+		
+		GUILayout.EndVertical();
+	}
+	
+	private const int m_listWidth = 160;
 }

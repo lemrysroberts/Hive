@@ -1,3 +1,11 @@
+/// <summary>
+/// Level.cs
+/// 
+/// This contains all level-related data.
+/// The level is built of LevelSection instances in order to allow simple LOD behaviour.
+/// 
+/// </summary>
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,12 +25,7 @@ public partial class Level : MonoBehaviour
 		m_previousSectionCountX = SectionCountX;	
 		m_previousSectionCountY = SectionCountY;
 	}
-	
-	void OnEnable()
-	{
-		//Reload(true);	
-	}
-	
+
 	public void Reload(bool fullReload)
 	{
 		DeleteSections(fullReload);
@@ -66,10 +69,9 @@ public partial class Level : MonoBehaviour
 					GameObject newSection = new GameObject("Section " + x + ", " + y);
 					newSection.transform.parent = sectionsTransform;
 					
-					
-					
 					LevelSection section = newSection.AddComponent<LevelSection>();
 					
+					section.m_level = this;
 					newSection.tag = "level_section";
 			
 					BoxCollider collider 	= newSection.AddComponent<BoxCollider>();
@@ -95,7 +97,6 @@ public partial class Level : MonoBehaviour
 			m_sections = newSections; 
 		}
 		
-		
 		m_previousSectionCountX = SectionCountX;
 		m_previousSectionCountY = SectionCountY;
 	}
@@ -119,10 +120,27 @@ public partial class Level : MonoBehaviour
 		LevelSection section = m_sections[sectionIDX * SectionCountY + sectionIDY];
 		
 		section.TileIDs[localIDX * m_sectionSize + localIDY] = tileID; 
-//		section.NavStates[localIDX * m_sectionSize + localIDY] = TileManager.Instance.GetTile(tileID).NavBlock ? NavState.LayoutBlocked : NavState.Open;
 		
 		if(rebuild)
 			section.RebuildData();
+	}
+	
+	public int GetTileID(int x, int y)
+	{
+		int sectionIDX = x / m_sectionSize;
+		int sectionIDY = y / m_sectionSize;
+		
+		int localIDX = x % m_sectionSize;
+		int localIDY = y % m_sectionSize; 
+		
+		if(sectionIDX >= SectionCountX || sectionIDY >= SectionCountY || localIDX >= m_sectionSize || localIDY >= m_sectionSize)
+		{
+			return -1;	
+		}
+		
+		LevelSection section = m_sections[sectionIDX * SectionCountY + sectionIDY];
+		
+		return section.TileIDs[localIDX * m_sectionSize + localIDY]; 
 	}
 	
 	private void DeleteSections(bool fullReload)

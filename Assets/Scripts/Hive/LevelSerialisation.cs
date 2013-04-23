@@ -41,7 +41,7 @@ public partial class Level : MonoBehaviour
 	{
 		XmlDocument levelDoc = new XmlDocument();
 		
-		TextAsset levelAsset = Resources.Load(path) as TextAsset;
+		TextAsset levelAsset = AssetHelper.Instance.GetAsset<TextAsset>(path) as TextAsset;
 		if(levelAsset != null)
 		{
 			levelDoc.LoadXml(levelAsset.text);
@@ -78,6 +78,12 @@ public partial class Level : MonoBehaviour
 			m_sections[sectionID].SectionSize = m_sectionSize;
 			m_sections[sectionID].Load(sectionNode);	
 			sectionID++;
+		}
+		
+		// Now that the data is loaded, the collision data can be correctly determined
+		foreach(var section in m_sections)
+		{
+			section.RebuildColliders();
 		}
 	}
 	

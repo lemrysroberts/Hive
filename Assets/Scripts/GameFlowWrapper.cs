@@ -24,13 +24,35 @@ public class GameFlowWrapper : MonoBehaviour
 	
 	void OnLevelWasLoaded(int levelID)
 	{
+		GameObject player = GameObject.FindGameObjectWithTag("Player");
+		GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+		
 		if(GameFlow.Instance.View == WorldView.Admin)
 		{
 			TileManager.TileSetFilename = "tilesetalt";
+			
+			
+			if(player != null)
+			{
+				player.GetComponent<KinematicKeyMove>().enabled = false;	
+			}
+			
+			if(camera != null)
+			{
+				camera.GetComponent<FollowPlayer>().enabled = false;	
+				camera.GetComponent<DEBUG_KeyMove>().enabled = true;
+			}
+			
 		}
 		else
 		{
 			TileManager.TileSetFilename = "tileset";	
+			
+			if(camera != null)
+			{
+				camera.GetComponent<FollowPlayer>().enabled = true;	
+				camera.GetComponent<DEBUG_KeyMove>().enabled = false;
+			}
 		}
 		
 		Level level = FindObjectOfType(typeof(Level)) as Level;

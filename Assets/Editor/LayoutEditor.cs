@@ -53,6 +53,8 @@ public class LayoutEditor : Editor
 	
 	public void OnSceneGUI()
 	{
+		Level level = target as Level;
+		
 		if(m_editMode)
 		{
 			Event e = Event.current;
@@ -84,6 +86,11 @@ public class LayoutEditor : Editor
 			       HandleUtility.AddDefaultControl( GUIUtility.GetControlID( GetHashCode(), FocusType.Passive ) );
 			    }
 			}	
+		}
+		
+		foreach(var section in level.m_sections)
+		{
+			Handles.Label(section.Origin, "Edges: " + section.m_edges.Count);
 		}
 	}
 	
