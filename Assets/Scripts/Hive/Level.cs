@@ -143,6 +143,19 @@ public partial class Level : MonoBehaviour
 		return section.TileIDs[localIDX * m_sectionSize + localIDY]; 
 	}
 	
+	public void RebuildAIGraph()
+	{
+		m_graph = BuildAIGraph();	
+	}
+	
+	public void RebuildColliders()
+	{
+		foreach(var section in m_sections)
+		{
+			section.RebuildColliders();
+		}
+	}
+	
 	private void DeleteSections(bool fullReload)
 	{
 		Transform sectionsTransform = transform.FindChild(s_sectionsID);
@@ -181,6 +194,45 @@ public partial class Level : MonoBehaviour
 		return sectionsTransform.gameObject;
 	}
 	
+	private AIGraph BuildAIGraph()
+	{
+		AIGraph newGraph = new AIGraph();
+		
+		TileManager tileManager = TileManager.Instance;
+		
+		for(int x = 0; x < SectionCountX * m_sectionSize; x++)
+		{
+			for(int y = 0; y < SectionCountY * m_sectionSize; y++)
+			{
+				Tile currentTile = tileManager.GetTile(GetTileID(x, y));
+				
+				if(currentTile != null && !currentTile.NavBlock)
+				{
+					AIGraphNode newNode = new AIGraphNode();
+					newNode.NodePosition = new Vector2(x + 0.5f, y + 0.5f);
+					
+					newGraph.Nodes.Add(newNode);
+				}
+			}
+		}
+		
+		foreach(var node in newGraph.Nodes)
+		{
+			foreach(var other in newGraph.Nodes)
+			{
+				if(node == other) continue;
+				
+				if((node.NodePosition - other.NodePosition).magnitude < 1.1f)
+				{
+					node.NodeLinks.Add(other);	
+				}
+			}	
+		}
+		
+		return newGraph;
+	}
+	
+#if UNITY_EDITOR
 	void OnDrawGizmos()
 	{
 		if(m_sections != null)
@@ -189,9 +241,32 @@ public partial class Level : MonoBehaviour
 			{
 				if(section != null)
 				{
-					section.OnDrawGizmos();	 
+					section.DrawDefaultGizmos();	 
+					
+					if(m_renderColliders)
+					{
+						section.DrawColliderGizmos();	
+					}
 				}
 			}
+		}
+		
+		
+		if(m_graph != null && m_renderNodeGraph)
+		{
+			Gizmos.color = Color.cyan;
+			
+			Vector3 boxSize = new Vector3(0.2f, 0.2f, 0.2f);
+			foreach(var node in m_graph.Nodes)
+			{
+				Gizmos.DrawCube(node.NodePosition, boxSize);
+				
+				foreach(var other in node.NodeLinks)
+				{
+					Gizmos.DrawLine(node.NodePosition, other.NodePosition);	
+				}
+			}
+			
 		}
 	}
 		
@@ -209,32 +284,13 @@ public partial class Level : MonoBehaviour
 		GUI.Label(new Rect(0, 0, 300, 300), "Updating " + sections + " sections");	
 	}
 	
-	public NavState GetNavState(int x, int y)
-	{
-		int sectionIDX = x / m_sectionSize;
-		int sectionIDY = y / m_sectionSize;
-		
-		int localIDX = x % m_sectionSize;
-		int localIDY = y % m_sectionSize; 
-		
-		LevelSection section = m_sections[sectionIDX * SectionCountY + sectionIDY];
-		
-		return section.NavStates[localIDX * m_sectionSize + localIDY]; 
-	}
+#endif
 	
-	public void SetNavState(int x, int y, NavState state)
-	{
-		int sectionIDX = x / m_sectionSize;
-		int sectionIDY = y / m_sectionSize;
-		
-		int localIDX = x % m_sectionSize;
-		int localIDY = y % m_sectionSize; 
-		
-		LevelSection section = m_sections[sectionIDX * SectionCountY + sectionIDY];
-		
-		section.NavStates[localIDX * m_sectionSize + localIDY] = state; 
-	}
-
+#if UNITY_EDITOR
+	// Debug
+	public bool m_renderColliders 	= false;
+	public bool m_renderNodeGraph 	= false;
+#endif
 	
 	public GameObject TileType;
 	public int SectionCountX = 30;
@@ -255,4 +311,7 @@ public partial class Level : MonoBehaviour
 	
 	[SerializeField]
 	private VisibilityReporter m_visReporter = null;
+	
+	[SerializeField] 
+	private AIGraph m_graph = null;
 }

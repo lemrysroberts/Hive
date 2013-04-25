@@ -85,6 +85,8 @@ public partial class Level : MonoBehaviour
 		{
 			section.RebuildColliders();
 		}
+		
+		m_graph = BuildAIGraph();
 	}
 	
 	[RPC]

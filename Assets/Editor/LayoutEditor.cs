@@ -45,9 +45,34 @@ public class LayoutEditor : Editor
 			level.Load(levelFile);
 		}
 		
-		if(GUILayout.Button("test"))
+		if(GUILayout.Button("Rebuild AI-Graph"))
+		{
+			level.RebuildAIGraph();	
+		}
+		
+		if(GUILayout.Button("Rebuild Colliders"))
+		{
+			level.RebuildColliders();	
+		}
+		
+		if(GUILayout.Button("Tile Editor"))
 		{
 			EditorWindow.GetWindow(typeof(TileEditor));	
+		}
+		
+		m_showDebugRenderOptions = EditorGUILayout.Foldout(m_showDebugRenderOptions, "Debug Rendering");	
+		if(m_showDebugRenderOptions)
+		{
+			bool renderColliders = EditorGUILayout.Toggle("Collider Edge Data", level.m_renderColliders);
+			bool renderNodeGraph = EditorGUILayout.Toggle("Node Graph", level.m_renderNodeGraph);
+			
+			if(renderColliders != level.m_renderColliders || renderNodeGraph != level.m_renderNodeGraph)
+			{
+				level.m_renderColliders = renderColliders;
+				level.m_renderNodeGraph = renderNodeGraph;
+				
+				HandleUtility.Repaint();
+			}
 		}
 	}
 	
@@ -88,9 +113,12 @@ public class LayoutEditor : Editor
 			}	
 		}
 		
-		foreach(var section in level.m_sections)
+		if(level.m_renderColliders)
 		{
-			Handles.Label(section.Origin, "Edges: " + section.m_edges.Count);
+			foreach(var section in level.m_sections)
+			{
+				Handles.Label(section.Origin, "Edges: " + section.m_edges.Count);
+			}
 		}
 	}
 	
@@ -106,5 +134,6 @@ public class LayoutEditor : Editor
 	}
 		
 	private bool m_showSectionCounts = true;
+	private bool m_showDebugRenderOptions = false;
 	private bool m_editMode = false;
 }

@@ -36,6 +36,8 @@ public class TileManager
 	private int m_maxFreeID 				= 0;
 	private bool m_initialised 				= false;
 	private const string m_tileMaterialID 	= "Materials/tilematerial";
+	private Texture m_debugTex;
+	private Tile m_debugTile				= null;
 #endregion	
 	
 #region Methods
@@ -64,6 +66,15 @@ public class TileManager
 		Reset ();
 		if(!m_initialised)
 		{	
+			m_debugTex = AssetHelper.Instance.GetAsset<Texture>("textures/debug") as Texture;
+			
+			m_debugTile = new Tile();
+			m_debugTile.Animated = false;
+			m_debugTile.ID = -1;
+			m_debugTile.SetTexture(m_debugTex);
+			
+			m_tiles.Add(-1, m_debugTile);
+			
 			if(TileSetFilename == null)
 			{
 				TileSetFilename = "tileset";	
@@ -81,6 +92,12 @@ public class TileManager
 	{
 		Tile returnTile = null;
 		m_tiles.TryGetValue(tileID, out returnTile);
+		
+		if(returnTile == null)
+		{
+			returnTile = m_debugTile;
+		}
+		
 		return returnTile;
 	}
 	
@@ -99,12 +116,26 @@ public class TileManager
 		return newTile;
 	}
 	
+	public Tile AddTile(int id)
+	{
+		Tile newTile = new Tile();
+		newTile.ID = id;
+		
+		m_tiles.Add(id, newTile);
+		return newTile;
+	}
+	
 	/// <summary>
 	/// Removes a given tile.
 	/// </summary>
 	public void RemoveTile(int id)
 	{
 		m_tiles.Remove(id);	
+		
+		if(id == m_maxFreeID - 1)
+		{
+			m_maxFreeID = id;
+		}
 	}
 	
 	/// <summary>
@@ -133,6 +164,8 @@ public class TileManager
 	/// </summary>
 	public void Load(string tileDatabasePath)
 	{
+		Reset(); 
+		
 		XmlDocument doc = new XmlDocument();
 		TextAsset tileText = AssetHelper.Instance.GetAsset<TextAsset>(tileDatabasePath) as TextAsset;
 		
@@ -161,6 +194,21 @@ public class TileManager
 		{
 			SelectedTile = m_tiles[0];	
 		}
+	}
+	
+	public List<int> GetUnusedIDs()
+	{
+		List<int> unusedIDs = new List<int>();
+		
+		for(int i = 0; i < m_maxFreeID; i++)
+		{
+			if(!m_tiles.ContainsKey(i))
+			{
+				unusedIDs.Add(i);	
+			}
+		}
+		
+		return unusedIDs;
 	}
 	
 	/// <summary>

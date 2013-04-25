@@ -13,7 +13,7 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 	
 	public List<Edge> m_edges = new List<Edge>();
 	
-	public void OnDrawGizmos()
+	public void DrawDefaultGizmos()
 	{
 		Vector3 sectionCenter = m_origin;
 		sectionCenter += new Vector3(m_sectionSize / 2, m_sectionSize / 2, 0.0f);
@@ -27,7 +27,10 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			Gizmos.DrawLine(new Vector3(m_origin.x + size, m_origin.y, 0.0f), new Vector3(m_origin.x + size, m_origin.y + m_sectionSize, 0.0f));
 			Gizmos.DrawLine(new Vector3(m_origin.x, m_origin.y + size, 0.0f), new Vector3(m_origin.x + m_sectionSize, m_origin.y + size, 0.0f));
 		}
-		
+	}
+	
+	public void DrawColliderGizmos()
+	{
 		foreach(var edge in m_edges)
 		{
 			Gizmos.color = edge.type == Edge.EdgeType.Horizontal ? new Color(1.0f, 0.0f, 0.0f, 0.5f) : new Color(0.0f, 1.0f, 0.0f, 0.5f) ;
@@ -64,12 +67,6 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 		set { m_tileIDs = value; }
 	}
 	
-	public List<NavState> NavStates
-	{
-		get { return m_tileNavStates; }
-		set { m_tileNavStates = value; }	
-	}
-	
 	[SerializeField]
 	private Vector2 m_origin = new Vector2();
 	
@@ -81,8 +78,6 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 	[SerializeField]
 	private List<int> m_tileIDs;
 	
-	[SerializeField]
-	private List<NavState> m_tileNavStates;
 	
 	private class TilePointPair
 	{

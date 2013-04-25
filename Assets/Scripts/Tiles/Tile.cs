@@ -64,7 +64,11 @@ public class Tile
 		TextureID = node.Attributes.GetNamedItem("texture_id").Value;
 		
 		int newID = -1;
-		int.TryParse(idNode, out newID);
+		bool IDFound = int.TryParse(idNode, out newID);
+		if(!IDFound)
+		{
+			Debug.LogError("Valid ID not found for tile: " + idNode + " | " + TextureID);	
+		}
 		
 		ID = newID; 
 	}

@@ -63,7 +63,7 @@ public class GameFlowWrapper : MonoBehaviour
 	private void OnPlayerConnected()
 	{
 		Debug.Log("Client Connected");	
-		if(GameFlow.Instance.View == WorldView.Admin)
+		if(GameFlow.Instance.View == WorldView.Agent)
 		{
 			Level level = FindObjectOfType(typeof(Level)) as Level;
 			level.SerialiseToNetwork(GameFlow.Instance.CurrentLevel);

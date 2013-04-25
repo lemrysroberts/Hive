@@ -8,32 +8,27 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 	public void RebuildData()
 	{
 		BuildMeshes();
-		
-		
 	}
 	
 	public void RebuildColliders()
 	{
-		if(Application.isPlaying)
-		{
-			BuildColliders();
-		}
+		BuildColliders();
 	}
 	
 	private void BuildMeshes()
 	{
+		// Initialise the tiles vectors if they're null
 		if(m_tileIDs == null)	
 		{
 			m_tileIDs = new List<int>(m_sectionSize * m_sectionSize);
-			m_tileNavStates = new List<NavState>(m_sectionSize * m_sectionSize);
 			
 			for(int i = m_tileIDs.Count; i < m_sectionSize * m_sectionSize; i++)
 			{
 				m_tileIDs.Add(0);
-				m_tileNavStates.Add(NavState.LayoutBlocked);
 			}
 		}
 		
+		// Look for the "meshes" and flush it if found. Otherwise, create it.
 		Transform meshObject = transform.FindChild("meshes");
 		if(meshObject != null)
 		{
@@ -49,6 +44,7 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			meshObject.transform.position = m_origin;	
 		}
 		
+		// Build a list of (point, tile-ID) pairs for tile batching.
 		List<TilePointPair> pairs = new List<TilePointPair>();
 		
 		for(int x = 0; x < m_sectionSize; x++)
@@ -75,6 +71,8 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 				pair.m_points.Add(new Vector2(x, y));	
 			}
 		}
+		
+		// Build the tile meshes
 		
 		foreach(var pair in pairs)
 		{
@@ -182,15 +180,21 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 		int originX = (int)m_origin.x;
 		int originY = (int)m_origin.y;
 		
+		TileManager tileManager = TileManager.Instance;
+		
 		for(int x = 0; x < m_sectionSize ; x++)
 		{
 			for(int y = 0; y < m_sectionSize; y++)
 			{
-				int tileVal 	= m_level.GetTileID(originX + x, 		originY + y);
-				int nextXIndex 	= m_level.GetTileID(originX + x + 1, 	originY + y);
-				int nextYIndex 	= m_level.GetTileID(originX + x, 		originY + y + 1);
+				int currentID 	= m_level.GetTileID(originX + x, 		originY + y);
+				int nextXID 	= m_level.GetTileID(originX + x + 1, 	originY + y);
+				int nextYID 	= m_level.GetTileID(originX + x, 		originY + y + 1);
 				
-				if(nextXIndex != -1 && tileVal != nextXIndex)
+				Tile currentTile = tileManager.GetTile(currentID);
+				Tile nextXTile	 = nextXID != -1 ? tileManager.GetTile(nextXID) : null;
+				Tile nextYTile	 = nextYID != -1 ? tileManager.GetTile(nextYID) : null;
+				
+				if(nextXTile != null && currentTile.NavBlock != nextXTile.NavBlock)
 				{
 					Edge newEdge = new Edge();
 					newEdge.Start = new Vector2(x + 1.0f, y);
@@ -214,7 +218,7 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 					}
 				}
 				
-				if(nextYIndex != -1 && tileVal != nextYIndex)
+				if(nextYTile != null && currentTile.NavBlock != nextYTile.NavBlock)
 				{
 					Edge newEdge = new Edge();
 					newEdge.Start = new Vector2(x, y + 1.0f);
