@@ -1,3 +1,10 @@
+/// <summary>
+/// Tile.
+/// 
+/// TODO: Make XML IDs individual const strings.
+/// 
+/// </summary>
+
 #if UNITY_EDITOR
 	using UnityEditor;
 #endif
@@ -14,6 +21,7 @@ public class Tile
 	public bool Animated 			{ get; set; }
 	public string SpriteDataPath 	{ get; set; }
 	public bool NavBlock 			{ get; set; }
+	public float Elevation			{ get; set; }
 #endregion
 
 #region Fields
@@ -37,6 +45,8 @@ public class Tile
 			writer.WriteAttributeString("sprite_data_path", SpriteDataPath);
 		}
 		
+		writer.WriteAttributeString("elevation", Elevation.ToString());
+		
 		writer.WriteEndElement(); 
 	} 
 	
@@ -47,6 +57,7 @@ public class Tile
 	{
 		XmlNode spritePathNode = node.Attributes.GetNamedItem("sprite_data_path");
 		XmlNode navBlockNode = node.Attributes.GetNamedItem("nav_block");
+		XmlNode elevationNode = node.Attributes.GetNamedItem("elevation");
 		
 		if(spritePathNode != null) 	
 		{ 
@@ -58,6 +69,13 @@ public class Tile
 			bool navBlockOut = false;
 			bool.TryParse(navBlockNode.Value, out navBlockOut); 
 			NavBlock = navBlockOut;
+		}
+		
+		if(elevationNode != null)
+		{
+			float elevation = 0.0f;
+			float.TryParse(elevationNode.Value, out elevation);
+			Elevation = elevation;
 		}
 		
 		string idNode = node.Attributes.GetNamedItem("id").Value;

@@ -118,7 +118,7 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			
 			GameObject newObject 			= new GameObject();
 			newObject.transform.parent 		= meshObject.transform;
-			newObject.transform.position 	= meshObject.transform.position;
+			newObject.transform.position 	= meshObject.transform.position + new Vector3(0.0f, 0.0f, -targetTile.Elevation);
 			newObject.name					= targetTile.TextureID;
 			
 			AnimatedTileMesh tileMesh 	= newObject.AddComponent<AnimatedTileMesh>();

@@ -168,8 +168,9 @@ public class TileEditor : EditorWindow
 			
 			GUILayout.Box("", GUILayout.Width(position.width - m_listWidth - 10), GUILayout.Height(1));
 			
-			tile.NavBlock = GUILayout.Toggle(tile.NavBlock, "Nav-Block");
-			tile.Animated = GUILayout.Toggle(tile.Animated, "Animated");
+			tile.NavBlock 			= GUILayout.Toggle(tile.NavBlock, "Nav-Block");
+			tile.Animated 			= GUILayout.Toggle(tile.Animated, "Animated");
+			tile.Elevation  = EditorGUILayout.FloatField(tile.Elevation);
 			
 			if(GUILayout.Button(tile.SpriteDataPath == null ? "No Sprite Data" : tile.SpriteDataPath))
 			{
