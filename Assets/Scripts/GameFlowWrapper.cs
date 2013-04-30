@@ -67,6 +67,7 @@ public class GameFlowWrapper : MonoBehaviour
 		{
 			Level level = FindObjectOfType(typeof(Level)) as Level;
 			level.SerialiseToNetwork(GameFlow.Instance.CurrentLevel);
+			level.SyncNPCs();
 		}
 	}
 	

@@ -21,7 +21,7 @@ public class GeometryFactory : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		if(!m_meshBuilt)
+	//	if(!m_meshBuilt)
 		{
 			RebuildMesh();	
 		}

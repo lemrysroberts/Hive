@@ -19,7 +19,7 @@ public class LayoutEditor : Editor
 			level.SectionCountY = EditorGUILayout.IntField("Y", level.SectionCountY);
 		}
 		
-		level.TileType = EditorGUILayout.ObjectField(level.TileType, typeof(GameObject), true) as GameObject;
+		level.m_npcObject = EditorGUILayout.ObjectField(level.m_npcObject, typeof(GameObject), true) as GameObject;
 		
 		if(GUILayout.Button("Reload"))
 		{
@@ -53,6 +53,12 @@ public class LayoutEditor : Editor
 		if(GUILayout.Button("Rebuild Colliders"))
 		{
 			level.RebuildColliders();	
+		}
+		
+		if(GUILayout.Button("Test Routefinder"))
+		{
+			level.TestRoutefinder();
+			EditorUtility.SetDirty(level);
 		}
 		
 		if(GUILayout.Button("Tile Editor"))

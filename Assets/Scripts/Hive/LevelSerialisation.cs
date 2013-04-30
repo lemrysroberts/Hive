@@ -90,6 +90,25 @@ public partial class Level : MonoBehaviour
 	}
 	
 	[RPC]
+	public void SpawnNPC(Vector3 location, NetworkViewID networkID)
+	{
+		if(m_npcObject != null)
+		{
+			GameObject npc = GameObject.Instantiate(m_npcObject, location, Quaternion.identity) as GameObject;
+			npc.transform.position = location + new Vector3(0.0f, 0.0f, -1.0f);
+			
+			// Shut down the AI on the admin-side.
+			// TODO: Generalise this to an admin/agent general call.
+			AIWander npcWander = npc.GetComponent<AIWander>();
+			npcWander.enabled = false;
+		}
+		else
+		{
+			Debug.LogError("NPC object is null. Spawn failed");	
+		}
+	}
+	
+	[RPC]
 	public void ReceiveLevel(byte[] levelData)
 	{
 		Debug.LogWarning("Received RPC data");
@@ -117,5 +136,16 @@ public partial class Level : MonoBehaviour
 		}
 		
 		Debug.Log("Done");
+	}
+	
+	public void SyncNPCs()
+	{
+		if(m_npcObject != null)
+		{
+			GameObject testNPC = GameObject.Instantiate(m_npcObject) as GameObject;	
+			testNPC.transform.position = (Vector3)m_graph.Nodes[0].NodePosition + new Vector3(0.0f, 0.0f, -1.0f);
+			
+			networkView.RPC ("SpawnNPC", RPCMode.Others, testNPC.transform.position, testNPC.networkView.viewID);
+		}
 	}
 }

@@ -2,7 +2,7 @@
 /// Level.cs
 /// 
 /// This contains all level-related data.
-/// The level is built of LevelSection instances in order to allow simple LOD behaviour.
+/// The level is built of LevelSection instances in order to allow simple LOD behaviour at some murky point in the future.
 /// 
 /// </summary>
 
@@ -24,6 +24,11 @@ public partial class Level : MonoBehaviour
 	{
 		m_previousSectionCountX = SectionCountX;	
 		m_previousSectionCountY = SectionCountY;
+		
+		if(m_graph == null)
+		{
+			RebuildAIGraph();	
+		}
 	}
 
 	public void Reload(bool fullReload)
@@ -211,7 +216,7 @@ public partial class Level : MonoBehaviour
 					AIGraphNode newNode = new AIGraphNode();
 					newNode.NodePosition = new Vector2(x + 0.5f, y + 0.5f);
 					
-					newGraph.Nodes.Add(newNode);
+					newGraph.Nodes.Add(newNode.ID, newNode);
 				}
 			}
 		}
@@ -220,16 +225,38 @@ public partial class Level : MonoBehaviour
 		{
 			foreach(var other in newGraph.Nodes)
 			{
-				if(node == other) continue;
+				if(node.Value == other.Value) continue;
 				
-				if((node.NodePosition - other.NodePosition).magnitude < 1.1f)
+				if((node.Value.NodePosition - other.Value.NodePosition).magnitude < 1.1f)
 				{
-					node.NodeLinks.Add(other);	
+					node.Value.NodeLinks.Add(other.Value);	
 				}
 			}	
 		}
 		
 		return newGraph;
+	}
+	
+	public void TestRoutefinder()
+	{
+		RouteFinder routeFinder = new RouteFinder();
+		
+		int endPosID = (int)(Random.value * (float)(m_graph.Nodes.Count - 1));
+		if(m_graph != null && m_graph.Nodes.Count > endPosID)
+		{
+			m_lastRouteStart = m_graph.Nodes[0].NodePosition;
+			m_lastRouteEnd = m_graph.Nodes[endPosID].NodePosition;
+			m_lastRoute = routeFinder.FindRoute(m_graph, m_graph.Nodes[0], m_graph.Nodes[endPosID]);
+		}
+		else
+		{
+			Debug.Log("Invalid graph state");	
+		}
+	}
+	
+	public AIGraph AIGraph
+	{
+		get { return m_graph; }
 	}
 	
 #if UNITY_EDITOR
@@ -259,14 +286,36 @@ public partial class Level : MonoBehaviour
 			Vector3 boxSize = new Vector3(0.2f, 0.2f, 0.2f);
 			foreach(var node in m_graph.Nodes)
 			{
-				Gizmos.DrawCube(node.NodePosition, boxSize);
+				Gizmos.DrawCube(node.Value.NodePosition, boxSize);
 				
-				foreach(var other in node.NodeLinks)
+				foreach(var other in node.Value.NodeLinks)
 				{
-					Gizmos.DrawLine(node.NodePosition, other.NodePosition);	
+					Gizmos.DrawLine(node.Value.NodePosition, other.NodePosition);	
 				}
 			}
 			
+			Gizmos.color = Color.magenta;
+			boxSize = new Vector3(0.3f, 0.3f, 0.3f);
+			if(m_lastRoute != null)
+			{
+				for(int i = 0; i < m_lastRoute.m_routePoints.Count; i++)
+				{
+					Vector2 point = m_lastRoute.m_routePoints[i].NodePosition;
+					Vector2 altPoint = i > 0 ? m_lastRoute.m_routePoints[i - 1].NodePosition : m_lastRoute.m_routePoints[i].NodePosition;
+					
+					Gizmos.DrawCube(point, boxSize);
+					Gizmos.DrawLine(point, altPoint);
+				}
+				foreach(var point in m_lastRoute.m_routePoints)
+				{
+					
+				}
+				
+				Gizmos.color = Color.green;
+				boxSize = new Vector3(0.4f, 0.4f, 0.3f);
+				Gizmos.DrawCube(m_lastRouteStart, boxSize);
+				Gizmos.DrawCube(m_lastRouteEnd, boxSize);
+			}
 		}
 	}
 		
@@ -298,8 +347,15 @@ public partial class Level : MonoBehaviour
 	
 	public static int m_sectionSize = 30;
 	
+	private Route m_lastRoute = null;
+	private Vector2 m_lastRouteStart;
+	private Vector2 m_lastRouteEnd ;
+	
 	[SerializeField]
 	public List<LevelSection> m_sections = new List<LevelSection>();
+	
+	[SerializeField]
+	public GameObject m_npcObject = null;
 	
 	private const string s_sectionsID = "sections";
 	

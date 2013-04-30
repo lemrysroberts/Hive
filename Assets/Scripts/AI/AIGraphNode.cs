@@ -16,10 +16,18 @@ public class AIGraphNode
 		set { m_nodeLinks = value; }
 	}
 	
-	public AIGraphNode() 
-	{
+	public int ID 
+	{ 
+		get { return m_ID; }
 	}
 	
+	public AIGraphNode() 
+	{
+		m_ID = AIGraph.MaxIndex;
+		AIGraph.MaxIndex++;
+	}
+	
+	private int m_ID = -1;
 	private Vector2 m_nodePosition = new Vector2();
 	
 	private List<AIGraphNode> m_nodeLinks = new List<AIGraphNode>();

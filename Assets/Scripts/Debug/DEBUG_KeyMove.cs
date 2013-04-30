@@ -35,36 +35,27 @@ public class DEBUG_KeyMove : MonoBehaviour {
 			transform.position = new Vector3(transform.position.x + (0.01f  * MoveSpeed), transform.position.y, transform.position.z);
 		}
 	*/	
-		if(Input.GetMouseButtonDown(1))
+		if(Input.GetMouseButtonDown(2))
 		{
 			m_dragging = true;
 			
 			m_lastMousePos = Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition);
 			Debug.Log("Mouse down");
 		}
-		else if(Input.GetMouseButtonUp(1))
+		else if(Input.GetMouseButtonUp(2))
 		{
 			m_dragging = false;	
 			Debug.Log("Mouse up");
 		}
 	
-		if(m_dragging && Input.GetMouseButton(1))
+		if(m_dragging && Input.GetMouseButton(2))
 		{
 			Vector2 newPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);	
 			
-			
-		//	Debug.Log("Test: " + diff.x + ", " + diff.y);
 			Vector3 camPosition = Camera.mainCamera.ScreenToWorldPoint(newPosition);
 			
-			
-			//Debug.Log("New pos: " + camPosition.x + ", " + camPosition.y);
-			//Debug.Log("Old pos: " + transform.position.x + ", " + transform.position.y);
 			Vector3 newPos =  transform.position - ( camPosition - m_lastMousePos);
 			transform.position =  new Vector3(newPos.x, newPos.y, transform.position.z);
-			
-			float dragSpeed = 1.0f;
-			//transform.position = new Vector3(transform.position.x + (diff.x * dragSpeed), transform.position.y  + (diff.y * dragSpeed), transform.position.z);
-			
 			
 			m_lastMousePos = Camera.mainCamera.ScreenToWorldPoint(newPosition);
 		}
