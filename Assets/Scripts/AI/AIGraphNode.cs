@@ -19,12 +19,11 @@ public class AIGraphNode
 	public int ID 
 	{ 
 		get { return m_ID; }
+		set { m_ID = value; }
 	}
 	
 	public AIGraphNode() 
 	{
-		m_ID = AIGraph.MaxIndex;
-		AIGraph.MaxIndex++;
 	}
 	
 	private int m_ID = -1;

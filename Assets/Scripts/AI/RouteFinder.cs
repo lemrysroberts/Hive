@@ -5,6 +5,7 @@
 /// As with most of my code, it's not very well tested and on a different continent to optimal, so...
 /// http://25.media.tumblr.com/tumblr_ma8uniqOJZ1r9n5d3o1_250.jpg
 /// 
+/// Looked at it again and http://www.youtube.com/watch?feature=player_detailpage&v=F_XaIuw6K6Q#t=8s
 /// </summary>
 
 using UnityEngine; 					// This is only needed for that sexy maths.
@@ -23,8 +24,8 @@ public class RouteFinder
 		int maxIterations = 1000;
 		
 		// Pretty lazy, but C# defaults a bool array to false
-		m_closedList = new bool[AIGraph.MaxIndex];
-		m_parentList = new int[AIGraph.MaxIndex];
+		m_closedList = new bool[searchGraph.Nodes.Length];
+		m_parentList = new int[searchGraph.Nodes.Length];
 		
 		m_openHeap.Insert(start, (end.NodePosition - start.NodePosition).magnitude);
 		
@@ -56,8 +57,6 @@ public class RouteFinder
 				
 				route.m_routePoints.Add(node);
 				currentID = m_parentList[currentID];
-				
-					
 			}
 			
 			route = TrimRoute(route);
@@ -120,7 +119,8 @@ public class RouteFinder
 			
 			// So, a better metric than this, yeah?
 			m_openHeap.Insert(link, (m_targetPos - link.NodePosition).magnitude);
-			m_parentList[link.ID] = m_graph.GetNodeIndex(currentNode.NodePosition);
+			int index = m_graph.GetNodeIndex(currentNode.NodePosition);
+			m_parentList[link.ID] = index; 
 		}
 	}
 	

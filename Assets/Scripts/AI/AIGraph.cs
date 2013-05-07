@@ -28,11 +28,14 @@ public class AIGraph
 		
 		foreach(var node in m_nodes)
 		{
-			float distance = (node.NodePosition - position).sqrMagnitude;
-			if(distance < currentMinDistance)
+			if(node != null)
 			{
-				currentClosest = node;
-				currentMinDistance = distance;
+				float distance = (node.NodePosition - position).sqrMagnitude;
+				if(distance < currentMinDistance)
+				{
+					currentClosest = node;
+					currentMinDistance = distance;
+				}
 			}
 		}
 		return currentClosest;
@@ -58,7 +61,8 @@ public class AIGraph
 		{
 			return;
 		}
-		
+	
+		node.ID = x * m_height + y;
 		m_nodes[x * m_height + y] = node;
 	}
 	

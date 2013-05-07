@@ -48,7 +48,7 @@ public class AIWander : MonoBehaviour
 				
 				int bailout = 100;
 				int iteration = 0;
-				while(targetNode == currentNode && iteration != bailout)
+				while(targetNode == currentNode || targetNode == null && iteration != bailout)
 				{
 					targetNode = m_level.AIGraph.GetRandomNode();
 					iteration++;
