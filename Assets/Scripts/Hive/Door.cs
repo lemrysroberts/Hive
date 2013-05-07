@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Xml;
 using System.Collections;
 
 public class Door : SensorTarget
@@ -54,6 +55,11 @@ public class Door : SensorTarget
 			}
 			MeshObject.transform.position = Vector3.Lerp(m_originalTransform, m_openTransform, m_openProgress);
 		}
+	}
+	
+	public void SaveSerialise(XmlWriter writer)
+	{
+		
 	}
 	
 	private void Open()

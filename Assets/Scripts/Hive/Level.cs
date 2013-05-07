@@ -161,6 +161,12 @@ public partial class Level : MonoBehaviour
 		}
 	}
 	
+	public bool TileBlocked(int x, int y)
+	{
+		Tile tile = TileManager.Instance.GetTile(GetTileID(x, y));
+		return tile.NavBlock;
+	}
+	
 	private void DeleteSections(bool fullReload)
 	{
 		Transform sectionsTransform = transform.FindChild(s_sectionsID);
@@ -201,7 +207,7 @@ public partial class Level : MonoBehaviour
 	
 	private AIGraph BuildAIGraph()
 	{
-		AIGraph newGraph = new AIGraph();
+		AIGraph newGraph = new AIGraph(SectionCountX * m_sectionSize, SectionCountY * m_sectionSize);
 		
 		TileManager tileManager = TileManager.Instance;
 		
@@ -216,22 +222,40 @@ public partial class Level : MonoBehaviour
 					AIGraphNode newNode = new AIGraphNode();
 					newNode.NodePosition = new Vector2(x + 0.5f, y + 0.5f);
 					
-					newGraph.Nodes.Add(newNode.ID, newNode);
+					newGraph.Add(newNode);
 				}
 			}
 		}
 		
+		// This is the slowest thing in the entire world and would have basically zero cost with a spatial representation
+		
+		int index = 0;
 		foreach(var node in newGraph.Nodes)
 		{
-			foreach(var other in newGraph.Nodes)
+			if(node != null)
 			{
-				if(node.Value == other.Value) continue;
 				
-				if((node.Value.NodePosition - other.Value.NodePosition).magnitude < 1.1f)
+				int currentIndex = newGraph.GetNodeIndex(node.NodePosition);
+				
+				int[] indices = new int[4];
+				
+				indices[0] = currentIndex + SectionCountX * m_sectionSize;
+				indices[1] = currentIndex - SectionCountX * m_sectionSize;
+				indices[2] = currentIndex + 1;
+				indices[3] = currentIndex - 1;
+				
+				foreach(int otherIndex in indices)
 				{
-					node.Value.NodeLinks.Add(other.Value);	
+					if(otherIndex >= 0 && otherIndex < (SectionCountX * m_sectionSize) * (SectionCountY * m_sectionSize))
+					{
+						var other = newGraph.Nodes[otherIndex];
+						if(other != null)
+						{
+							node.NodeLinks.Add(other);	
+						}	
+					}
 				}
-			}	
+			}
 		}
 		
 		return newGraph;
@@ -239,6 +263,7 @@ public partial class Level : MonoBehaviour
 	
 	public void TestRoutefinder()
 	{
+		/*
 		RouteFinder routeFinder = new RouteFinder();
 		
 		int endPosID = (int)(Random.value * (float)(m_graph.Nodes.Count - 1));
@@ -252,11 +277,18 @@ public partial class Level : MonoBehaviour
 		{
 			Debug.Log("Invalid graph state");	
 		}
+		*/
 	}
 	
 	public AIGraph AIGraph
 	{
 		get { return m_graph; }
+	}
+	
+	public List<Room> Rooms
+	{
+		get { return m_rooms; }
+		set { m_rooms = value; }
 	}
 	
 #if UNITY_EDITOR
@@ -286,11 +318,14 @@ public partial class Level : MonoBehaviour
 			Vector3 boxSize = new Vector3(0.2f, 0.2f, 0.2f);
 			foreach(var node in m_graph.Nodes)
 			{
-				Gizmos.DrawCube(node.Value.NodePosition, boxSize);
-				
-				foreach(var other in node.Value.NodeLinks)
+				if(node != null)
 				{
-					Gizmos.DrawLine(node.Value.NodePosition, other.NodePosition);	
+					Gizmos.DrawCube(node.NodePosition, boxSize);
+					
+					foreach(var other in node.NodeLinks)
+					{
+						Gizmos.DrawLine(node.NodePosition, other.NodePosition);	
+					}
 				}
 			}
 			
@@ -317,6 +352,19 @@ public partial class Level : MonoBehaviour
 				Gizmos.DrawCube(m_lastRouteEnd, boxSize);
 			}
 		}
+		
+		if(m_renderRooms)
+		{
+			Gizmos.color = Color.magenta;
+			foreach(var room in m_rooms)
+			{
+				Vector3 pos = new Vector3(room.startX + (room.endX - room.startX) / 2.0f, room.startY + (room.endY - room.startY) / 2.0f, -1.0f);
+				Vector3 size = new Vector3((room.endX - room.startX), (room.endY - room.startY), 10.0f);
+					
+				// Eugh, make a gizmos wire-cube function...
+				Gizmos.DrawWireCube(pos, size);
+			}
+		}
 	}
 		
 	public void OnGUI()
@@ -339,6 +387,7 @@ public partial class Level : MonoBehaviour
 	// Debug
 	public bool m_renderColliders 	= false;
 	public bool m_renderNodeGraph 	= false;
+	public bool m_renderRooms		= false;
 #endif
 	
 	public GameObject TileType;
@@ -370,4 +419,13 @@ public partial class Level : MonoBehaviour
 	
 	[SerializeField] 
 	private AIGraph m_graph = null;
+	
+	[SerializeField]
+	private List<Room> m_rooms = new List<Room>();
+	
+	//////////////////////////////////////////////////////////////////////////////////
+	// DEBUG
+	//////////////////////////////////////////////////////////////////////////////////
+	public List<AreaPartition> RoomAreas = null;
+	public List<Corridor> Corridors = null;
 }

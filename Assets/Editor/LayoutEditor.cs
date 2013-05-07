@@ -9,6 +9,16 @@ public class LayoutEditor : Editor
 	{
 		Level level = target as Level;
 		
+		if(m_generator == null)
+		{
+			m_generator = new LevelGen(level);	
+		}
+		
+		if(DrawGenerationActiveGUI())
+		{
+			return;	
+		}
+		
 		m_editMode = EditorGUILayout.Toggle("Edit", m_editMode);
 		
 		m_showSectionCounts = EditorGUILayout.Foldout(m_showSectionCounts, "Section Counts");	
@@ -19,18 +29,16 @@ public class LayoutEditor : Editor
 			level.SectionCountY = EditorGUILayout.IntField("Y", level.SectionCountY);
 		}
 		
-		level.m_npcObject = EditorGUILayout.ObjectField(level.m_npcObject, typeof(GameObject), true) as GameObject;
-		
 		if(GUILayout.Button("Reload"))
 		{
 			level.Reload(false);
-			HandleUtility.Repaint();
+			EditorUtility.SetDirty(level);
 		}
 		
 		if(GUILayout.Button("Rebuild all sections"))
 		{
 			level.RebuildAllSections();
-			HandleUtility.Repaint();
+			EditorUtility.SetDirty(level);
 		}
 		
 		if(GUILayout.Button("Save"))
@@ -69,22 +77,43 @@ public class LayoutEditor : Editor
 		m_showDebugRenderOptions = EditorGUILayout.Foldout(m_showDebugRenderOptions, "Debug Rendering");	
 		if(m_showDebugRenderOptions)
 		{
-			bool renderColliders = EditorGUILayout.Toggle("Collider Edge Data", level.m_renderColliders);
-			bool renderNodeGraph = EditorGUILayout.Toggle("Node Graph", level.m_renderNodeGraph);
+			bool renderColliders 	= EditorGUILayout.Toggle("Collider Edge Data", level.m_renderColliders);
+			bool renderNodeGraph 	= EditorGUILayout.Toggle("Node Graph", level.m_renderNodeGraph);
+			bool renderRooms		= EditorGUILayout.Toggle("Rooms", level.m_renderRooms);
 			
-			if(renderColliders != level.m_renderColliders || renderNodeGraph != level.m_renderNodeGraph)
+			if( renderColliders != level.m_renderColliders || 
+				renderNodeGraph != level.m_renderNodeGraph ||
+				renderRooms != level.m_renderRooms)
 			{
 				level.m_renderColliders = renderColliders;
 				level.m_renderNodeGraph = renderNodeGraph;
+				level.m_renderRooms = renderRooms;
 				
-				HandleUtility.Repaint();
+				EditorUtility.SetDirty(level);
 			}
+		}
+		GUILayout.Box("", GUILayout.Height(1), GUILayout.ExpandWidth(true));
+		m_showLevelGenOptions = EditorGUILayout.Foldout(m_showLevelGenOptions, "Level Generator");
+		
+		if(m_showLevelGenOptions)
+		{
+			DrawGeneratorGUI(level);
 		}
 	}
 	
 	public void OnSceneGUI()
 	{
 		Level level = target as Level;
+		
+		if(m_generatingLevel && m_generator != null)
+		{
+			if(m_generator.CurrentStage != null)
+			{
+				m_generator.CurrentStage.UpdateSceneGUI();
+			}
+			
+			return;
+		}
 		
 		if(m_editMode)
 		{
@@ -136,10 +165,121 @@ public class LayoutEditor : Editor
 		{
 			level.SetTileID((int)position.x, (int)position.y, TileManager.Instance.SelectedTile.ID, true);
 		}
+	}
+	
+	/// <summary>
+	/// Draws the GUI for the level-generator.
+	/// </summary>
+	private void DrawGeneratorGUI(Level level)
+	{
+		m_useTestSeed = GUILayout.Toggle(m_useTestSeed, "Use Custom Seed");
 		
+		if(m_useTestSeed)
+		{
+			m_generatorTestSeed = EditorGUILayout.IntField("Custom Seed", m_generatorTestSeed);
+		}
+		
+		m_stepGenerate = GUILayout.Toggle(m_stepGenerate, "Step Generate");
+		
+		GUILayout.Box("", GUILayout.Height(1), GUILayout.ExpandWidth(true));
+		
+		GUILayout.Label("Stages");
+		foreach(var stage in m_generator.Stages)
+		{
+			stage.SetupGUI();
+		}
+		
+		GUILayout.Box("", GUILayout.Height(1), GUILayout.ExpandWidth(true));
+		
+		if(GUILayout.Button("Generate Level"))
+		{
+			if(EditorUtility.DisplayDialog("Generate New Level?", "This will reset the current level. Continue?", "Ok", "Cancel"))
+			{
+				m_generator = new LevelGen(level);
+				m_generator.GenerateLevel(m_useTestSeed ? m_generatorTestSeed : -1, true);
+				m_generatingLevel = true;
+				m_stageToAdvance = m_stepGenerate ? null : m_generator.CurrentStage;
+			}
+		}
+	}
+	
+	/// <summary>
+	/// Draws the GUI when the generator is running in some form.
+	/// </summary>
+	/// <returns>
+	/// True if generation UI is active. False otherwise
+	/// </returns>
+	private bool DrawGenerationActiveGUI()
+	{
+		Level level = target as Level;
+		if(m_generatingLevel && m_generator != null)
+		{
+			if(m_stageToAdvance != null)
+			{
+				if(GUILayout.Button("Cancel"))
+				{
+					m_generatingLevel = false;	
+				}
+			}
+			
+			if(m_stageToAdvance != null)
+			{
+				m_generator.UpdateStep();
+				level.RebuildAllSections();	
+				EditorUtility.SetDirty(level);
+				if(m_generator.CurrentStage != m_stageToAdvance)
+				{
+					if(m_stepGenerate)
+					{
+						m_stageToAdvance = null;
+					}
+					else
+					{
+						m_stageToAdvance = m_generator.CurrentStage;
+					}
+					m_generatingLevel = !m_generator.GenerationComplete;
+					return true;
+				}
+			}
+			
+			if(m_stepGenerate && m_stageToAdvance == null)
+			{
+				if(GUILayout.Button("Step"))
+				{
+					m_generator.UpdateStep();
+					m_generatingLevel = !m_generator.GenerationComplete;
+					
+					level.RebuildAllSections();	
+					EditorUtility.SetDirty(level);
+				}
+				
+				if(GUILayout.Button("Advance Stage"))
+				{
+					m_stageToAdvance = m_generator.CurrentStage;
+				}
+			}
+			
+			if(m_generator.CurrentStage != null)
+			{
+				GUILayout.Label("Active Stage: " + m_generator.CurrentStage.GetStageName());
+				m_generator.CurrentStage.UpdateGUI();
+			}
+			
+			return true;
+		}
+		return false;
 	}
 		
-	private bool m_showSectionCounts = true;
-	private bool m_showDebugRenderOptions = false;
-	private bool m_editMode = false;
+	private bool m_showSectionCounts 		= true;
+	private bool m_showDebugRenderOptions 	= false;
+	private bool m_editMode 				= false;
+	
+	// Gubbins for the level-generator.
+	private bool m_showLevelGenOptions 				= false;
+	private int m_generatorTestSeed 				= 0;
+	private bool m_useTestSeed 						= false;
+	private static bool m_stepGenerate 				= false;
+	private static bool m_generatingLevel 			= false;
+	private static LevelGen m_generator 			= null;
+	private static IGeneratorStage m_stageToAdvance = null;
 }

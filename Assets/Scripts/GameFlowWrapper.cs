@@ -56,7 +56,9 @@ public class GameFlowWrapper : MonoBehaviour
 		}
 		
 		Level level = FindObjectOfType(typeof(Level)) as Level;
-		level.Load(GameFlow.Instance.CurrentLevel);
+		//level.Load(GameFlow.Instance.CurrentLevel);
+		LevelGen generator = new LevelGen(level);
+		generator.GenerateLevel(System.DateTime.Now.Millisecond, false);
 		Debug.Log("Loading: " + GameFlow.Instance.CurrentLevel);
 	}
 	

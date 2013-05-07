@@ -14,12 +14,13 @@ public class RouteFinder
 {
 	public Route FindRoute(AIGraph searchGraph, AIGraphNode start, AIGraphNode end)
 	{
+		m_graph = searchGraph;
 		Route route = new Route();
 		m_targetPos = end.NodePosition;
 		
 		m_openHeap.Reset();
 		
-		int maxIterations = 100000;
+		int maxIterations = 1000;
 		
 		// Pretty lazy, but C# defaults a bool array to false
 		m_closedList = new bool[AIGraph.MaxIndex];
@@ -38,8 +39,6 @@ public class RouteFinder
 		{
 			Debug.Log("No route found");
 			
-			
-			
 			return route;
 		}
 		
@@ -53,8 +52,8 @@ public class RouteFinder
 			
 			while(currentID != 0)
 			{
-				AIGraphNode node = null;
-				searchGraph.Nodes.TryGetValue(currentID, out node);
+				AIGraphNode node = searchGraph.Nodes[currentID];
+				
 				route.m_routePoints.Add(node);
 				currentID = m_parentList[currentID];
 				
@@ -121,10 +120,11 @@ public class RouteFinder
 			
 			// So, a better metric than this, yeah?
 			m_openHeap.Insert(link, (m_targetPos - link.NodePosition).magnitude);
-			m_parentList[link.ID] = currentNode.ID;
+			m_parentList[link.ID] = m_graph.GetNodeIndex(currentNode.NodePosition);
 		}
 	}
 	
+	private AIGraph m_graph;
 	private Vector2 m_targetPos;
 	private int[] m_parentList;
 	private bool[] m_closedList;

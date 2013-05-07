@@ -15,8 +15,6 @@ public class GeometryFactory : MonoBehaviour
 	public bool ScaleUVs = false;
 	public float UVScale = 1.0f;
 	
-	[SerializeField]
-	private bool m_meshBuilt = false;
 	
 	// Use this for initialization
 	void Start () 
@@ -42,7 +40,6 @@ public class GeometryFactory : MonoBehaviour
 				mesh.sharedMesh = CreatePlane(1.0f, 1.0f);		
 			}
 		}
-		m_meshBuilt = true;
 	}
 	
 	public static Mesh CreatePlane(float UVXScale, float UVYScale)

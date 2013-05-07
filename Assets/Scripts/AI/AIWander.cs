@@ -28,7 +28,7 @@ public class AIWander : MonoBehaviour
 	
 	void FixedUpdate () 
 	{
-#if UnityEditor
+#if UNITY_EDITOR
 		if(m_level == null)
 		{
 			m_level = FindObjectOfType(typeof(Level)) as Level;

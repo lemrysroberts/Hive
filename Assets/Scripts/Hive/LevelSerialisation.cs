@@ -31,6 +31,18 @@ public partial class Level : MonoBehaviour
 			
 			writer.WriteEndElement(); // sections
 			
+			UnityEngine.Object[] levelObjects = GameObject.FindObjectsOfType(typeof(LevelObject));
+			
+			writer.WriteStartElement("objects");
+			
+			foreach(var levelObject in levelObjects)
+			{
+				LevelObject levelGameObject = levelObject as LevelObject;
+				levelGameObject.Serialise(writer);
+			}
+				
+			writer.WriteEndElement(); // objects
+			
 			writer.WriteEndElement(); // level
 			
 			writer.WriteEndDocument();
