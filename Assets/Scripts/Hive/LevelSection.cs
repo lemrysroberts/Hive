@@ -82,9 +82,17 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			subObjects.transform.parent = transform;
 		}
 		
+		WorldView view =  GameFlow.Instance.View;
 		foreach(var levelObject in m_levelObjects)
 		{
-			GameObject newObject = levelObject.InstantiateAgent();
+			GameObject newObject = null;
+			
+			switch(view)
+			{
+				case WorldView.Admin: newObject = levelObject.InstantiateAdmin(); break;
+				case WorldView.Agent: newObject = levelObject.InstantiateAgent(); break;
+			}
+			
 			if(newObject != null)
 			{
 				newObject.transform.parent = subObjects.transform;

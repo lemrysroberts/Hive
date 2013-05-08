@@ -1,3 +1,10 @@
+/// <summary>
+/// AI graph.
+/// 
+/// Much like the RouteFinder, this class was left to grow up on the streets and has no respect for authority.
+/// 
+/// </summary>
+
 using UnityEngine;
 using System;
 using System.Collections;
@@ -85,8 +92,6 @@ public class AIGraph
 	}
 	
 	public static int MaxIndex = 0;
-	
-	//private Dictionary<int, AIGraphNode> m_nodes = new Dictionary<int, AIGraphNode>();
 	private AIGraphNode[] m_nodes;
 	private int m_width;
 	private int m_height;

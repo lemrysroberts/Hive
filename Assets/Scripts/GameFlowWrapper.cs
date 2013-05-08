@@ -26,9 +26,12 @@ public class GameFlowWrapper : MonoBehaviour
 		
 		if(GameFlow.Instance.View == WorldView.Admin)
 		{
+			// TODO: Hard-coded nonsense here.
 			TileManager.TileSetFilename = "tilesetalt";
 			
-			
+			// TODO: 	This is gross. It disables and enables scripts dependend on the view.
+			//			This could be replaced with a script that takes another component as its parameter and enables or disables that script
+			//			depending on the view.
 			if(player != null)
 			{
 				player.GetComponent<KinematicKeyMove>().enabled = false;	
@@ -39,7 +42,6 @@ public class GameFlowWrapper : MonoBehaviour
 				camera.GetComponent<FollowPlayer>().enabled = false;	
 				camera.GetComponent<DEBUG_KeyMove>().enabled = true;
 			}
-			
 		}
 		else
 		{
@@ -55,7 +57,7 @@ public class GameFlowWrapper : MonoBehaviour
 		Level level = FindObjectOfType(typeof(Level)) as Level;
 		level.Seed = System.DateTime.Now.Millisecond;
 		//level.Load(GameFlow.Instance.CurrentLevel);
-		LevelGen generator = new LevelGen(level);
+		LevelGenerator generator = new LevelGenerator(level);
 		generator.GenerateLevel(level.Seed, false);
 		Debug.Log("Loading: " + GameFlow.Instance.CurrentLevel);
 	}
@@ -74,6 +76,12 @@ public class GameFlowWrapper : MonoBehaviour
 	public void OnGUI()
 	{
 		GUI.Label(new Rect((Screen.width / 2.0f) - 20.0f, 10.0f, 40.0f, 30.0f), Application.loadedLevelName);	
+	}
+	
+	public WorldView View
+	{
+		get { return GameFlow.Instance.View; }
+		set { GameFlow.Instance.View = value; }
 	}
 	
 	public List<GameObject> AgentStartupItems

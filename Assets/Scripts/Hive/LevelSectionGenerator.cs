@@ -160,10 +160,6 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			newObject.name					= "Collider " + edge.Start.x + ", " + edge.Start.y;
 				
 			BoxCollider collider = newObject.AddComponent<BoxCollider>();
-			Rigidbody rigidBody = newObject.AddComponent<Rigidbody>();
-			
-			rigidBody.isKinematic = true;
-			rigidBody.constraints = RigidbodyConstraints.FreezeAll;
 			
 			Vector3 colliderSize = collider.size;
 			colliderSize.x = edge.type == Edge.EdgeType.Horizontal ? (edge.End.x - edge.Start.x)  : 0.1f;

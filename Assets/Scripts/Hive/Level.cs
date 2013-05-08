@@ -4,6 +4,8 @@
 /// This contains all level-related data.
 /// The level is built of LevelSection instances in order to allow simple LOD behaviour at some murky point in the future.
 /// 
+/// TODO: Despite being split into partial classes, this is getting pretty bloated.
+/// 
 /// </summary>
 
 using UnityEngine;
@@ -30,15 +32,17 @@ public partial class Level : MonoBehaviour
 			RebuildAIGraph();	
 		}
 	}
-
+	
+	/// <summary>
+	/// Recreates the level-sections.
+	/// </summary>
 	public void Reload(bool fullReload)
 	{
 		DeleteSections(fullReload);
-		Transform sectionsTransform =  CreateSectionsObject().transform;
+		Transform sectionsTransform = CreateSectionsObject().transform;
 		
 		List<LevelSection> newSections = new List<LevelSection>();
 		for(int i = 0; i < SectionCountX * SectionCountY; i++) newSections.Add(null);
-		
 		{
 			for(int x = 0; x < SectionCountX; x++)
 			{
@@ -235,8 +239,7 @@ public partial class Level : MonoBehaviour
 			}
 		}
 		
-		// This is the slowest thing in the entire world and would have basically zero cost with a spatial representation
-		
+		// Link the nodes. This should live in AIGraph really.
 		foreach(var node in newGraph.Nodes)
 		{
 			if(node != null)
@@ -339,6 +342,15 @@ public partial class Level : MonoBehaviour
 		set { m_doorPrefab = value; }
 	}
 	
+	public Vector2 PlayerSpawnPoint
+	{
+		get { return m_playerSpawnPoint; }
+		set { m_playerSpawnPoint = value; }
+	}
+	
+	public int Width { get { return m_sectionSize * SectionCountX; } }
+	public int Height { get { return m_sectionSize * SectionCountY; } }
+	
 #if UNITY_EDITOR
 	void OnDrawGizmos()
 	{
@@ -406,6 +418,12 @@ public partial class Level : MonoBehaviour
 				Gizmos.DrawWireCube(pos, size);
 			}
 		}
+		
+		if(m_playerSpawnPoint != null)
+		{
+			Gizmos.color = Color.yellow;
+			Gizmos.DrawSphere(m_playerSpawnPoint + new Vector2(0.5f, 0.5f), 0.3f);	
+		}
 	}
 		
 	public void OnGUI()
@@ -422,10 +440,7 @@ public partial class Level : MonoBehaviour
 		GUI.Label(new Rect(0, 0, 300, 300), "Updating " + sections + " sections");	
 	}
 	
-#endif
-	
-#if UNITY_EDITOR
-	// Debug
+	// Editor variables
 	public bool m_renderColliders 	= false;
 	public bool m_renderNodeGraph 	= false;
 	public bool m_renderRooms		= false;
@@ -467,6 +482,9 @@ public partial class Level : MonoBehaviour
 	
 	[SerializeField]
 	private GameObject m_doorPrefab = null;
+	
+	[SerializeField]
+	private Vector2 m_playerSpawnPoint;
 	
 	//////////////////////////////////////////////////////////////////////////////////
 	// DEBUG

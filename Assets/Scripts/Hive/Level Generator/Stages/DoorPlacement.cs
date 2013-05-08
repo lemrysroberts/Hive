@@ -45,7 +45,7 @@ public class DoorPlacement : IGeneratorStage
 		{
 			m_linkAllRooms = GUILayout.Toggle(m_linkAllRooms, "Link all neighbours");
 			GUILayout.BeginHorizontal();
-			
+			GUILayout.Label("Door Prefab", GUILayout.Width(90));
 			m_level.DoorPrefab = EditorGUILayout.ObjectField(m_level.DoorPrefab, typeof(GameObject), false) as GameObject;
 			
 			GUILayout.EndHorizontal();
@@ -227,13 +227,9 @@ public class DoorPlacement : IGeneratorStage
 						break;
 					}
 				}
-				
-				
-			
 			}
 		}
 		
-		//Debug.Log("Room tested");
 		m_roomIndex++;	
 	}
 	

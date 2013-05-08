@@ -117,7 +117,7 @@ public partial class Level : MonoBehaviour
 		
 		Seed = BitConverter.ToInt32(levelData, 0);
 		
-		LevelGen generator = new LevelGen(this);
+		LevelGenerator generator = new LevelGenerator(this);
 		generator.GenerateLevel(Seed, false);
 		//levelDoc.LoadXml(levelString);
 		

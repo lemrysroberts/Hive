@@ -6,15 +6,18 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class LevelGen  
+public class LevelGenerator  
 {
-	public LevelGen(Level level)
+	public LevelGenerator(Level level)
 	{
 		m_level = level;
+		
+		// TODO: This isn't exactly ideal.
 		m_stages.Add(new BinaryCorridors(m_level));
 		m_stages.Add(new RoomBuilder(level));
 		m_stages.Add(new DoorPlacement(level));
 		m_stages.Add(new CreateLevelObjects(level));
+		m_stages.Add(new CreateGoals(level));
 	}
 	
 	public void GenerateLevel(int seed, bool stepUpdate)

@@ -13,13 +13,8 @@ using System.Collections;
 
 public abstract class LevelObject 
 {
-	public LevelObject()
-	{
-		
-	}
-	
+	public abstract GameObject InstantiateAdmin();
 	public abstract GameObject InstantiateAgent();
-		
 	
 	public GameObject Prefab;
 	public Vector3 Position;
