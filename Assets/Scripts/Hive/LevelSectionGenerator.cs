@@ -152,6 +152,8 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			colliderObject.transform.position = m_origin;	
 		}
 		
+		// TODO: 	This is seriously slow. Also, why am I making colliders for the edges? Are my walls hollow?
+		//			This can have far fewer colliders with one per wall.
 		foreach(var edge in m_edges)
 		{
 			GameObject newObject 			= new GameObject();
@@ -160,6 +162,7 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			newObject.name					= "Collider " + edge.Start.x + ", " + edge.Start.y;
 				
 			BoxCollider collider = newObject.AddComponent<BoxCollider>();
+			newObject.layer = LayerMask.NameToLayer("LevelGeo");
 			
 			Vector3 colliderSize = collider.size;
 			colliderSize.x = edge.type == Edge.EdgeType.Horizontal ? (edge.End.x - edge.Start.x)  : 0.1f;
