@@ -1,31 +1,28 @@
+/// <summary>
+/// 
+/// Level object.
+/// 
+/// This is a base class that contains information about the placement and parameters of an
+/// object within the level. This is needed to create view-agnostic definitions that either the 
+/// admin-view or agent-view can use to create their final level layouts.
+/// 
+/// </summary>
+
 using UnityEngine;
-using System.Xml;
 using System.Collections;
 
-public class LevelObject : MonoBehaviour 
+public abstract class LevelObject 
 {
-	public string PrefabName = string.Empty;
-	public SaveSerialisable SerialiseTarget = null;
-	
-	// Use this for initialization
-	void Start () 
+	public LevelObject()
 	{
-		Level level = FindObjectOfType(typeof(Level)) as Level;
+		
 	}
 	
-	public void Serialise(XmlTextWriter writer)
-	{
-		writer.WriteStartElement("object");
+	public abstract GameObject InstantiateAgent();
 		
-		writer.WriteAttributeString("prefab_name", PrefabName);
-		
-		//writer.WriteAttributeString("position
-		
-		if(SerialiseTarget != null)
-		{
-			SerialiseTarget.SaveSerialise(writer);	
-		}
-		
-		writer.WriteEndElement();
-	}
+	
+	public GameObject Prefab;
+	public Vector3 Position;
+	public Quaternion Rotation;
 }
+ 

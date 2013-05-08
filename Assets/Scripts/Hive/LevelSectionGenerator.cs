@@ -129,6 +129,7 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			filter.mesh 			= newMesh;
 			renderer.material 		= wallMaterial;
 			tileMesh.SpriteDataPath = targetTile.SpriteDataPath;
+			tileMesh.AnimationSpeed = targetTile.AnimationSpeed;
 		}
 	}
 	
@@ -175,7 +176,6 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 	public List<Edge> GetEdges()
 	{
 		List<Edge> edges = new List<Edge>();
-		List<bool> transition = new List<bool>();
 		
 		int originX = (int)m_origin.x;
 		int originY = (int)m_origin.y;
@@ -184,7 +184,7 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 		
 		for(int x = 0; x < m_sectionSize ; x++)
 		{
-			for(int y = 0; y < m_sectionSize; y++)
+			for(int y = 0; y < m_sectionSize; y++) 
 			{
 				int currentID 	= m_level.GetTileID(originX + x, 		originY + y);
 				int nextXID 	= m_level.GetTileID(originX + x + 1, 	originY + y);

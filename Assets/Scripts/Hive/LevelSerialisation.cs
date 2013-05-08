@@ -31,18 +31,6 @@ public partial class Level : MonoBehaviour
 			
 			writer.WriteEndElement(); // sections
 			
-			UnityEngine.Object[] levelObjects = GameObject.FindObjectsOfType(typeof(LevelObject));
-			
-			writer.WriteStartElement("objects");
-			
-			foreach(var levelObject in levelObjects)
-			{
-				LevelObject levelGameObject = levelObject as LevelObject;
-				levelGameObject.Serialise(writer);
-			}
-				
-			writer.WriteEndElement(); // objects
-			
 			writer.WriteEndElement(); // level
 			
 			writer.WriteEndDocument();
@@ -124,11 +112,16 @@ public partial class Level : MonoBehaviour
 	public void ReceiveLevel(byte[] levelData)
 	{
 		Debug.LogWarning("Received RPC data");
-		String levelString = System.Text.Encoding.UTF8.GetString(levelData);
-		XmlDocument levelDoc = new XmlDocument();
-		levelDoc.LoadXml(levelString);
+		//String levelString = System.Text.Encoding.UTF8.GetString(levelData);
+		//XmlDocument levelDoc = new XmlDocument();
 		
-		LoadXml(levelDoc);
+		Seed = BitConverter.ToInt32(levelData, 0);
+		
+		LevelGen generator = new LevelGen(this);
+		generator.GenerateLevel(Seed, false);
+		//levelDoc.LoadXml(levelString);
+		
+		//LoadXml(levelDoc);
 	}
 	
 	public void SerialiseToNetwork(string path)
@@ -137,7 +130,8 @@ public partial class Level : MonoBehaviour
 		TextAsset levelAsset = Resources.Load(path) as TextAsset;
 		if(levelAsset != null)
 		{
-			byte[] bytes = System.Text.Encoding.UTF8.GetBytes(levelAsset.text);
+			//byte[] bytes = System.Text.Encoding.UTF8.GetBytes(levelAsset.text);
+			byte[] bytes = BitConverter.GetBytes(Seed);
 			
 			networkView.RPC("ReceiveLevel", RPCMode.Others, bytes);
 		}
@@ -152,6 +146,8 @@ public partial class Level : MonoBehaviour
 	
 	public void SyncNPCs()
 	{
+		return;
+		/*
 		if(m_npcObject != null)
 		{
 			GameObject testNPC = GameObject.Instantiate(m_npcObject) as GameObject;	
@@ -159,5 +155,6 @@ public partial class Level : MonoBehaviour
 			
 			networkView.RPC ("SpawnNPC", RPCMode.Others, testNPC.transform.position, testNPC.networkView.viewID);
 		}
+		*/
 	}
 }

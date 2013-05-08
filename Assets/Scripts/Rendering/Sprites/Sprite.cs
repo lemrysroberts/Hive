@@ -58,7 +58,7 @@ public class Sprite : MonoBehaviour
 	public bool LoadSpriteData(string spriteData)
 	{
 		m_data = new SpriteAnimationSet();
-		m_data.SetTexture(SpriteTexture);
+		m_data.SpriteSetTexture = SpriteTexture;
 		
 		return m_data.Load(spriteData);
 	}

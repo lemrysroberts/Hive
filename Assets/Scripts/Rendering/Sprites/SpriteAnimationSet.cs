@@ -47,10 +47,8 @@ public class SpriteAnimationSet
 		return true;
 	}
 	
-	public void SetTexture(Texture2D texture)
-	{
-		m_texture = texture;	
-	}
+	
+	public Texture2D SpriteSetTexture {	get; set; }
 	
 	public float GetAnimationSpeed()
 	{
@@ -67,16 +65,9 @@ public class SpriteAnimationSet
 		return Vector4.one;
 	}
 	
-	public SpriteAnimation CurrentAnimation
-	{
-		get { return m_currentAnimation; }
-		set { m_currentAnimation = value; }
-	}
+	public SpriteAnimation CurrentAnimation { get; set; }
 	
-	Texture2D m_texture;
-	
-	float speed = 0.38f; 
-	
-	SpriteAnimation m_currentAnimation = null;
-	SpriteAnimation[] m_animations;
+	private Texture2D m_texture;
+	private float speed = 0.38f; 
+	private SpriteAnimation[] m_animations;
 }

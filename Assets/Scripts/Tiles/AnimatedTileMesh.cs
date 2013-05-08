@@ -16,7 +16,7 @@ public class AnimatedTileMesh : MonoBehaviour
 	{
 		timeProgress += Time.deltaTime;
 		
-		if(timeProgress > 1.0f)
+		if(timeProgress > AnimationSpeed)
 		{
 			timeProgress = 0.0f;
 		
@@ -33,6 +33,7 @@ public class AnimatedTileMesh : MonoBehaviour
 	
 	private float timeProgress = 0;
 	
+	public float AnimationSpeed = 0.5f;
 	public string SpriteDataPath 	= null;
 	private SpriteAnimationSet m_spriteData = null;
 }

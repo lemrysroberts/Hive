@@ -70,12 +70,16 @@ public class SpriteAnimation
 		return m_frames[m_currentFrame].m_uvOffset;
 	}
 	
+	public string Name
+	{
+		get { return m_name; }	
+	}
+	
 	// Current animation state
 	private int m_currentFrame = 0;
 	
 	// Static animation values
 	private FrameData[] m_frames;
 	private int m_frameCount = 0;
-	
-	string m_name;
+	private string m_name;
 }

@@ -80,7 +80,6 @@ public class BinaryHeap<T>
 	{
 		List<string> outputStrings = new List<string>();
 		
-		int count = 0;
 		foreach(var entry in m_heapEntries)
 		{
 			outputStrings.Add(entry.m_metricValue.ToString());

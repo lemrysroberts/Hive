@@ -38,6 +38,84 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 		}
 	}
 	
+	public void AddObject(LevelObject newObject)
+	{
+		m_levelObjects.Add(newObject);
+		/*
+		GameObject subObjects = null;
+		
+		for(int childID = 0; childID < transform.GetChildCount() && subObjects == null; childID++)
+		{
+			Transform child = transform.GetChild(childID);
+			if(child.name == m_objectsChildID)
+			{
+				subObjects = child.gameObject;
+			}
+		}
+		
+		if(subObjects == null)
+		{
+			subObjects = new GameObject(m_objectsChildID);
+			subObjects.transform.parent = transform;
+		}
+		
+		newObject.transform.parent = subObjects.transform;
+		*/
+	}
+	
+	public void CreateLevelObjects()
+	{
+		GameObject subObjects = null;
+		
+		for(int childID = 0; childID < transform.GetChildCount() && subObjects == null; childID++)
+		{
+			Transform child = transform.GetChild(childID);
+			if(child.name == m_objectsChildID)
+			{
+				subObjects = child.gameObject;
+			}
+		}
+		
+		if(subObjects == null)
+		{
+			subObjects = new GameObject(m_objectsChildID);
+			subObjects.transform.parent = transform;
+		}
+		
+		foreach(var levelObject in m_levelObjects)
+		{
+			GameObject newObject = levelObject.InstantiateAgent();
+			if(newObject != null)
+			{
+				newObject.transform.parent = subObjects.transform;
+			}
+		}
+	}
+	
+	public void ClearObjects()
+	{
+		m_levelObjects.Clear();
+		
+		GameObject subObjects = null;
+		
+		for(int childID = 0; childID < transform.GetChildCount() && subObjects == null; childID++)
+		{
+			Transform child = transform.GetChild(childID);
+			if(child.name == m_objectsChildID)
+			{
+				subObjects = child.gameObject;
+			}
+		}
+		
+		if(subObjects != null)
+		{
+			for(int childID = 0; childID < subObjects.transform.GetChildCount(); childID++)
+			{
+				DestroyImmediate(subObjects.transform.GetChild(childID));
+			}
+		}
+	}
+	
 	public void ElementVisible()
 	{
 		m_visibleSections++;
@@ -77,13 +155,16 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 	
 	[SerializeField]
 	private List<int> m_tileIDs;
-	
+			
+	private const string m_objectsChildID = "objects";
 	
 	private class TilePointPair
 	{
 		public List<Vector2> m_points = new List<Vector2>();
 		public int m_tileID = -1;
 	}
+	
+	private List<LevelObject> m_levelObjects = new List<LevelObject>();
 } 
 
 [Serializable]

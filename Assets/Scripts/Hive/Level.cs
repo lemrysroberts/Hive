@@ -167,6 +167,14 @@ public partial class Level : MonoBehaviour
 		return tile.NavBlock;
 	}
 	
+	public void CreateLevelObjects()
+	{
+		foreach(var section in m_sections)
+		{
+			section.CreateLevelObjects();
+		}
+	}
+	
 	private void DeleteSections(bool fullReload)
 	{
 		Transform sectionsTransform = transform.FindChild(s_sectionsID);
@@ -229,7 +237,6 @@ public partial class Level : MonoBehaviour
 		
 		// This is the slowest thing in the entire world and would have basically zero cost with a spatial representation
 		
-		int index = 0;
 		foreach(var node in newGraph.Nodes)
 		{
 			if(node != null)
@@ -259,6 +266,41 @@ public partial class Level : MonoBehaviour
 		}
 		
 		return newGraph;
+	}
+	
+	public void ClearObjects()
+	{
+		foreach(var section in m_sections)
+		{
+			section.ClearObjects();
+		}
+	}
+	
+	public void AddGameObject(LevelObject newObject)
+	{
+		m_levelObjects.Add(newObject);
+		
+		LevelSection targetSection = GetLevelSection(newObject.Position);
+		if(targetSection == null)
+		{
+			Debug.LogError("Failed to add GameObject: " + newObject.ToString());	
+			return;
+		}
+		
+		targetSection.AddObject(newObject);
+	}
+	
+	public LevelSection GetLevelSection(Vector2 position)
+	{
+		int sectionIDX = (int)position.x / m_sectionSize;
+		int sectionIDY = (int)position.y / m_sectionSize;
+		
+		if(sectionIDX >= SectionCountX || sectionIDY >= SectionCountY)
+		{
+			return null;	
+		}
+		
+		return m_sections[sectionIDX * SectionCountY + sectionIDY];
 	}
 	
 	public void TestRoutefinder()
@@ -291,6 +333,12 @@ public partial class Level : MonoBehaviour
 		set { m_rooms = value; }
 	}
 	
+	public GameObject DoorPrefab
+	{
+		get { return m_doorPrefab; }
+		set { m_doorPrefab = value; }
+	}
+	
 #if UNITY_EDITOR
 	void OnDrawGizmos()
 	{
@@ -309,7 +357,6 @@ public partial class Level : MonoBehaviour
 				}
 			}
 		}
-		
 		
 		if(m_graph != null && m_renderNodeGraph)
 		{
@@ -341,15 +388,9 @@ public partial class Level : MonoBehaviour
 					Gizmos.DrawCube(point, boxSize);
 					Gizmos.DrawLine(point, altPoint);
 				}
-				foreach(var point in m_lastRoute.m_routePoints)
-				{
-					
-				}
 				
 				Gizmos.color = Color.green;
 				boxSize = new Vector3(0.4f, 0.4f, 0.3f);
-				Gizmos.DrawCube(m_lastRouteStart, boxSize);
-				Gizmos.DrawCube(m_lastRouteEnd, boxSize);
 			}
 		}
 		
@@ -393,12 +434,11 @@ public partial class Level : MonoBehaviour
 	public GameObject TileType;
 	public int SectionCountX = 30;
 	public int SectionCountY = 30;
+	public int Seed = -1;
 	
 	public static int m_sectionSize = 30;
 	
 	private Route m_lastRoute = null;
-	private Vector2 m_lastRouteStart;
-	private Vector2 m_lastRouteEnd ;
 	
 	[SerializeField]
 	public List<LevelSection> m_sections = new List<LevelSection>();
@@ -422,6 +462,11 @@ public partial class Level : MonoBehaviour
 	
 	[SerializeField]
 	private List<Room> m_rooms = new List<Room>();
+	
+	private List<LevelObject> m_levelObjects = new List<LevelObject>();
+	
+	[SerializeField]
+	private GameObject m_doorPrefab = null;
 	
 	//////////////////////////////////////////////////////////////////////////////////
 	// DEBUG

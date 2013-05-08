@@ -12,7 +12,11 @@ public class DoorPlacement : IGeneratorStage
 		m_level = level;
 	}
 	
-	public void Start() {}
+	public void Start() 
+	{
+		m_level.ClearObjects();	
+	}
+	
 	public void End() {}
 	
 	public void UpdateStep() 
@@ -40,11 +44,16 @@ public class DoorPlacement : IGeneratorStage
 		if(m_showFoldout)
 		{
 			m_linkAllRooms = GUILayout.Toggle(m_linkAllRooms, "Link all neighbours");
+			GUILayout.BeginHorizontal();
+			
+			m_level.DoorPrefab = EditorGUILayout.ObjectField(m_level.DoorPrefab, typeof(GameObject), false) as GameObject;
+			
+			GUILayout.EndHorizontal();
 		}
 #endif
 	}
 	public void UpdateGUI() { }
-	public void UpdateSceneGUI() 
+	public void UpdateSceneGUI()  
 	{
 #if UNITY_EDITOR
 		foreach(var area in m_level.Corridors)
@@ -93,6 +102,14 @@ public class DoorPlacement : IGeneratorStage
 				int maxY = Mathf.Min(corridor.endY, currentRoom.endY);
 				int doorY = Random.Range(minY, maxY);
 				m_level.SetTileID(corridor.endX, doorY, 1, false);
+				if(m_level.DoorPrefab != null)
+				{
+					DoorObject newDoor = new DoorObject();
+					newDoor.Prefab = m_level.DoorPrefab;
+					newDoor.Position = new Vector3(corridor.endX + 0.5f, doorY + 0.5f, 0.0f);
+					newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+					m_level.AddGameObject(newDoor);
+				}
 			}
 			
 			if(corridor.startX >= currentRoom.endX)
@@ -101,6 +118,15 @@ public class DoorPlacement : IGeneratorStage
 				int maxY = Mathf.Min(corridor.endY, currentRoom.endY);
 				int doorY = Random.Range(minY, maxY);
 				m_level.SetTileID(corridor.startX - 1, doorY, 1, false);
+				
+				if(m_level.DoorPrefab != null)
+				{
+					DoorObject newDoor = new DoorObject();
+					newDoor.Prefab = m_level.DoorPrefab;
+					newDoor.Position = new Vector3(corridor.startX - 0.5f, doorY + 0.5f, 0.0f);
+					newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+					m_level.AddGameObject(newDoor);
+				}
 			}
 				
 			if(corridor.startY >= currentRoom.endY)
@@ -109,6 +135,14 @@ public class DoorPlacement : IGeneratorStage
 				int maxX = Mathf.Min(corridor.endX, currentRoom.endX);
 				int doorX = Random.Range(minX, maxX);
 				m_level.SetTileID(doorX, corridor.startY - 1, 1, false);
+				
+				if(m_level.DoorPrefab != null)
+				{
+					DoorObject newDoor = new DoorObject();
+					newDoor.Prefab = m_level.DoorPrefab;
+					newDoor.Position = new Vector3(doorX + 0.5f, corridor.startY - 0.5f, 0.0f);
+					m_level.AddGameObject(newDoor);
+				}
 			}
 				
 			if(corridor.endY < currentRoom.startY)
@@ -117,14 +151,19 @@ public class DoorPlacement : IGeneratorStage
 				int maxX = Mathf.Min(corridor.endX, currentRoom.endX);
 				int doorX = Random.Range(minX, maxX);
 				m_level.SetTileID(doorX, corridor.endY, 1, false);
+				if(m_level.DoorPrefab != null)
+				{
+					DoorObject newDoor = new DoorObject();
+					newDoor.Prefab = m_level.DoorPrefab;
+					newDoor.Position = new Vector3(doorX + 0.5f, corridor.endY + 0.5f, 0.0f);
+					m_level.AddGameObject(newDoor);
+				}
 			}
 		}
 		else
 		{
 			// Internal room - Find an adjacent room.
 			// This can be simplified with more spatial data. Just like everything else.
-			
-			Room adjacentRoom = null;
 			foreach(var other in m_level.Rooms)
 			{
 				if(other == currentRoom || other.ConnectedRooms.Contains(currentRoom) || currentRoom.ConnectedRooms.Contains(other))

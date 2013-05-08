@@ -4,15 +4,12 @@ using System.Collections.Generic;
 
 public class GameFlowWrapper : MonoBehaviour 
 {
-	public GameObject LevelObject;
-		
 	// Use this for initialization
 	void Start () 
 	{
 		GameFlow.Instance.AgentStartupItems = AgentStartupItems;
 		GameFlow.Instance.AdminStartupItems = AdminStartupItems;
 		
-		GameFlow.Instance.LevelObject = LevelObject;
 		GameFlow.Instance.Begin();
 	}
 	
@@ -56,9 +53,10 @@ public class GameFlowWrapper : MonoBehaviour
 		}
 		
 		Level level = FindObjectOfType(typeof(Level)) as Level;
+		level.Seed = System.DateTime.Now.Millisecond;
 		//level.Load(GameFlow.Instance.CurrentLevel);
 		LevelGen generator = new LevelGen(level);
-		generator.GenerateLevel(System.DateTime.Now.Millisecond, false);
+		generator.GenerateLevel(level.Seed, false);
 		Debug.Log("Loading: " + GameFlow.Instance.CurrentLevel);
 	}
 	

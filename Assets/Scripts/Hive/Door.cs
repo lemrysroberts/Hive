@@ -57,11 +57,6 @@ public class Door : SensorTarget
 		}
 	}
 	
-	public void SaveSerialise(XmlWriter writer)
-	{
-		
-	}
-	
 	private void Open()
 	{
 		m_opening = true;

@@ -15,7 +15,6 @@ public enum WorldView
 public class GameFlow
 {
 	public WorldView View = WorldView.Agent;
-	public GameObject LevelObject = null;
 	
 	public string CurrentLevel
 	{

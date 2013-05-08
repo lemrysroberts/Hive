@@ -11,18 +11,88 @@ Platform assembly: C:\Unity\Hive\Hive_Data\Managed\UnityEngine.dll (this message
 Loading C:\Unity\Hive\Hive_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Unity\Hive\Hive_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Unity\Hive\Hive_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.135 seconds
+- Completed reload, in  0.082 seconds
 desktop: 1680x1050 60Hz; virtual: 3360x1050 at -1680,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: C:\Unity\Hive\Hive_Data\Managed\System.Xml.dll (this message is harmless)
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Profiler is only supported with Pro License
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Profiler/ProfilerConnection.cpp Line: 197)
 
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 494.
-Total: 4.662152 ms (FindLiveObjects: 0.021509 ms CreateObjectMapping: 0.014582 ms MarkObjects: 0.326292 ms  DeleteObjects: 0.011666 ms)
+System memory in use before: 5.2 MB.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 2.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 1737.
+Total: 6.185336 ms (FindLiveObjects: 0.071456 ms CreateObjectMapping: 0.024061 ms MarkObjects: 0.474673 ms  DeleteObjects: 0.018228 ms)
 
 Platform assembly: C:\Unity\Hive\Hive_Data\Managed\System.dll (this message is harmless)
 Loading: Levels/1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:63)
  
-(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+(Filename: C Line: 0)
 
+Received RPC data
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:126)
+ 
+(Filename: C Line: 0)
+
+Mouse down
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+DEBUG_KeyMove:FixedUpdate() (at C:\Unity\Hive\Assets\Scripts\Debug\DEBUG_KeyMove.cs:43)
+ 
+(Filename: C Line: 0)
+
+Mouse up
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+DEBUG_KeyMove:FixedUpdate() (at C:\Unity\Hive\Assets\Scripts\Debug\DEBUG_KeyMove.cs:48)
+ 
+(Filename: C Line: 0)
+
+Mouse down
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+DEBUG_KeyMove:FixedUpdate() (at C:\Unity\Hive\Assets\Scripts\Debug\DEBUG_KeyMove.cs:43)
+ 
+(Filename: C Line: 0)
+
+Mouse up
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+DEBUG_KeyMove:FixedUpdate() (at C:\Unity\Hive\Assets\Scripts\Debug\DEBUG_KeyMove.cs:48)
+ 
+(Filename: C Line: 0)
+
+Mouse down
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+DEBUG_KeyMove:FixedUpdate() (at C:\Unity\Hive\Assets\Scripts\Debug\DEBUG_KeyMove.cs:43)
+ 
+(Filename: C Line: 0)
+
+Mouse down
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+DEBUG_KeyMove:FixedUpdate() (at C:\Unity\Hive\Assets\Scripts\Debug\DEBUG_KeyMove.cs:43)
+ 
+(Filename: C Line: 0)
+
+Mouse up
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+DEBUG_KeyMove:FixedUpdate() (at C:\Unity\Hive\Assets\Scripts\Debug\DEBUG_KeyMove.cs:48)
+ 
+(Filename: C Line: 0)
+
+The server has disconnected from the client. Most likely the server has shut down.
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Network/NetworkManager.cpp Line: 741)
+
+Waiting for finish

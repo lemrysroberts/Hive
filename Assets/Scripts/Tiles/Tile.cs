@@ -22,6 +22,7 @@ public class Tile
 	public string SpriteDataPath 	{ get; set; }
 	public bool NavBlock 			{ get; set; }
 	public float Elevation			{ get; set; }
+	public float AnimationSpeed		{ get; set; }
 #endregion
 
 #region Fields
@@ -46,6 +47,7 @@ public class Tile
 		}
 		
 		writer.WriteAttributeString("elevation", Elevation.ToString());
+		writer.WriteAttributeString("animation_speed", AnimationSpeed.ToString());
 		
 		writer.WriteEndElement(); 
 	} 
@@ -58,6 +60,7 @@ public class Tile
 		XmlNode spritePathNode = node.Attributes.GetNamedItem("sprite_data_path");
 		XmlNode navBlockNode = node.Attributes.GetNamedItem("nav_block");
 		XmlNode elevationNode = node.Attributes.GetNamedItem("elevation");
+		XmlNode animationSpeedNode = node.Attributes.GetNamedItem("animation_speed");
 		
 		if(spritePathNode != null) 	
 		{ 
@@ -76,6 +79,13 @@ public class Tile
 			float elevation = 0.0f;
 			float.TryParse(elevationNode.Value, out elevation);
 			Elevation = elevation;
+		}
+		
+		if(animationSpeedNode != null)
+		{
+			float animationSpeed = 0.0f;
+			float.TryParse(animationSpeedNode.Value, out animationSpeed);
+			AnimationSpeed = animationSpeed;
 		}
 		
 		string idNode = node.Attributes.GetNamedItem("id").Value;
