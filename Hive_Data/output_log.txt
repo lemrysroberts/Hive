@@ -11,7 +11,7 @@ Platform assembly: C:\Unity\Hive\Hive_Data\Managed\UnityEngine.dll (this message
 Loading C:\Unity\Hive\Hive_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Unity\Hive\Hive_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Unity\Hive\Hive_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.082 seconds
+- Completed reload, in  0.489 seconds
 desktop: 1680x1050 60Hz; virtual: 3360x1050 at -1680,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -20,53 +20,212 @@ Profiler is only supported with Pro License
  
 (Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Profiler/ProfilerConnection.cpp Line: 197)
 
-System memory in use before: 5.2 MB.
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-System memory in use after: 2.6 MB.
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
 
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 1737.
-Total: 6.185336 ms (FindLiveObjects: 0.071456 ms CreateObjectMapping: 0.024061 ms MarkObjects: 0.474673 ms  DeleteObjects: 0.018228 ms)
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp Line: 1520)
+
+System memory in use before: 4.7 MB.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 2.0 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 750.
+Total: 5.367600 ms (FindLiveObjects: 0.031353 ms CreateObjectMapping: 0.014947 ms MarkObjects: 0.235513 ms  DeleteObjects: 0.017499 ms)
 
 Platform assembly: C:\Unity\Hive\Hive_Data\Managed\System.dll (this message is harmless)
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+UnityEngine.Object:Internal_CloneSingle(Object)
+UnityEngine.Object:Instantiate(Object)
+DoorObject:InstantiateAgent() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Objects\DoorObject.cs:11)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:87)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:174)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGen:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGen.cs:37)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:59)
+
+[C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp line 1520] 
+(Filename: C Line: 0)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+UnityEngine.Object:Internal_CloneSingle(Object)
+UnityEngine.Object:Instantiate(Object)
+DoorObject:InstantiateAgent() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Objects\DoorObject.cs:11)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:87)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:174)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGen:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGen.cs:37)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:59)
+
+[C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp line 1520] 
+(Filename: C Line: 0)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+UnityEngine.Object:Internal_CloneSingle(Object)
+UnityEngine.Object:Instantiate(Object)
+DoorObject:InstantiateAgent() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Objects\DoorObject.cs:11)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:87)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:174)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGen:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGen.cs:37)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:59)
+
+[C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp line 1520] 
+(Filename: C Line: 0)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+UnityEngine.Object:Internal_CloneSingle(Object)
+UnityEngine.Object:Instantiate(Object)
+DoorObject:InstantiateAgent() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Objects\DoorObject.cs:11)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:87)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:174)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGen:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGen.cs:37)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:59)
+
+[C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp line 1520] 
+(Filename: C Line: 0)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+UnityEngine.Object:Internal_CloneSingle(Object)
+UnityEngine.Object:Instantiate(Object)
+DoorObject:InstantiateAgent() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Objects\DoorObject.cs:11)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:87)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:174)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGen:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGen.cs:37)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:59)
+
+[C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp line 1520] 
+(Filename: C Line: 0)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+UnityEngine.Object:Internal_CloneSingle(Object)
+UnityEngine.Object:Instantiate(Object)
+DoorObject:InstantiateAgent() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Objects\DoorObject.cs:11)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:87)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:174)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGen:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGen.cs:37)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:59)
+
+[C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp line 1520] 
+(Filename: C Line: 0)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+UnityEngine.Object:Internal_CloneSingle(Object)
+UnityEngine.Object:Instantiate(Object)
+DoorObject:InstantiateAgent() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Objects\DoorObject.cs:11)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:87)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:174)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGen:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGen.cs:37)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:59)
+
+[C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp line 1520] 
+(Filename: C Line: 0)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+UnityEngine.Object:Internal_CloneSingle(Object)
+UnityEngine.Object:Instantiate(Object)
+DoorObject:InstantiateAgent() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Objects\DoorObject.cs:11)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:87)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:174)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGen:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGen.cs:37)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:59)
+
+[C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp line 1520] 
+(Filename: C Line: 0)
+
+The class in script file named 'LevelObject' is abstract. Change script to be not abstract!
+UnityEngine.Object:Internal_CloneSingle(Object)
+UnityEngine.Object:Instantiate(Object)
+DoorObject:InstantiateAgent() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Objects\DoorObject.cs:11)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:87)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:174)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGen:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGen.cs:37)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:59)
+
+[C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoBehaviour.cpp line 1520] 
+(Filename: C Line: 0)
+
 Loading: Levels/1
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:63)
- 
-(Filename: C Line: 0)
-
-Received RPC data
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogWarning(Object)
-Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:126)
- 
-(Filename: C Line: 0)
-
-Mouse down
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-DEBUG_KeyMove:FixedUpdate() (at C:\Unity\Hive\Assets\Scripts\Debug\DEBUG_KeyMove.cs:43)
- 
-(Filename: C Line: 0)
-
-Mouse up
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-DEBUG_KeyMove:FixedUpdate() (at C:\Unity\Hive\Assets\Scripts\Debug\DEBUG_KeyMove.cs:48)
- 
-(Filename: C Line: 0)
-
-Mouse down
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-DEBUG_KeyMove:FixedUpdate() (at C:\Unity\Hive\Assets\Scripts\Debug\DEBUG_KeyMove.cs:43)
- 
-(Filename: C Line: 0)
-
-Mouse up
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-DEBUG_KeyMove:FixedUpdate() (at C:\Unity\Hive\Assets\Scripts\Debug\DEBUG_KeyMove.cs:48)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:60)
  
 (Filename: C Line: 0)
 
@@ -83,16 +242,5 @@ UnityEngine.Debug:Log(Object)
 DEBUG_KeyMove:FixedUpdate() (at C:\Unity\Hive\Assets\Scripts\Debug\DEBUG_KeyMove.cs:43)
  
 (Filename: C Line: 0)
-
-Mouse up
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-DEBUG_KeyMove:FixedUpdate() (at C:\Unity\Hive\Assets\Scripts\Debug\DEBUG_KeyMove.cs:48)
- 
-(Filename: C Line: 0)
-
-The server has disconnected from the client. Most likely the server has shut down.
- 
-(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Network/NetworkManager.cpp Line: 741)
 
 Waiting for finish

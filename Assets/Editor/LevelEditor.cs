@@ -3,7 +3,7 @@ using UnityEditor;
 using System.Collections;
 
 [CustomEditor(typeof(Level))] 
-public class LayoutEditor : Editor 
+public class LevelEditor : Editor 
 {
 	public override void OnInspectorGUI()
 	{
