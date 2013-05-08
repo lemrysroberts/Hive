@@ -17,7 +17,7 @@ public abstract class LevelObject
 	public abstract GameObject InstantiateAgent();
 	
 	public GameObject Prefab;
-	public Vector3 Position;
+	public Vector3 Position;	
 	public Quaternion Rotation;
 }
  

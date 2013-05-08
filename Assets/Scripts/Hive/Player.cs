@@ -13,19 +13,12 @@ public class Player : MonoBehaviour
 		{
 			Vector2 spawnPoint = m_level.PlayerSpawnPoint;
 			
-			if(spawnPoint != null)
-			{
-				// The spawn-point is a tile-position, so bump the player up and right to center them into a tile.
-				Vector3 startPosition = transform.position;
-				startPosition.x = spawnPoint.x + 0.5f;
-				startPosition.y = spawnPoint.y + 0.5f;
-				
-				transform.position = startPosition;
-			}
-			else
-			{
-				Debug.LogWarning("No player spawn point set.");	
-			}
+			// The spawn-point is a tile-position, so bump the player up and right to center them into a tile.
+			Vector3 startPosition = transform.position;
+			startPosition.x = spawnPoint.x + 0.5f;
+			startPosition.y = spawnPoint.y + 0.5f;
+			
+			transform.position = startPosition;
 		}
 		else
 		{
@@ -33,6 +26,23 @@ public class Player : MonoBehaviour
 		}
 	}
 	
+	public void OnTriggerEnter(Collider other)
+	{
+		Debug.LogWarning("Test");
+		if(other.GetComponent<GoalItem>() != null)
+		{
+			m_grabbedObject = other.gameObject;
+		}
+	}
 	
+	public void Update()
+	{
+		if(m_grabbedObject != null)
+		{
+			m_grabbedObject.transform.position = transform.position;	
+		}
+	}
+	
+	GameObject m_grabbedObject = null;
 	Level m_level = null;
 }

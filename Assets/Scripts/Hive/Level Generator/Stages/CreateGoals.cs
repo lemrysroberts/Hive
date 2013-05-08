@@ -37,6 +37,26 @@ public class CreateGoals : IGeneratorStage
 			
 			step++;	
 		}
+		
+		step = Mathf.Min(m_level.Width - 1, m_level.Height - 1);
+		bool foundGoal = false;
+		
+		while(step > 0 && !foundGoal)
+		{
+			if(!m_level.TileBlocked(step, step))
+			{
+				foundGoal = true;
+				m_level.GoalItemSpawnPoint = new Vector2(step, step);
+				GoalItemObject itemObject = new GoalItemObject();
+				itemObject.Prefab = m_level.GoalItemPrefab;
+				itemObject.Position = new Vector3(step, step, 0);
+				m_level.AddGameObject(itemObject);
+			}
+			
+			step--;	
+		} 
+		
+		
 	}
 	
 	public void UpdateAll()
@@ -45,7 +65,13 @@ public class CreateGoals : IGeneratorStage
 	}
 	
 	public bool StageComplete() { return true; }
-	public void SetupGUI(){ }
+	public void SetupGUI()
+	{
+#if UNITY_EDITOR
+		m_level.GoalItemPrefab = EditorGUILayout.ObjectField(m_level.GoalItemPrefab, typeof(GameObject), false) as GameObject;
+#endif
+	}
+	
 	public void UpdateGUI(){ }
 	public void UpdateSceneGUI(){ }
 	public string GetStageName(){ return "Create Goals"; }

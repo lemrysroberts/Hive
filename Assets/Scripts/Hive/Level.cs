@@ -286,7 +286,7 @@ public partial class Level : MonoBehaviour
 		LevelSection targetSection = GetLevelSection(newObject.Position);
 		if(targetSection == null)
 		{
-			Debug.LogError("Failed to add GameObject: " + newObject.ToString());	
+			Debug.LogError("Failed to add GameObject: " + newObject.ToString() + ". Has its Position parameter been set? This is needed to determine its target section.");	
 			return;
 		}
 		
@@ -342,10 +342,22 @@ public partial class Level : MonoBehaviour
 		set { m_doorPrefab = value; }
 	}
 	
+	public GameObject GoalItemPrefab
+	{
+		get { return m_goalItemPrefab; }
+		set { m_goalItemPrefab = value; }
+	}
+	
 	public Vector2 PlayerSpawnPoint
 	{
 		get { return m_playerSpawnPoint; }
 		set { m_playerSpawnPoint = value; }
+	}
+	
+	public Vector2 GoalItemSpawnPoint
+	{
+		get { return m_goalSpawnPoint; }
+		set { m_goalSpawnPoint = value; }
 	}
 	
 	public int Width { get { return m_sectionSize * SectionCountX; } }
@@ -419,11 +431,11 @@ public partial class Level : MonoBehaviour
 			}
 		}
 		
-		if(m_playerSpawnPoint != null)
-		{
-			Gizmos.color = Color.yellow;
-			Gizmos.DrawSphere(m_playerSpawnPoint + new Vector2(0.5f, 0.5f), 0.3f);	
-		}
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawSphere(m_playerSpawnPoint + new Vector2(0.5f, 0.5f), 0.3f);
+	
+		Gizmos.color = Color.red;
+		Gizmos.DrawSphere(m_goalSpawnPoint + new Vector2(0.5f, 0.5f), 0.3f);	
 	}
 		
 	public void OnGUI()
@@ -480,11 +492,19 @@ public partial class Level : MonoBehaviour
 	
 	private List<LevelObject> m_levelObjects = new List<LevelObject>();
 	
+	// TODO: All these exist to allow the level-generator function. 
+	//		 They need to go somewhere more sensible.
 	[SerializeField]
 	private GameObject m_doorPrefab = null;
 	
 	[SerializeField]
+	private GameObject m_goalItemPrefab = null;
+	
+	[SerializeField]
 	private Vector2 m_playerSpawnPoint;
+	
+	[SerializeField]
+	private Vector2 m_goalSpawnPoint;
 	
 	//////////////////////////////////////////////////////////////////////////////////
 	// DEBUG

@@ -13,6 +13,7 @@ public class SpriteEditor : Editor
 		if(GUILayout.Button(sprite.SpriteData))
 		{
 			sprite.SpriteData = EditorUtility.OpenFilePanel("Open Sprite Data", "", "xml");
+			sprite.SpriteData = AssetHelper.StripResourcePath(sprite.SpriteData);
 		}
 		
 		sprite.SpriteTexture = EditorGUILayout.ObjectField(sprite.SpriteTexture, typeof(Texture2D), false) as Texture2D;

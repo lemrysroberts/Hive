@@ -61,6 +61,7 @@ public class KinematicKeyMove : MonoBehaviour
 		}
 	}
 	
+	// TODO: Ruh-roh, faster movement at an angle, yo!
 	public void UpdateControls()
 	{
 		m_controller.velocity = new Vector3(0.0f, 0.0f, 0.0f);

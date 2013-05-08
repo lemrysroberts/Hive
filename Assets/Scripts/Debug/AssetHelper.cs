@@ -11,6 +11,7 @@ public class AssetHelper
 {
 	public UnityEngine.Object GetAsset<T>(string assetPath)
 	{
+		Debug.LogError("Loading " + assetPath);
 		assetPath = StripResourcePath(assetPath);
 		
 		string extension = System.IO.Path.GetExtension(assetPath);
@@ -41,10 +42,12 @@ public class AssetHelper
 	
 	public static string StripResourcePath(string path)
 	{
+		Debug.LogError("Application Path: " + Application.dataPath);
 		// Strip the application data-path
 		int assetPathIndex = path.IndexOf(Application.dataPath + "/Resources");
 		if(assetPathIndex != -1)
 		{
+			Debug.LogError("Stripping resource path");
 			path = path.Remove(assetPathIndex, (Application.dataPath + "/Resources").Length + 1);
 		}
 		return path;

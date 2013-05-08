@@ -16,8 +16,8 @@ public class LevelGenerator
 		m_stages.Add(new BinaryCorridors(m_level));
 		m_stages.Add(new RoomBuilder(level));
 		m_stages.Add(new DoorPlacement(level));
-		m_stages.Add(new CreateLevelObjects(level));
 		m_stages.Add(new CreateGoals(level));
+		m_stages.Add(new CreateLevelObjects(level));
 	}
 	
 	public void GenerateLevel(int seed, bool stepUpdate)
