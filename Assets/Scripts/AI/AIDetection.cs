@@ -7,6 +7,7 @@ public class AIDetection : MonoBehaviour {
 	public float MaxRange = 0; //Range in world units
 	public float FOV = 45;// Field of view in degrees, based on the Gameobjects "left" transform
 	public bool DrawDebug = false;
+	private Vector3 PreviousPosition;
 	
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,7 @@ public class AIDetection : MonoBehaviour {
 			float maxRangeSquared = MaxRange * MaxRange;
 			Vector3 targetDirection = Target.transform.position - transform.position;
 			//Might need to change this depending on how we interpret what the "forward" direction is for the AI
-			Vector3 myDirection = transform.TransformDirection(Vector3.left);
+			Vector3 myDirection = PreviousPosition - transform.position;
 			float angleToTarget = Vector3.Dot(Vector3.Normalize(targetDirection), Vector3.Normalize(myDirection));
 			
 			if(DrawDebug){
@@ -40,6 +41,8 @@ public class AIDetection : MonoBehaviour {
 					//No hit
 				}
 			}
+			
+			PreviousPosition = transform.position;
 		}
 	}
 }
