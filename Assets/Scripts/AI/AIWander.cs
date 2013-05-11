@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AIWander : MonoBehaviour 
 {
-	public float MoveSpeed = 0.02f;
+	
 	private enum State
 	{
 		Idle,
@@ -11,9 +11,7 @@ public class AIWander : MonoBehaviour
 		Finished
 	}
 	
-	Level m_level = null;
-	State m_state = State.Idle;
-	Route m_currentRoute = null;
+	
 	
 	// Use this for initialization
 	void Start () 
@@ -24,6 +22,11 @@ public class AIWander : MonoBehaviour
 		{
 			Debug.LogError("Level object not found.");	
 		}
+		else
+		{
+			m_stuck = m_level.TileBlocked((int)transform.position.x, (int)transform.position.y);
+			Debug.Log("AI Stuck");
+		}
 	}
 	
 	void FixedUpdate () 
@@ -33,11 +36,20 @@ public class AIWander : MonoBehaviour
 		{
 			m_level = FindObjectOfType(typeof(Level)) as Level;
 			
+			if(m_level != null)
+			{
+				m_stuck = m_level.TileBlocked((int)transform.position.x, (int)transform.position.y);
+				Debug.Log("AI Stuck");
+			}
+			
 			// Bail for this frame regardless of whether the level was found.
 			return; 
 		}
 #endif
-		
+		if(m_stuck)
+		{
+			return;	
+		}
 		
 		switch(m_state)
 		{
@@ -103,4 +115,11 @@ public class AIWander : MonoBehaviour
 		
 		}
 	}
+	
+	public float MoveSpeed = 0.02f;
+	
+	private Level m_level = null;
+	private State m_state = State.Idle;
+	private Route m_currentRoute = null;
+	private bool m_stuck = false;
 }

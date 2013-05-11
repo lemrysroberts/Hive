@@ -187,6 +187,15 @@ public class DoorPlacement : IGeneratorStage
 					int doorY = Random.Range(minY, maxY);
 					m_level.SetTileID(other.endX, doorY, 3, false);
 					linkMade = true;
+					
+					if(m_level.DoorPrefab != null)
+					{
+						DoorObject newDoor = new DoorObject();
+						newDoor.Prefab = m_level.DoorPrefab;
+						newDoor.Position = new Vector3(other.endX + 0.5f, doorY + 0.5f, 0.0f);
+						newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+						m_level.AddGameObject(newDoor);
+					}
 				}
 				
 				if(other.startX >= currentRoom.endX && (other.startY < currentRoom.endY && other.endY > currentRoom.startY))
@@ -196,6 +205,15 @@ public class DoorPlacement : IGeneratorStage
 					int doorY = Random.Range(minY, maxY);
 					m_level.SetTileID(other.startX - 1, doorY, 3, false);
 					linkMade = true;
+					
+					if(m_level.DoorPrefab != null)
+					{
+						DoorObject newDoor = new DoorObject();
+						newDoor.Prefab = m_level.DoorPrefab;
+						newDoor.Position = new Vector3(other.startX - 0.5f, doorY + 0.5f, 0.0f);
+						newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+						m_level.AddGameObject(newDoor);
+					}
 				}
 					
 				if(other.startY >= currentRoom.endY && (other.startX < currentRoom.endX && other.endX > currentRoom.startX))
@@ -205,6 +223,15 @@ public class DoorPlacement : IGeneratorStage
 					int doorX = Random.Range(minX, maxX);
 					m_level.SetTileID(doorX, other.startY - 1, 3, false);
 					linkMade = true;
+					
+					if(m_level.DoorPrefab != null)
+					{
+						DoorObject newDoor = new DoorObject();
+						newDoor.Prefab = m_level.DoorPrefab;
+						newDoor.Position = new Vector3(doorX + 0.5f, other.startY - 0.5f, 0.0f);
+						newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+						m_level.AddGameObject(newDoor);
+					}
 				}
 					
 				if(other.endY < currentRoom.startY && (other.startX < currentRoom.endX && other.endX > currentRoom.startX))
@@ -214,6 +241,15 @@ public class DoorPlacement : IGeneratorStage
 					int doorX = Random.Range(minX, maxX);
 					m_level.SetTileID(doorX, other.endY, 3, false);
 					linkMade = true;
+					
+					if(m_level.DoorPrefab != null)
+					{
+						DoorObject newDoor = new DoorObject();
+						newDoor.Prefab = m_level.DoorPrefab;
+						newDoor.Position = new Vector3(doorX + 0.5f, other.endY + 0.5f, 0.0f);
+						newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+						m_level.AddGameObject(newDoor);
+					}
 				}
 				
 				if(linkMade)
@@ -275,5 +311,5 @@ public class DoorPlacement : IGeneratorStage
 	private Level m_level;
 	private int m_roomIndex = 0;
 	private static bool m_showFoldout = false;	
-	private static bool m_linkAllRooms = false;
+	private static bool m_linkAllRooms = true;
 }

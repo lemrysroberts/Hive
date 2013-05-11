@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
 	
 	public void OnTriggerEnter(Collider other)
 	{
-		Debug.LogWarning("Test");
 		if(other.GetComponent<GoalItem>() != null)
 		{
 			m_grabbedObject = other.gameObject;

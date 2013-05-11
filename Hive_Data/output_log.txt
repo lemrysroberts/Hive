@@ -11,8 +11,8 @@ Platform assembly: C:\Unity\Hive\Hive_Data\Managed\UnityEngine.dll (this message
 Loading C:\Unity\Hive\Hive_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Unity\Hive\Hive_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Unity\Hive\Hive_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.087 seconds
-desktop: 1680x1050 60Hz; virtual: 3360x1050 at -1680,0
+- Completed reload, in  0.103 seconds
+desktop: 1680x1050 60Hz; virtual: 1680x1050 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: C:\Unity\Hive\Hive_Data\Managed\System.Xml.dll (this message is harmless)
@@ -20,318 +20,98 @@ Profiler is only supported with Pro License
  
 (Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Profiler/ProfilerConnection.cpp Line: 197)
 
-System memory in use before: 4.6 MB.
+System memory in use before: 5.0 MB.
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-System memory in use after: 1.9 MB.
+System memory in use after: 2.4 MB.
 
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 565.
-Total: 13.107473 ms (FindLiveObjects: 0.064893 ms CreateObjectMapping: 0.031353 ms MarkObjects: 0.940596 ms  DeleteObjects: 0.034269 ms)
-
-Loading textures/debug
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogError(Object)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:14)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:69)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
- 
-(Filename: C Line: 0)
-
-Application Path: C:/Unity/Hive/Hive_Data
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogError(Object)
-AssetHelper:StripResourcePath(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:45)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:15)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:69)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
- 
-(Filename: C Line: 0)
-
-Loading Materials/tilematerial
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogError(Object)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:14)
-TileManager:get_TileMaterial() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:24)
-Tile:SetTexture(Texture) (at C:\Unity\Hive\Assets\Scripts\Tiles\Tile.cs:121)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:74)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
- 
-(Filename: C Line: 0)
-
-Application Path: C:/Unity/Hive/Hive_Data
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogError(Object)
-AssetHelper:StripResourcePath(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:45)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:15)
-TileManager:get_TileMaterial() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:24)
-Tile:SetTexture(Texture) (at C:\Unity\Hive\Assets\Scripts\Tiles\Tile.cs:121)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:74)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
- 
-(Filename: C Line: 0)
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 1574.
+Total: 6.296895 ms (FindLiveObjects: 0.060519 ms CreateObjectMapping: 0.017864 ms MarkObjects: 1.075488 ms  DeleteObjects: 0.016405 ms)
 
 Platform assembly: C:\Unity\Hive\Hive_Data\Managed\System.dll (this message is harmless)
-Loading tileset
+Loading: Levels/1
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogError(Object)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:14)
-TileManager:Load(String) (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:170)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:84)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
+UnityEngine.Debug:Log(Object)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:31)
  
 (Filename: C Line: 0)
 
-Application Path: C:/Unity/Hive/Hive_Data
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:LogError(Object)
-AssetHelper:StripResourcePath(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:45)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:15)
-TileManager:Load(String) (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:170)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:84)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
  
 (Filename: C Line: 0)
 
-Loading Textures/debug.png
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogError(Object)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:14)
-Tile:LoadResources() (at C:\Unity\Hive\Assets\Scripts\Tiles\Tile.cs:140)
-TileManager:Load(String) (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:186)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:84)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
  
 (Filename: C Line: 0)
 
-Application Path: C:/Unity/Hive/Hive_Data
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:LogError(Object)
-AssetHelper:StripResourcePath(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:45)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:15)
-Tile:LoadResources() (at C:\Unity\Hive\Assets\Scripts\Tiles\Tile.cs:140)
-TileManager:Load(String) (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:186)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:84)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
  
 (Filename: C Line: 0)
 
-Loading Textures/wall_all.png
+Game won
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogError(Object)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:14)
-Tile:LoadResources() (at C:\Unity\Hive\Assets\Scripts\Tiles\Tile.cs:140)
-TileManager:Load(String) (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:186)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:84)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
+UnityEngine.Debug:Log(Object)
+GoalArea:OnTriggerEnter(Collider) (at C:\Unity\Hive\Assets\Scripts\Hive\GoalArea.cs:10)
  
 (Filename: C Line: 0)
 
-Application Path: C:/Unity/Hive/Hive_Data
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogError(Object)
-AssetHelper:StripResourcePath(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:45)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:15)
-Tile:LoadResources() (at C:\Unity\Hive\Assets\Scripts\Tiles\Tile.cs:140)
-TileManager:Load(String) (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:186)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:84)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
- 
-(Filename: C Line: 0)
+System memory in use before: 2.1 MB.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 1.7 MB.
 
-Loading Textures/floor1.png
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogError(Object)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:14)
-Tile:LoadResources() (at C:\Unity\Hive\Assets\Scripts\Tiles\Tile.cs:140)
-TileManager:Load(String) (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:186)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:84)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
- 
-(Filename: C Line: 0)
+Unloading 249 unused Assets to reduce memory usage. Loaded Objects now: 150.
+Total: 10.212768 ms (FindLiveObjects: 0.021509 ms CreateObjectMapping: 0.043748 ms MarkObjects: 1.332876 ms  DeleteObjects: 0.817006 ms)
 
-Application Path: C:/Unity/Hive/Hive_Data
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogError(Object)
-AssetHelper:StripResourcePath(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:45)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:15)
-Tile:LoadResources() (at C:\Unity\Hive\Assets\Scripts\Tiles\Tile.cs:140)
-TileManager:Load(String) (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:186)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:84)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
- 
-(Filename: C Line: 0)
+System memory in use before: 5.0 MB.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 2.4 MB.
 
-Loading Textures/floor.png
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogError(Object)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:14)
-Tile:LoadResources() (at C:\Unity\Hive\Assets\Scripts\Tiles\Tile.cs:140)
-TileManager:Load(String) (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:186)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:84)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
- 
-(Filename: C Line: 0)
-
-Application Path: C:/Unity/Hive/Hive_Data
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogError(Object)
-AssetHelper:StripResourcePath(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:45)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:15)
-Tile:LoadResources() (at C:\Unity\Hive\Assets\Scripts\Tiles\Tile.cs:140)
-TileManager:Load(String) (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:186)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:84)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
- 
-(Filename: C Line: 0)
-
-Loading Textures/floor2.png
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogError(Object)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:14)
-Tile:LoadResources() (at C:\Unity\Hive\Assets\Scripts\Tiles\Tile.cs:140)
-TileManager:Load(String) (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:186)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:84)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
- 
-(Filename: C Line: 0)
-
-Application Path: C:/Unity/Hive/Hive_Data
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogError(Object)
-AssetHelper:StripResourcePath(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:45)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:15)
-Tile:LoadResources() (at C:\Unity\Hive\Assets\Scripts\Tiles\Tile.cs:140)
-TileManager:Load(String) (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:186)
-TileManager:Init() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:84)
-TileManager:get_Instance() (at C:\Unity\Hive\Assets\Scripts\Tiles\TileManager.cs:54)
-LevelSection:BuildMeshes() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:79)
-LevelSection:RebuildData() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:10)
-Level:Reload(Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:100)
-LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:33)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:61)
- 
-(Filename: C Line: 0)
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 1589.
+Total: 7.730394 ms (FindLiveObjects: 0.072549 ms CreateObjectMapping: 0.028072 ms MarkObjects: 1.666460 ms  DeleteObjects: 0.018957 ms)
 
 Loading: Levels/1
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
-GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:62)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:31)
  
 (Filename: C Line: 0)
 
-Loading Sprites/map.xml
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:LogError(Object)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:14)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
 SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
 Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
 Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
  
 (Filename: C Line: 0)
 
-Application Path: C:/Unity/Hive/Hive_Data
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogError(Object)
-AssetHelper:StripResourcePath(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:45)
-AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:15)
-SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
 Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
 Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
  
 (Filename: C Line: 0)
 
-Test
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogWarning(Object)
-Player:OnTriggerEnter(Collider) (at C:\Unity\Hive\Assets\Scripts\Hive\Player.cs:31)
- 
-(Filename: C Line: 0)
-
-Test
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogWarning(Object)
-Player:OnTriggerEnter(Collider) (at C:\Unity\Hive\Assets\Scripts\Hive\Player.cs:31)
- 
-(Filename: C Line: 0)
-
-Test
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:LogWarning(Object)
-Player:OnTriggerEnter(Collider) (at C:\Unity\Hive\Assets\Scripts\Hive\Player.cs:31)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
  
 (Filename: C Line: 0)
 

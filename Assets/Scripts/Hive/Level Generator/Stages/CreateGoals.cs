@@ -56,7 +56,21 @@ public class CreateGoals : IGeneratorStage
 			step--;	
 		} 
 		
-		
+		step = Mathf.Min(m_level.Width - 1, m_level.Height - 1);
+		foundGoal = false;
+		while(step > 0 && !foundGoal)
+		{
+			if(!m_level.TileBlocked((int)m_level.PlayerSpawnPoint.x + 1, step))
+			{
+				foundGoal = true;
+				GoalAreaObject areaObject = new GoalAreaObject();
+				areaObject.Prefab = m_level.GoalAreaPrefab;
+				areaObject.Position = new Vector3(m_level.PlayerSpawnPoint.x + 0.5f, step + 0.5f, 0);
+				m_level.AddGameObject(areaObject);
+				
+			}
+			step--;
+		}
 	}
 	
 	public void UpdateAll()
@@ -69,6 +83,7 @@ public class CreateGoals : IGeneratorStage
 	{
 #if UNITY_EDITOR
 		m_level.GoalItemPrefab = EditorGUILayout.ObjectField(m_level.GoalItemPrefab, typeof(GameObject), false) as GameObject;
+		m_level.GoalAreaPrefab = EditorGUILayout.ObjectField(m_level.GoalAreaPrefab, typeof(GameObject), false) as GameObject;
 #endif
 	}
 	

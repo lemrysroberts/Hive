@@ -21,45 +21,16 @@ public class GameFlowWrapper : MonoBehaviour
 	
 	void OnLevelWasLoaded(int levelID)
 	{
-		GameObject player = GameObject.FindGameObjectWithTag("Player");
-		GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
-		
-		if(GameFlow.Instance.View == WorldView.Admin)
-		{
-			// TODO: Hard-coded nonsense here.
-			TileManager.TileSetFilename = "tilesetalt";
-			
-			// TODO: 	This is gross. It disables and enables scripts dependend on the view.
-			//			This could be replaced with a script that takes another component as its parameter and enables or disables that script
-			//			depending on the view.
-			if(player != null)
-			{
-				player.GetComponent<KinematicKeyMove>().enabled = false;	
-			}
-			
-			if(camera != null)
-			{
-				camera.GetComponent<FollowPlayer>().enabled = false;	
-				camera.GetComponent<DEBUG_KeyMove>().enabled = true;
-			}
-		}
-		else
-		{
-			TileManager.TileSetFilename = "tileset";	
-			
-			if(camera != null)
-			{
-				camera.GetComponent<FollowPlayer>().enabled = true;	
-				camera.GetComponent<DEBUG_KeyMove>().enabled = false;
-			}
-		}
-		
 		Level level = FindObjectOfType(typeof(Level)) as Level;
-		level.Seed = System.DateTime.Now.Millisecond;
-		//level.Load(GameFlow.Instance.CurrentLevel);
-		LevelGenerator generator = new LevelGenerator(level);
-		generator.GenerateLevel(level.Seed, false);
-		Debug.Log("Loading: " + GameFlow.Instance.CurrentLevel);
+		if(level != null)
+		{
+			level.Seed = System.DateTime.Now.Millisecond;
+			//level.Load(GameFlow.Instance.CurrentLevel);
+			LevelGenerator generator = new LevelGenerator(level);
+			generator.GenerateLevel(level.Seed, false);
+			Debug.Log("Loading: " + GameFlow.Instance.CurrentLevel);	
+		}
+		
 	}
 	
 	private void OnPlayerConnected()

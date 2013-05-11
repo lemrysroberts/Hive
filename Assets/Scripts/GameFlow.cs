@@ -53,6 +53,11 @@ public class GameFlow
 		
 	}
 	
+	public void GameWon()
+	{
+		Application.LoadLevel("Menu");
+	}
+	
 	private void BeginAgent()
 	{
 	}
