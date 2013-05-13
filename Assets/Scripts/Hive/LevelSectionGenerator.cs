@@ -10,6 +10,7 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 		BuildMeshes();
 	}
 	
+	// TODO: Why is this a separate function from BuildColliders :/
 	public void RebuildColliders()
 	{
 		BuildColliders();
@@ -163,6 +164,9 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 				
 			BoxCollider collider = newObject.AddComponent<BoxCollider>();
 			newObject.layer = LayerMask.NameToLayer("LevelGeo");
+			
+			//Rigidbody test = newObject.AddComponent<Rigidbody>();
+			//test.isKinematic = true;
 			
 			Vector3 colliderSize = collider.size;
 			colliderSize.x = edge.type == Edge.EdgeType.Horizontal ? (edge.End.x - edge.Start.x)  : 0.1f;

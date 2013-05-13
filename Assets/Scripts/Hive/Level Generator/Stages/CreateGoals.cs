@@ -82,8 +82,20 @@ public class CreateGoals : IGeneratorStage
 	public void SetupGUI()
 	{
 #if UNITY_EDITOR
-		m_level.GoalItemPrefab = EditorGUILayout.ObjectField(m_level.GoalItemPrefab, typeof(GameObject), false) as GameObject;
-		m_level.GoalAreaPrefab = EditorGUILayout.ObjectField(m_level.GoalAreaPrefab, typeof(GameObject), false) as GameObject;
+		m_showFoldout = EditorGUILayout.Foldout(m_showFoldout, "Goals");
+		
+		if(m_showFoldout)
+		{
+			GUILayout.BeginHorizontal();
+			GUILayout.Label("Goal Item Prefab", GUILayout.Width(130));
+			m_level.GoalItemPrefab = EditorGUILayout.ObjectField(m_level.GoalItemPrefab, typeof(GameObject), false) as GameObject;
+			GUILayout.EndHorizontal();
+			
+			GUILayout.BeginHorizontal();
+				GUILayout.Label("Goal Area Prefab", GUILayout.Width(130));
+			m_level.GoalAreaPrefab = EditorGUILayout.ObjectField(m_level.GoalAreaPrefab, typeof(GameObject), false) as GameObject;
+			GUILayout.EndHorizontal();
+		}
 #endif
 	}
 	
@@ -92,4 +104,5 @@ public class CreateGoals : IGeneratorStage
 	public string GetStageName(){ return "Create Goals"; }
 	
 	private Level m_level;
+	private static bool m_showFoldout = false;
 }

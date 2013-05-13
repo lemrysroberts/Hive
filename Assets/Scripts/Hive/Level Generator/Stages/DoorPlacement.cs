@@ -21,7 +21,11 @@ public class DoorPlacement : IGeneratorStage
 	
 	public void UpdateStep() 
 	{
-		AddDoor();
+		const int batchSize = 40;
+		for(int i = 0; i < batchSize && !StageComplete(); i++)
+		{
+			AddDoor();
+		}
 	}
 	
 	public void UpdateAll() 
