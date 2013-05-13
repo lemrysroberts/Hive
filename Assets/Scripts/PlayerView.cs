@@ -15,7 +15,7 @@ using System.Collections.Generic;
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(SphereCollider))]
-public class AgentCamera : MonoBehaviour 
+public class PlayerView : MonoBehaviour 
 {
 	[SerializeField]
 	public LayerMask collisionLayer = 0;

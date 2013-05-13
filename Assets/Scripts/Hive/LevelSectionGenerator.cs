@@ -136,7 +136,101 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 	
 	public void BuildColliders()
 	{
-		m_edges = GetEdges();
+		List<TileAccessNode> walls = new List<TileAccessNode>();
+		
+		// Iterate horizontally, looking up each column of tiles and building walls along y.
+		TileAccessNode currentNode = null;
+		for(int x = 0; x < m_sectionSize; x++)
+		{
+			// At the start of each column, assume no active wall.
+			currentNode = null;
+			for(int y = 0; y < m_sectionSize; y++)
+			{
+				if(m_level.TileBlocked((int)Origin.x + x, (int)Origin.y + y))
+				{
+					// If no wall is being made, create one.
+					if(currentNode == null)
+					{
+						currentNode = new TileAccessNode();
+						currentNode.min = new Vector2(x, y);
+						currentNode.max = currentNode.min + new Vector2(1.0f, 1.0f);
+					}
+					
+					currentNode.max.y = y + 1.0f;
+				}
+				else
+				{
+					// If no wall should be made but one exists, add it to the wall list and clear the current wall.
+					if(currentNode != null)
+					{
+						walls.Add(currentNode);
+						currentNode = null;
+					}
+				}
+			}
+			if(currentNode != null)
+			{
+				// If the current vertical search has ended, add the active wall to the walls list
+				walls.Add(currentNode);
+				currentNode = null;
+			}
+		}
+		
+		// At this stage, the list of all vertical walls has been made.
+		// The next step is to try and merge these walls horizontally.
+		// This strategy is hardly optimal as it acts in separate x,y axis, meaning it is ignorant of rectangular optimisation.
+		// The thing is though, right, that I don't care at all.
+		
+		// This is required to store dead walls, as C# hates me modifying enumerations as I iterate over them. Which is fair.
+		List<TileAccessNode> toDelete = new List<TileAccessNode>();
+		
+		bool merged = true;
+		while(merged)
+		{
+			merged = false;
+			
+			foreach(var wall in walls)
+			{
+				// Ignore isolated and dead walls.
+				if(!wall.canMerge) continue; 
+				
+				bool mergeFound = false;
+				foreach(var other in walls)
+				{
+					if(!wall.canMerge) 	continue;
+					if(other == wall)	continue; 
+						
+					// If the walls share an x-value and exactly match in y, they can be merged.
+					if( (other.min.x == wall.max.x || other.max.x == wall.min.x) &&
+						(other.min.y == wall.min.y) && (other.max.y == wall.max.y))
+					{
+						// Retain one wall with merged dimensions
+						wall.min.x = Math.Min(wall.min.x, other.min.x);
+						wall.max.x = Math.Max(wall.max.x, other.max.x);
+						
+						mergeFound 		= true;
+						merged 			= true;
+						other.canMerge 	= false;
+						
+						// Set the partner of the merge to be dead.
+						toDelete.Add(other);
+						break;
+					}
+				}
+				
+				if(!mergeFound)
+				{
+					// If no merges were found, mark the wall to save checking it again.
+					wall.canMerge = false;	
+				}
+			}
+		}
+		
+		// Clear dead walls.
+		foreach(var wall in toDelete)
+		{
+			walls.Remove(wall);	
+		}
 		
 		Transform colliderObject = transform.FindChild("colliders");
 		if(colliderObject != null)
@@ -153,14 +247,14 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			colliderObject.transform.position = m_origin;	
 		}
 		
-		// TODO: 	This is seriously slow. Also, why am I making colliders for the edges? Are my walls hollow?
-		//			This can have far fewer colliders with one per wall.
-		foreach(var edge in m_edges)
+		Debug.Log("Generated " + walls.Count + " walls");
+		
+		foreach(var wall in walls)
 		{
 			GameObject newObject 			= new GameObject();
 			newObject.transform.parent 		= colliderObject.transform;
-			newObject.transform.position 	= Origin + edge.Start + (edge.End - edge.Start) / 2.0f;
-			newObject.name					= "Collider " + edge.Start.x + ", " + edge.Start.y;
+			newObject.transform.position 	= Origin + wall.min + (wall.max - wall.min) / 2.0f;
+			newObject.name					= "Collider " + wall.min.x + ", " + wall.min.y;
 				
 			BoxCollider collider = newObject.AddComponent<BoxCollider>();
 			newObject.layer = LayerMask.NameToLayer("LevelGeo");
@@ -169,8 +263,9 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			//test.isKinematic = true;
 			
 			Vector3 colliderSize = collider.size;
-			colliderSize.x = edge.type == Edge.EdgeType.Horizontal ? (edge.End.x - edge.Start.x)  : 0.1f;
-			colliderSize.y = edge.type == Edge.EdgeType.Vertical ? (edge.End.y - edge.Start.y) : 0.1f;
+			colliderSize.x = (wall.max.x - wall.min.x);
+			colliderSize.y = (wall.max.y - wall.min.y);
+			colliderSize.z = 30;
 			
 			newObject.transform.localScale = colliderSize;
 		}
@@ -250,5 +345,12 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			}
 		}
 		return edges;
+	}
+	
+	private class TileAccessNode
+	{
+		public bool canMerge = true;
+		public Vector2 min;
+		public Vector2 max;
 	}
 }

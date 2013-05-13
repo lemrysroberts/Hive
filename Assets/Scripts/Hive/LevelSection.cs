@@ -41,26 +41,6 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 	public void AddObject(LevelObject newObject)
 	{
 		m_levelObjects.Add(newObject);
-		/*
-		GameObject subObjects = null;
-		
-		for(int childID = 0; childID < transform.GetChildCount() && subObjects == null; childID++)
-		{
-			Transform child = transform.GetChild(childID);
-			if(child.name == m_objectsChildID)
-			{
-				subObjects = child.gameObject;
-			}
-		}
-		
-		if(subObjects == null)
-		{
-			subObjects = new GameObject(m_objectsChildID);
-			subObjects.transform.parent = transform;
-		}
-		
-		newObject.transform.parent = subObjects.transform;
-		*/
 	}
 	
 	public void CreateLevelObjects()

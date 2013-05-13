@@ -2,12 +2,12 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections;
 
-[CustomEditor(typeof(AgentCamera))] 
+[CustomEditor(typeof(PlayerView))] 
 public class PlayerViewEditor : Editor 
 {
 	public override void OnInspectorGUI()
 	{
-		AgentCamera view = (AgentCamera)target;
+		PlayerView view = (PlayerView)target;
 		
 		view.ShowCandidateRays = GUILayout.Toggle(view.ShowCandidateRays, "Candidate Rays");
 		view.ShowSucceededRays = GUILayout.Toggle(view.ShowSucceededRays, "Succeeded Rays");
