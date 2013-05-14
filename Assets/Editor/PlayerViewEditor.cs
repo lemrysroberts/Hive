@@ -12,6 +12,7 @@ public class PlayerViewEditor : Editor
 		view.ShowCandidateRays = GUILayout.Toggle(view.ShowCandidateRays, "Candidate Rays");
 		view.ShowSucceededRays = GUILayout.Toggle(view.ShowSucceededRays, "Succeeded Rays");
 		view.ShowExtrusionRays = GUILayout.Toggle(view.ShowExtrusionRays, "Extrusion Rays");
+		view.ShowFailedRays = GUILayout.Toggle(view.ShowFailedRays, "Failed Rays");
 		view.collisionLayer = EditorGUILayout.LayerField("Collision Layer", view.collisionLayer);
 		
 		GUILayout.BeginHorizontal();

@@ -265,7 +265,7 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			Vector3 colliderSize = collider.size;
 			colliderSize.x = (wall.max.x - wall.min.x);
 			colliderSize.y = (wall.max.y - wall.min.y);
-			colliderSize.z = 30;
+			colliderSize.z = 5;
 			
 			newObject.transform.localScale = colliderSize;
 		}
