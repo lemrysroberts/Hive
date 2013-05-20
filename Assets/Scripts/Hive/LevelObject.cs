@@ -22,6 +22,9 @@ public abstract class LevelObject
 	
 	public int ID { get { return m_ID; } }
 	
+	/// <summary>
+	/// Sets the instantiated-prefab's NetworkView to use the given ID, if it exists.
+	/// </summary>
 	public void SetNetworkViewID(NetworkViewID id)
 	{
 		if(m_instantiatedPrefab != null)
@@ -30,13 +33,30 @@ public abstract class LevelObject
 			if(view != null)
 			{
 				view.viewID = id;
-				Debug.Log("Network ID set successfully.");
 			}
 			else
 			{
 				Debug.Log("Instantiated prefab does not have a NetworkView. No synchronisation will occur.");		
 			}
 		}
+	}
+	
+	public bool GetNetworkViewID(out NetworkViewID viewID)
+	{
+		if(m_instantiatedPrefab != null)
+		{
+			NetworkView view = m_instantiatedPrefab.GetComponent<NetworkView>();
+			if(view != null)
+			{
+				view.viewID = Network.AllocateViewID();
+				viewID = view.viewID;
+				return true;
+			}
+			
+		}
+		viewID = new NetworkViewID();
+		return false;
+		
 	}
 	
 	public GameObject InstantiateAgent()
@@ -47,34 +67,10 @@ public abstract class LevelObject
 			newObject = GameObject.Instantiate(AgentPrefab) as GameObject;
 			newObject.transform.position = Position;
 			newObject.transform.localRotation = Rotation;
-			
-			if(SynchronisationScript != null)
-			{
-				MonoBehaviour syncScript = newObject.GetComponent(SynchronisationScript) as MonoBehaviour;
-				if(syncScript != null)
-				{
-					// Now that a script is found for synchronisation, check there's a NetworkView and tie them together.
-					NetworkView networkView = newObject.GetComponent<NetworkView>();
-					if(networkView != null)
-					{
-						networkView.observed = syncScript;
-					}
-					else
-					{
-						Debug.LogError("AgentPrefab for LevelObject \"" + this.GetType().ToString() + "\" does not contain a NetworkView component. Admin/Agent objects will not synchronise");
-					}
-				}
-				else
-				{
-					Debug.LogError("AgentPrefab for LevelObject \"" + this.GetType().ToString() + "\" does not contain script \"" + SynchronisationScript.ToString() + "\". Admin/Agent objects will not synchronise");	
-				}
-			}
-			else
-			{
-				Debug.LogError("LevelObject \"" + this.GetType().ToString() + "\" has null SynchronisationScript. Admin/Agent objects will not synchronise");	
-			}
-		}
+		}		
 		m_instantiatedPrefab = newObject;
+		
+		LinkNetworkViewToSyncScript();
 		
 		return newObject;
 	}
@@ -87,36 +83,46 @@ public abstract class LevelObject
 			newObject = GameObject.Instantiate(AdminPrefab) as GameObject;
 			newObject.transform.position = Position;
 			newObject.transform.localRotation = Rotation;
-			
-			if(SynchronisationScript != null)
+		}
+		m_instantiatedPrefab = newObject;
+		
+		LinkNetworkViewToSyncScript();
+		
+		return newObject;
+	}
+	
+	/// <summary>
+	/// A complete mouthful.
+	/// This just looks for the specified synchronisation-script in the instantiated prefab and sets it to be the target
+	/// of the prefab's NetworkView if it has one.
+	/// </summary>
+	private void LinkNetworkViewToSyncScript()
+	{
+		if(SynchronisationScript != null && m_instantiatedPrefab != null)
+		{
+			MonoBehaviour syncScript = m_instantiatedPrefab.GetComponent(SynchronisationScript) as MonoBehaviour;
+			if(syncScript != null)
 			{
-				MonoBehaviour syncScript = newObject.GetComponent(SynchronisationScript) as MonoBehaviour;
-				if(syncScript != null)
+				// Now that a script is found for synchronisation, check there's a NetworkView and tie them together.
+				NetworkView networkView = m_instantiatedPrefab.GetComponent<NetworkView>();
+				if(networkView != null)
 				{
-					// Now that a script is found for synchronisation, check there's a NetworkView and tie them together.
-					NetworkView networkView = newObject.GetComponent<NetworkView>();
-					if(networkView != null)
-					{
-						networkView.observed = syncScript;
-					}
-					else
-					{
-						Debug.LogError("AgentPrefab for LevelObject \"" + this.GetType().ToString() + "\" does not contain a NetworkView component. Admin/Agent objects will not synchronise");
-					}
+					networkView.observed = syncScript;
 				}
 				else
 				{
-					Debug.LogError("AdminPrefab for LevelObject \"" + this.GetType().ToString() + "\" does not contain script \"" + SynchronisationScript.ToString() + "\". Admin/Agent objects will not synchronise");	
+					Debug.LogError("Prefab for LevelObject \"" + this.GetType().ToString() + "\" does not contain a NetworkView component. Admin/Agent objects will not synchronise");
 				}
 			}
 			else
 			{
-				Debug.LogError("LevelObject \"" + this.GetType().ToString() + "\" has null SynchronisationScript. Admin/Agent objects will not synchronise");	
+				Debug.LogError("Prefab for LevelObject \"" + this.GetType().ToString() + "\" does not contain script \"" + SynchronisationScript.ToString() + "\". Admin/Agent objects will not synchronise");	
 			}
 		}
-		m_instantiatedPrefab = newObject;
-		
-		return newObject;
+		else
+		{
+			Debug.LogError("LevelObject \"" + this.GetType().ToString() + "\" has no SynchronisationScript. Admin/Agent objects will not synchronise");	
+		}
 	}
 	
 	public GameObject AgentPrefab;

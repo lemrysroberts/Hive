@@ -124,7 +124,6 @@ public partial class Level : MonoBehaviour
 	[RPC]
 	public void SetLevelObjectViewID(int objectID, NetworkViewID networkID)
 	{
-		Debug.Log("Received object ID: " + objectID + " with network view ID: " + networkID);
 		m_levelObjectIDs.Add(objectID, networkID);	
 	}
 	
@@ -159,17 +158,43 @@ public partial class Level : MonoBehaviour
 		Debug.Log("Done");
 	}
 	
+	/// <summary>
+	/// This bungs a big list of LevelObject-ID/NetworkViewID pairs across to the other player to let them know how to wire their network gubbins up.
+	/// TODO:   When my brain was being less stupid-bad, it did occur to me that the order in which LevelObjects are instantiated probably makes
+	///  	 	this completely pointless. If the objects are instantiated in consistent order on both machines, they will (probably) be allocated
+	/// 		matching NetworkViewIDs.
+	/// 		However! That idea falls down if either view uses a NetworkViewID before the objects are instantiated, as the allocations will mis-match. However, however, why would one
+	/// 		machine be instantiating network-data that isn't matched on the other? Misses the point of networking, rather...
+	/// 		Conclusion: Better safe than sorry.
+	/// </summary>
 	public void SerialiseLevelObjectIDs()
 	{
+		m_levelObjectIDs.Clear();
+		foreach(var levelObject in m_levelObjects)
+		{
+			NetworkViewID id;
+			if(levelObject.GetNetworkViewID(out id))
+			{
+				m_levelObjectIDs.Add(levelObject.ID, id);	
+			}
+		}
+		
+		// Make sure the other chap has flushed out any old lists of IDs
 		networkView.RPC("ClearLevelObjectIDs", RPCMode.Others);
+		
+		// Chuck all them lovely new IDs across.
 		foreach(var id in m_levelObjectIDs)
 		{
 			networkView.RPC("SetLevelObjectViewID", RPCMode.Others, id.Key, id.Value);	
 		}
 		
+		// Tell the bugger to re-bind all of his objects to their shiny new IDs.
 		networkView.RPC("BindLevelObjectIDs", RPCMode.Others);
 	}
 	
+	/// <summary>
+	/// Binds all LevelObject instances to the networkViewIDs currently stored for them.
+	/// </summary>
 	private void SetLevelObjectIDs()
 	{
 		if(m_levelObjectIDs != null)

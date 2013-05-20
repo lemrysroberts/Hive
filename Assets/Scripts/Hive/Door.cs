@@ -55,6 +55,18 @@ public class Door : SensorTarget
 			}
 			MeshObject.transform.position = Vector3.Lerp(m_originalTransform, m_openTransform, m_openProgress);
 		}
+		
+		if(m_other)
+		{
+			networkView.RPC("RequestClose", RPCMode.Others);
+			m_other = false;
+		}
+	}
+	
+	[RPC]
+	private void RequestClose()
+	{
+		Debug.Log("Close Requested");
 	}
 	
 	private void Open()
@@ -73,14 +85,15 @@ public class Door : SensorTarget
 			// Sending
 				
 			stream.Serialize (ref m_opening);
+			stream.Serialize(ref m_other);
 		} else {
 	
-			bool opening = false;
-			// Receiving
-			stream.Serialize( ref opening);
-			if(opening )
+			stream.Serialize( ref m_opening);
+			stream.Serialize( ref m_other);
+			
+			if(m_other )
 			{
-				Debug.LogError("DOOR OPENING");	
+				Debug.LogError("DOOR thing");	
 			}
 			// ... do something meaningful with the received variable
 		}
@@ -91,5 +104,6 @@ public class Door : SensorTarget
 	
 	private int m_activationCount = 0;
 	private float m_openProgress = 0.0f;
-	private bool m_opening = false;
+	public bool m_opening = false;
+	public bool m_other = false;
 }

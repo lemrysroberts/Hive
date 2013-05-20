@@ -326,7 +326,7 @@ public partial class Level : MonoBehaviour
 		}
 	}
 	
-	public void AddGameObject(LevelObject newObject)
+	public void AddLevelObject(LevelObject newObject)
 	{
 		m_levelObjects.Add(newObject);
 		
