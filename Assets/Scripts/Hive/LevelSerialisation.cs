@@ -2,7 +2,8 @@ using System;
 using System.IO;
 using System.Text;
 using System.Xml;
-//using System.Text.
+using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public partial class Level : MonoBehaviour 
@@ -112,16 +113,31 @@ public partial class Level : MonoBehaviour
 	public void ReceiveLevel(byte[] levelData)
 	{
 		Debug.LogWarning("Received RPC data");
-		//String levelString = System.Text.Encoding.UTF8.GetString(levelData);
-		//XmlDocument levelDoc = new XmlDocument();
-		
 		Seed = BitConverter.ToInt32(levelData, 0);
 		
 		LevelGenerator generator = new LevelGenerator(this);
 		generator.GenerateLevel(Seed, false);
-		//levelDoc.LoadXml(levelString);
 		
-		//LoadXml(levelDoc);
+		SetLevelObjectIDs();
+	}
+	
+	[RPC]
+	public void SetLevelObjectViewID(int objectID, NetworkViewID networkID)
+	{
+		Debug.Log("Received object ID: " + objectID + " with network view ID: " + networkID);
+		m_levelObjectIDs.Add(objectID, networkID);	
+	}
+	
+	[RPC]
+	public void ClearLevelObjectIDs()
+	{
+		m_levelObjectIDs.Clear();	
+	}
+	
+	[RPC]
+	public void BindLevelObjectIDs()
+	{
+		SetLevelObjectIDs();
 	}
 	
 	public void SerialiseToNetwork(string path)
@@ -130,7 +146,6 @@ public partial class Level : MonoBehaviour
 		TextAsset levelAsset = Resources.Load(path) as TextAsset;
 		if(levelAsset != null)
 		{
-			//byte[] bytes = System.Text.Encoding.UTF8.GetBytes(levelAsset.text);
 			byte[] bytes = BitConverter.GetBytes(Seed);
 			
 			networkView.RPC("ReceiveLevel", RPCMode.Others, bytes);
@@ -144,17 +159,29 @@ public partial class Level : MonoBehaviour
 		Debug.Log("Done");
 	}
 	
-	public void SyncNPCs()
+	public void SerialiseLevelObjectIDs()
 	{
-		return;
-		/*
-		if(m_npcObject != null)
+		networkView.RPC("ClearLevelObjectIDs", RPCMode.Others);
+		foreach(var id in m_levelObjectIDs)
 		{
-			GameObject testNPC = GameObject.Instantiate(m_npcObject) as GameObject;	
-			testNPC.transform.position = (Vector3)m_graph.Nodes[0].NodePosition + new Vector3(0.0f, 0.0f, -1.0f);
-			
-			networkView.RPC ("SpawnNPC", RPCMode.Others, testNPC.transform.position, testNPC.networkView.viewID);
+			networkView.RPC("SetLevelObjectViewID", RPCMode.Others, id.Key, id.Value);	
 		}
-		*/
+		
+		networkView.RPC("BindLevelObjectIDs", RPCMode.Others);
+	}
+	
+	private void SetLevelObjectIDs()
+	{
+		if(m_levelObjectIDs != null)
+		{
+			foreach(var levelObject in m_levelObjects)
+			{
+				NetworkViewID id;
+				if(m_levelObjectIDs.TryGetValue(levelObject.ID, out id))
+				{
+					levelObject.SetNetworkViewID(id);
+				}
+			}
+		}
 	}
 }

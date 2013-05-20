@@ -43,8 +43,9 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 		m_levelObjects.Add(newObject);
 	}
 	
-	public void CreateLevelObjects()
+	public Dictionary<int, NetworkViewID> CreateLevelObjects()
 	{
+		Dictionary<int, NetworkViewID> sectionIDs = new Dictionary<int, NetworkViewID>();
 		GameObject subObjects = null;
 		
 		for(int childID = 0; childID < transform.GetChildCount() && subObjects == null; childID++)
@@ -76,8 +77,14 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			if(newObject != null)
 			{
 				newObject.transform.parent = subObjects.transform;
+				NetworkView networkView = newObject.GetComponent<NetworkView>();
+				if(networkView != null)
+				{
+					sectionIDs.Add(levelObject.ID, networkView.viewID);	
+				}
 			}
 		}
+		return sectionIDs;
 	}
 	
 	public void ClearObjects()

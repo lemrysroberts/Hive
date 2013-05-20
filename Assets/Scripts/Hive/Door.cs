@@ -67,6 +67,25 @@ public class Door : SensorTarget
 		m_opening = false;
 	}
 	
+	public void OnSerializeNetworkView (BitStream stream,  NetworkMessageInfo info)
+	{
+		if (stream.isWriting) {
+			// Sending
+				
+			stream.Serialize (ref m_opening);
+		} else {
+	
+			bool opening = false;
+			// Receiving
+			stream.Serialize( ref opening);
+			if(opening )
+			{
+				Debug.LogError("DOOR OPENING");	
+			}
+			// ... do something meaningful with the received variable
+		}
+	}
+	
 	private Vector3 m_originalTransform;
 	private Vector3 m_openTransform;
 	

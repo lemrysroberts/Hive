@@ -31,6 +31,47 @@ public partial class Level : MonoBehaviour
 		{
 			RebuildAIGraph();	
 		}
+		
+		// TODO: make a function that handles all of this bullshit. 
+		//		 There are loads of places in which I search for a child, create it if it's missing, then clear its children.
+		GameObject npcsObject = null;
+		for(int childID = 0; childID < transform.GetChildCount() && npcsObject == null; childID++)
+		{
+			Transform child = transform.GetChild(childID);
+			if(child.name == "NPCs")
+			{
+				npcsObject = child.gameObject;	
+			}
+		}
+		
+		if(npcsObject == null)
+		{
+			npcsObject = new GameObject("NPCs");
+			npcsObject.transform.parent = transform;
+		}
+		
+		while(npcsObject.transform.GetChildCount() > 0)
+		{
+			DestroyImmediate(npcsObject.transform.GetChild(0).gameObject);
+		}
+		return;
+		Player player = FindObjectOfType(typeof(Player)) as Player;
+		for(int i = 0; i < m_npcCount; i++)
+		{
+			GameObject newObject = GameObject.Instantiate(m_npcObject) as GameObject;
+			
+			// Abuse the AI graph for open nodes.
+			float z = newObject.transform.position.z;
+			newObject.transform.position = (Vector3)m_graph.GetRandomNode().NodePosition + new Vector3(0.0f, 0.0f, z);
+			
+			newObject.transform.parent = npcsObject.transform;
+			newObject.tag = "Entity";
+			AIDetection detection = newObject.GetComponent<AIDetection>();
+			if(detection != null && player != null)
+			{
+				detection.Target = player.gameObject;	
+			}
+		}
 	}
 	
 	/// <summary>
@@ -173,10 +214,16 @@ public partial class Level : MonoBehaviour
 	
 	public void CreateLevelObjects()
 	{
+		Dictionary<int, NetworkViewID> levelObjectIDs = new Dictionary<int, NetworkViewID>();
 		foreach(var section in m_sections)
 		{
-			section.CreateLevelObjects();
+			Dictionary<int, NetworkViewID> sectionIDs = section.CreateLevelObjects();
+			foreach(var id in sectionIDs)
+			{
+				levelObjectIDs.Add(id.Key, id.Value);
+			}
 		}
+		m_levelObjectIDs = levelObjectIDs;
 	}
 	
 	private void DeleteSections(bool fullReload)
@@ -325,6 +372,7 @@ public partial class Level : MonoBehaviour
 		*/
 	}
 	
+	// TODO: These don't need to be properties. 
 	public AIGraph AIGraph
 	{
 		get { return m_graph; }
@@ -340,6 +388,12 @@ public partial class Level : MonoBehaviour
 	{
 		get { return m_doorPrefab; }
 		set { m_doorPrefab = value; }
+	}
+	
+	public GameObject AdminDoorPrefab
+	{
+		get { return m_adminDoorPrefab; }
+		set { m_adminDoorPrefab = value; }
 	}
 	
 	public GameObject GoalItemPrefab
@@ -365,6 +419,12 @@ public partial class Level : MonoBehaviour
 		get { return m_goalSpawnPoint; }
 		set { m_goalSpawnPoint = value; }
 	}
+	
+	public int NPCCount
+	{
+		get { return m_npcCount; }
+		set { m_npcCount = value; }
+	}		
 	
 	public int Width { get { return m_sectionSize * SectionCountX; } }
 	public int Height { get { return m_sectionSize * SectionCountY; } }
@@ -504,6 +564,9 @@ public partial class Level : MonoBehaviour
 	private GameObject m_doorPrefab = null;
 	
 	[SerializeField]
+	private GameObject m_adminDoorPrefab = null;
+	
+	[SerializeField]
 	private GameObject m_goalItemPrefab = null;
 	
 	[SerializeField]
@@ -515,9 +578,16 @@ public partial class Level : MonoBehaviour
 	[SerializeField]
 	private Vector2 m_goalSpawnPoint;
 	
+	[SerializeField]
+	private int m_npcCount = 1;
+	
+	[SerializeField]
+	private Dictionary<int, NetworkViewID> m_levelObjectIDs = null;
+	
 	//////////////////////////////////////////////////////////////////////////////////
 	// DEBUG
 	//////////////////////////////////////////////////////////////////////////////////
 	public List<AreaPartition> RoomAreas = null;
 	public List<Corridor> Corridors = null;
+	
 }

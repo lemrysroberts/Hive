@@ -48,8 +48,8 @@ public class CreateGoals : IGeneratorStage
 				foundGoal = true;
 				m_level.GoalItemSpawnPoint = new Vector2(step, step);
 				GoalItemObject itemObject = new GoalItemObject();
-				itemObject.Prefab = m_level.GoalItemPrefab;
-				itemObject.Position = new Vector3(step, step, 0);
+				itemObject.AgentPrefab = m_level.GoalItemPrefab;
+				itemObject.Position = new Vector3(step, step, -1);
 				m_level.AddGameObject(itemObject);
 			}
 			
@@ -64,8 +64,8 @@ public class CreateGoals : IGeneratorStage
 			{
 				foundGoal = true;
 				GoalAreaObject areaObject = new GoalAreaObject();
-				areaObject.Prefab = m_level.GoalAreaPrefab;
-				areaObject.Position = new Vector3(m_level.PlayerSpawnPoint.x + 0.5f, step + 0.5f, 0);
+				areaObject.AgentPrefab = m_level.GoalAreaPrefab;
+				areaObject.Position = new Vector3(m_level.PlayerSpawnPoint.x + 0.5f, step + 0.5f, -1);
 				m_level.AddGameObject(areaObject);
 				
 			}

@@ -51,6 +51,7 @@ public class DoorPlacement : IGeneratorStage
 			GUILayout.BeginHorizontal();
 			GUILayout.Label("Door Prefab", GUILayout.Width(90));
 			m_level.DoorPrefab = EditorGUILayout.ObjectField(m_level.DoorPrefab, typeof(GameObject), false) as GameObject;
+			m_level.AdminDoorPrefab = EditorGUILayout.ObjectField(m_level.AdminDoorPrefab, typeof(GameObject), false) as GameObject;
 			
 			GUILayout.EndHorizontal();
 		}
@@ -109,7 +110,8 @@ public class DoorPlacement : IGeneratorStage
 				if(m_level.DoorPrefab != null)
 				{
 					DoorObject newDoor = new DoorObject();
-					newDoor.Prefab = m_level.DoorPrefab;
+					newDoor.AgentPrefab = m_level.DoorPrefab;
+					newDoor.AdminPrefab = m_level.AdminDoorPrefab;
 					newDoor.Position = new Vector3(corridor.endX + 0.5f, doorY + 0.5f, 0.0f);
 					newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
 					m_level.AddGameObject(newDoor);
@@ -126,7 +128,8 @@ public class DoorPlacement : IGeneratorStage
 				if(m_level.DoorPrefab != null)
 				{
 					DoorObject newDoor = new DoorObject();
-					newDoor.Prefab = m_level.DoorPrefab;
+					newDoor.AgentPrefab = m_level.DoorPrefab;
+					newDoor.AdminPrefab = m_level.AdminDoorPrefab;
 					newDoor.Position = new Vector3(corridor.startX - 0.5f, doorY + 0.5f, 0.0f);
 					newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
 					m_level.AddGameObject(newDoor);
@@ -143,7 +146,8 @@ public class DoorPlacement : IGeneratorStage
 				if(m_level.DoorPrefab != null)
 				{
 					DoorObject newDoor = new DoorObject();
-					newDoor.Prefab = m_level.DoorPrefab;
+					newDoor.AgentPrefab = m_level.DoorPrefab;
+					newDoor.AdminPrefab = m_level.AdminDoorPrefab;
 					newDoor.Position = new Vector3(doorX + 0.5f, corridor.startY - 0.5f, 0.0f);
 					m_level.AddGameObject(newDoor);
 				}
@@ -158,7 +162,8 @@ public class DoorPlacement : IGeneratorStage
 				if(m_level.DoorPrefab != null)
 				{
 					DoorObject newDoor = new DoorObject();
-					newDoor.Prefab = m_level.DoorPrefab;
+					newDoor.AgentPrefab = m_level.DoorPrefab;
+					newDoor.AdminPrefab = m_level.AdminDoorPrefab;
 					newDoor.Position = new Vector3(doorX + 0.5f, corridor.endY + 0.5f, 0.0f);
 					m_level.AddGameObject(newDoor);
 				}
@@ -195,7 +200,8 @@ public class DoorPlacement : IGeneratorStage
 					if(m_level.DoorPrefab != null)
 					{
 						DoorObject newDoor = new DoorObject();
-						newDoor.Prefab = m_level.DoorPrefab;
+						newDoor.AgentPrefab = m_level.DoorPrefab;
+						newDoor.AdminPrefab = m_level.AdminDoorPrefab;
 						newDoor.Position = new Vector3(other.endX + 0.5f, doorY + 0.5f, 0.0f);
 						newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
 						m_level.AddGameObject(newDoor);
@@ -213,7 +219,8 @@ public class DoorPlacement : IGeneratorStage
 					if(m_level.DoorPrefab != null)
 					{
 						DoorObject newDoor = new DoorObject();
-						newDoor.Prefab = m_level.DoorPrefab;
+						newDoor.AgentPrefab = m_level.DoorPrefab;
+						newDoor.AdminPrefab = m_level.AdminDoorPrefab;
 						newDoor.Position = new Vector3(other.startX - 0.5f, doorY + 0.5f, 0.0f);
 						newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
 						m_level.AddGameObject(newDoor);
@@ -231,7 +238,8 @@ public class DoorPlacement : IGeneratorStage
 					if(m_level.DoorPrefab != null)
 					{
 						DoorObject newDoor = new DoorObject();
-						newDoor.Prefab = m_level.DoorPrefab;
+						newDoor.AgentPrefab = m_level.DoorPrefab;
+						newDoor.AdminPrefab = m_level.AdminDoorPrefab;
 						newDoor.Position = new Vector3(doorX + 0.5f, other.startY - 0.5f, 0.0f);
 						newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 						m_level.AddGameObject(newDoor);
@@ -249,7 +257,8 @@ public class DoorPlacement : IGeneratorStage
 					if(m_level.DoorPrefab != null)
 					{
 						DoorObject newDoor = new DoorObject();
-						newDoor.Prefab = m_level.DoorPrefab;
+						newDoor.AgentPrefab = m_level.DoorPrefab;
+						newDoor.AdminPrefab = m_level.AdminDoorPrefab;
 						newDoor.Position = new Vector3(doorX + 0.5f, other.endY + 0.5f, 0.0f);
 						newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 						m_level.AddGameObject(newDoor);

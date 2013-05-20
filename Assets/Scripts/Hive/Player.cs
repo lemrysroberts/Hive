@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Player : MonoBehaviour 
 {
+	public float Health = 1.0f;
+	public float DamageRate = 0.01f;
 	
 	// Use this for initialization
 	void Start () 
@@ -34,11 +36,21 @@ public class Player : MonoBehaviour
 		}
 	}
 	
+	public void OnCollisionEnter(Collision other)
+	{
+		//Debug.Log("Collided: " + other.collider.name);	
+	}
+	
 	public void Update()
 	{
 		if(m_grabbedObject != null)
 		{
 			m_grabbedObject.transform.position = transform.position;	
+		}
+		
+		if(Health <= 0.0f)
+		{
+			GameFlow.Instance.GameLost();
 		}
 	}
 	

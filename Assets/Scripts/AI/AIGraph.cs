@@ -87,8 +87,18 @@ public class AIGraph
 	
 	public AIGraphNode GetRandomNode()
 	{
-		int endPosID = (int)(UnityEngine.Random.value * (float)(m_nodes.Length - 1));	
-		return m_nodes[endPosID];
+		int bailout = 100;
+		AIGraphNode randomNode = null;
+		
+		int count = 0;
+		while(randomNode == null && count < bailout)
+		{
+			randomNode = m_nodes[(int)(UnityEngine.Random.value * (float)(m_nodes.Length - 1))];		
+			count++;
+		}
+		
+		
+		return randomNode;
 	}
 	
 	public static int MaxIndex = 0;

@@ -22,6 +22,8 @@ public class LevelGenerator
 	
 	public void GenerateLevel(int seed, bool stepUpdate)
 	{
+		LevelObject.MaxID = 0;
+		
 		m_generationComplete = false;
 		m_currentStageIndex = 0;
 				

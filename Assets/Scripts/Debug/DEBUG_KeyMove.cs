@@ -11,6 +11,22 @@ public class DEBUG_KeyMove : MonoBehaviour {
 	{
 	}
 	
+	void Update()
+	{
+		if(Input.GetMouseButtonDown(2))
+		{
+			m_dragging = true;
+			
+			m_lastMousePos = Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition);
+			Debug.Log("Mouse down");
+		}
+		else if(Input.GetMouseButtonUp(2))
+		{
+			m_dragging = false;	
+			Debug.Log("Mouse up");
+		}
+	}
+	
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
@@ -35,18 +51,7 @@ public class DEBUG_KeyMove : MonoBehaviour {
 			transform.position = new Vector3(transform.position.x + (0.01f  * MoveSpeed), transform.position.y, transform.position.z);
 		}
 	*/	
-		if(Input.GetMouseButtonDown(2))
-		{
-			m_dragging = true;
-			
-			m_lastMousePos = Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition);
-			Debug.Log("Mouse down");
-		}
-		else if(Input.GetMouseButtonUp(2))
-		{
-			m_dragging = false;	
-			Debug.Log("Mouse up");
-		}
+	
 	
 		if(m_dragging && Input.GetMouseButton(2))
 		{
