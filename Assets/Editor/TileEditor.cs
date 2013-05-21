@@ -27,7 +27,7 @@ public class TileEditor : EditorWindow
 	/// <summary>
 	/// Shows the editor window.
 	/// </summary>
-	[MenuItem("Tiles/Tile Manager")]
+	[MenuItem("Optimism/Tileset Editor")]
 	public static void ShowWindow()
 	{
 		EditorWindow.GetWindow(typeof(TileEditor));

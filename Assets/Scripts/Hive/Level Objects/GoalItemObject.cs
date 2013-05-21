@@ -11,5 +11,5 @@ using System.Collections.Generic;
 public class GoalItemObject : LevelObject
 {
 	
-	
+	public GoalItemObject()  : base("Door") { }
 }

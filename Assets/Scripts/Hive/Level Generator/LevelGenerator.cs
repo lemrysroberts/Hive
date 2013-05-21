@@ -17,6 +17,9 @@ public class LevelGenerator
 		m_stages.Add(new RoomBuilder(level));
 		m_stages.Add(new DoorPlacement(level));
 		m_stages.Add(new CreateGoals(level));
+		m_stages.Add(new PlaceTerminalsStage(level));
+		
+		// This should run after all stages that place LevelObjects are finished.
 		m_stages.Add(new CreateLevelObjects(level));
 	}
 	

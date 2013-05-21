@@ -15,6 +15,12 @@ public class DoorPlacement : IGeneratorStage
 	public void Start() 
 	{
 		m_level.ClearObjects();	
+		
+		m_database = GameObject.FindObjectOfType(typeof(LevelObjectDatabase)) as LevelObjectDatabase;
+		if(m_database == null)
+		{
+			Debug.LogError("No LevelObject database found");	
+		}
 	}
 	
 	public void End() {}
@@ -48,12 +54,6 @@ public class DoorPlacement : IGeneratorStage
 		if(m_showFoldout)
 		{
 			m_linkAllRooms = GUILayout.Toggle(m_linkAllRooms, "Link all neighbours");
-			GUILayout.BeginHorizontal();
-			GUILayout.Label("Door Prefab", GUILayout.Width(90));
-			m_level.DoorPrefab = EditorGUILayout.ObjectField(m_level.DoorPrefab, typeof(GameObject), false) as GameObject;
-			m_level.AdminDoorPrefab = EditorGUILayout.ObjectField(m_level.AdminDoorPrefab, typeof(GameObject), false) as GameObject;
-			
-			GUILayout.EndHorizontal();
 		}
 #endif
 	}
@@ -96,7 +96,7 @@ public class DoorPlacement : IGeneratorStage
 	{
 		Room currentRoom = m_level.Rooms[m_roomIndex];
 		List<Corridor> corridors = GetAdjacentCorridors(currentRoom);
-		
+	
 		if(corridors.Count > 0)
 		{
 			Corridor corridor = corridors[Random.Range(0, corridors.Count)];
@@ -107,11 +107,9 @@ public class DoorPlacement : IGeneratorStage
 				int maxY = Mathf.Min(corridor.endY, currentRoom.endY);
 				int doorY = Random.Range(minY, maxY);
 				m_level.SetTileID(corridor.endX, doorY, 1, false);
-				if(m_level.DoorPrefab != null)
+				if(m_database != null)
 				{
-					DoorObject newDoor = new DoorObject();
-					newDoor.AgentPrefab = m_level.DoorPrefab;
-					newDoor.AdminPrefab = m_level.AdminDoorPrefab;
+					LevelObject newDoor = m_database.GetObject("door");
 					newDoor.Position = new Vector3(corridor.endX + 0.5f, doorY + 0.5f, 0.0f);
 					newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
 					m_level.AddLevelObject(newDoor);
@@ -125,11 +123,9 @@ public class DoorPlacement : IGeneratorStage
 				int doorY = Random.Range(minY, maxY);
 				m_level.SetTileID(corridor.startX - 1, doorY, 1, false);
 				
-				if(m_level.DoorPrefab != null)
+				if(m_database != null)
 				{
-					DoorObject newDoor = new DoorObject();
-					newDoor.AgentPrefab = m_level.DoorPrefab;
-					newDoor.AdminPrefab = m_level.AdminDoorPrefab;
+					LevelObject newDoor = m_database.GetObject("door");
 					newDoor.Position = new Vector3(corridor.startX - 0.5f, doorY + 0.5f, 0.0f);
 					newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
 					m_level.AddLevelObject(newDoor);
@@ -143,11 +139,9 @@ public class DoorPlacement : IGeneratorStage
 				int doorX = Random.Range(minX, maxX);
 				m_level.SetTileID(doorX, corridor.startY - 1, 1, false);
 				
-				if(m_level.DoorPrefab != null)
+				if(m_database != null)
 				{
-					DoorObject newDoor = new DoorObject();
-					newDoor.AgentPrefab = m_level.DoorPrefab;
-					newDoor.AdminPrefab = m_level.AdminDoorPrefab;
+					LevelObject newDoor = m_database.GetObject("door");
 					newDoor.Position = new Vector3(doorX + 0.5f, corridor.startY - 0.5f, 0.0f);
 					m_level.AddLevelObject(newDoor);
 				}
@@ -159,11 +153,9 @@ public class DoorPlacement : IGeneratorStage
 				int maxX = Mathf.Min(corridor.endX, currentRoom.endX);
 				int doorX = Random.Range(minX, maxX);
 				m_level.SetTileID(doorX, corridor.endY, 1, false);
-				if(m_level.DoorPrefab != null)
+				if(m_database != null)
 				{
-					DoorObject newDoor = new DoorObject();
-					newDoor.AgentPrefab = m_level.DoorPrefab;
-					newDoor.AdminPrefab = m_level.AdminDoorPrefab;
+					LevelObject newDoor = m_database.GetObject("door");
 					newDoor.Position = new Vector3(doorX + 0.5f, corridor.endY + 0.5f, 0.0f);
 					m_level.AddLevelObject(newDoor);
 				}
@@ -197,11 +189,9 @@ public class DoorPlacement : IGeneratorStage
 					m_level.SetTileID(other.endX, doorY, 3, false);
 					linkMade = true;
 					
-					if(m_level.DoorPrefab != null)
+					if(m_database != null)
 					{
-						DoorObject newDoor = new DoorObject();
-						newDoor.AgentPrefab = m_level.DoorPrefab;
-						newDoor.AdminPrefab = m_level.AdminDoorPrefab;
+						LevelObject newDoor = m_database.GetObject("door");
 						newDoor.Position = new Vector3(other.endX + 0.5f, doorY + 0.5f, 0.0f);
 						newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
 						m_level.AddLevelObject(newDoor);
@@ -216,11 +206,9 @@ public class DoorPlacement : IGeneratorStage
 					m_level.SetTileID(other.startX - 1, doorY, 3, false);
 					linkMade = true;
 					
-					if(m_level.DoorPrefab != null)
+					if(m_database != null)
 					{
-						DoorObject newDoor = new DoorObject();
-						newDoor.AgentPrefab = m_level.DoorPrefab;
-						newDoor.AdminPrefab = m_level.AdminDoorPrefab;
+						LevelObject newDoor = m_database.GetObject("door");
 						newDoor.Position = new Vector3(other.startX - 0.5f, doorY + 0.5f, 0.0f);
 						newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
 						m_level.AddLevelObject(newDoor);
@@ -235,11 +223,9 @@ public class DoorPlacement : IGeneratorStage
 					m_level.SetTileID(doorX, other.startY - 1, 3, false);
 					linkMade = true;
 					
-					if(m_level.DoorPrefab != null)
+					if(m_database != null)
 					{
-						DoorObject newDoor = new DoorObject();
-						newDoor.AgentPrefab = m_level.DoorPrefab;
-						newDoor.AdminPrefab = m_level.AdminDoorPrefab;
+						LevelObject newDoor = m_database.GetObject("door");
 						newDoor.Position = new Vector3(doorX + 0.5f, other.startY - 0.5f, 0.0f);
 						newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 						m_level.AddLevelObject(newDoor);
@@ -254,11 +240,9 @@ public class DoorPlacement : IGeneratorStage
 					m_level.SetTileID(doorX, other.endY, 3, false);
 					linkMade = true;
 					
-					if(m_level.DoorPrefab != null)
+					if(m_database != null)
 					{
-						DoorObject newDoor = new DoorObject();
-						newDoor.AgentPrefab = m_level.DoorPrefab;
-						newDoor.AdminPrefab = m_level.AdminDoorPrefab;
+						LevelObject newDoor = m_database.GetObject("door");
 						newDoor.Position = new Vector3(doorX + 0.5f, other.endY + 0.5f, 0.0f);
 						newDoor.Rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 						m_level.AddLevelObject(newDoor);
@@ -323,6 +307,7 @@ public class DoorPlacement : IGeneratorStage
 	
 	private Level m_level;
 	private int m_roomIndex = 0;
+	private LevelObjectDatabase m_database;
 	private static bool m_showFoldout = false;	
 	private static bool m_linkAllRooms = true;
 }

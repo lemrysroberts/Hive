@@ -4,17 +4,12 @@ using System.Collections;
 
 public class Door : SensorTarget
 {
-	public GameObject MeshObject = null;
+	
 	public float DoorSpeed = 0.1f;
 	public bool Locked = false;
 	
 	public void Start()
 	{
-		m_originalTransform = transform.position;
-		
-		Vector3 rotated = (MeshObject.transform.rotation * Vector3.right) * transform.lossyScale.x;
-		m_openTransform = (MeshObject.transform.position - rotated) ;
-		
 	}
 	
 	public override void SensorActivate()
@@ -44,7 +39,7 @@ public class Door : SensorTarget
 			{
 				m_openProgress = 1.0f;	
 			}
-			MeshObject.transform.position = Vector3.Lerp(m_originalTransform, m_openTransform, m_openProgress);
+			
 		}
 		else if((!m_opening || Locked) && m_openProgress > 0.0f)
 		{
@@ -53,7 +48,6 @@ public class Door : SensorTarget
 			{
 				m_openProgress = 0.0f;	
 			}
-			MeshObject.transform.position = Vector3.Lerp(m_originalTransform, m_openTransform, m_openProgress);
 		}
 		
 		if(m_other)
@@ -99,11 +93,10 @@ public class Door : SensorTarget
 		}
 	}
 	
-	private Vector3 m_originalTransform;
-	private Vector3 m_openTransform;
 	
-	private int m_activationCount = 0;
-	private float m_openProgress = 0.0f;
+	
+	public int m_activationCount = 0;
+	public float m_openProgress = 0.0f;
 	public bool m_opening = false;
 	public bool m_other = false;
 }

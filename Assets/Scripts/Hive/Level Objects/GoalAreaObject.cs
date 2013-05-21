@@ -10,6 +10,6 @@ using System.Collections.Generic;
 
 public class GoalAreaObject : LevelObject
 {
-
+	public GoalAreaObject()  : base("Door") { }
 	
 }

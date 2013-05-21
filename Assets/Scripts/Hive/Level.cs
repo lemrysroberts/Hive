@@ -384,17 +384,6 @@ public partial class Level : MonoBehaviour
 		set { m_rooms = value; }
 	}
 	
-	public GameObject DoorPrefab
-	{
-		get { return m_doorPrefab; }
-		set { m_doorPrefab = value; }
-	}
-	
-	public GameObject AdminDoorPrefab
-	{
-		get { return m_adminDoorPrefab; }
-		set { m_adminDoorPrefab = value; }
-	}
 	
 	public GameObject GoalItemPrefab
 	{
@@ -560,12 +549,6 @@ public partial class Level : MonoBehaviour
 	
 	// TODO: All these exist to allow the level-generator function. 
 	//		 They need to go somewhere more sensible.
-	[SerializeField]
-	private GameObject m_doorPrefab = null;
-	
-	[SerializeField]
-	private GameObject m_adminDoorPrefab = null;
-	
 	[SerializeField]
 	private GameObject m_goalItemPrefab = null;
 	

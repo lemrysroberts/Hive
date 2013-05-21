@@ -12,15 +12,39 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 
-public abstract class LevelObject
+[Serializable]
+public class LevelObject : ICloneable
 {
-	public LevelObject()
+	public LevelObject(string objectName)
 	{
+		Name = objectName;
 		m_ID = MaxID;
 		MaxID++;
 	}
 	
-	public int ID { get { return m_ID; } }
+	public int ID 
+	{ 
+		get { return m_ID; } 
+	}
+	
+	public string Name
+	{
+		get { return m_name; }
+		set { m_name = value; }
+	}
+	
+	public System.Object Clone()
+	{
+		LevelObject clone = new LevelObject(Name);
+		
+		clone.AdminPrefab = AdminPrefab;
+		clone.AgentPrefab = AgentPrefab;
+		clone.SynchronisationScript = SynchronisationScript;
+		clone.Position = Position;
+		clone.Rotation = Rotation;
+		
+		return clone;
+	}
 	
 	/// <summary>
 	/// Sets the instantiated-prefab's NetworkView to use the given ID, if it exists.
@@ -100,7 +124,14 @@ public abstract class LevelObject
 	{
 		if(SynchronisationScript != null && m_instantiatedPrefab != null)
 		{
-			MonoBehaviour syncScript = m_instantiatedPrefab.GetComponent(SynchronisationScript) as MonoBehaviour;
+			Type syncScriptType = Type.GetType(SynchronisationScript);
+			if(syncScriptType == null) 
+			{
+				Debug.LogError("Failed to find TypeInfo for " + SynchronisationScript);
+				return;
+			}
+			
+			MonoBehaviour syncScript = m_instantiatedPrefab.GetComponent(syncScriptType) as MonoBehaviour;
 			if(syncScript != null)
 			{
 				// Now that a script is found for synchronisation, check there's a NetworkView and tie them together.
@@ -116,7 +147,7 @@ public abstract class LevelObject
 			}
 			else
 			{
-				Debug.LogError("Prefab for LevelObject \"" + this.GetType().ToString() + "\" does not contain script \"" + SynchronisationScript.ToString() + "\". Admin/Agent objects will not synchronise");	
+				Debug.LogError("Prefab for LevelObject \"" + this.GetType().ToString() + "\" does not contain script \"" + SynchronisationScript + "\". Admin/Agent objects will not synchronise");	
 			}
 		}
 		else
@@ -125,16 +156,33 @@ public abstract class LevelObject
 		}
 	}
 	
+	
+	
+	[SerializeField]
 	public GameObject AgentPrefab;
+	
+	[SerializeField]
 	public GameObject AdminPrefab;
-	public Type SynchronisationScript;
+	
+	[SerializeField]
+	public string SynchronisationScript;
+	
+	[SerializeField]
 	public Vector3 Position;	
+	
+	[SerializeField]
 	public Quaternion Rotation;
 	
+	[SerializeField]
 	public static int MaxID = 0;
 	
+	[SerializeField]
 	protected int m_ID = -1;
 	
+	[SerializeField]
 	protected GameObject m_instantiatedPrefab = null;
+	
+	[SerializeField]
+	private string m_name = string.Empty;
 }
  
