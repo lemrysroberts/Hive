@@ -15,6 +15,7 @@ public class AdminDoor : MonoBehaviour
 	void Start () 
 	{
 		m_door = GetComponent<Door>();
+		m_renderer.material = ClosedMaterial;
 	}
 	
 	// Update is called once per frame
@@ -32,11 +33,7 @@ public class AdminDoor : MonoBehaviour
 				m_renderer.material = ClosedMaterial;
 			}
 		}
-		else
-		{
-			
-		}
-		//renderer.material = 
+
 	}
 			
 	private bool m_lastOpening = false;

@@ -72,7 +72,7 @@ public class PlayerView : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () 
+	void Update () 
 	{
 		RebuildMesh();
 	}
@@ -99,16 +99,19 @@ public class PlayerView : MonoBehaviour
 		
 		// Add the camera point manually
 		vertices[0] = new Vector3(0.0f, 0.0f, 0.0f);
+		uvs[0] = new Vector2(0.5f, 0.5f);
 		
 		int index = 1;
 		
 		Quaternion rotationInverse = Quaternion.Inverse(transform.rotation);
 		
+		float extentsVal = Mathf.Abs(m_viewCollider.radius * Mathf.Cos(Mathf.PI / 4));
+		
 		foreach(OccluderVector vert in occluders)
 		{
-			Vector3 worldPosition = vert.vec - transform.position;
-			vertices[index] = rotationInverse *  worldPosition;
-			uvs[index] 		= new Vector2(vert.vec.x, vert.vec.y);
+			Vector3 localPosition = vert.vec - transform.position;
+			vertices[index] = rotationInverse *  localPosition;
+			uvs[index] 		= new Vector2((localPosition.x + extentsVal) / (extentsVal * 2.0f), (localPosition.y + extentsVal) / (extentsVal * 2.0f));
 			normals[index] = new Vector3(0.0f, 0.0f -1.0f);
 			
 			index++;
@@ -191,25 +194,12 @@ public class PlayerView : MonoBehaviour
 			}
 		}
 		
-		VectorOffsetPair tlPair = new VectorOffsetPair();
-		VectorOffsetPair blPair = new VectorOffsetPair();
-		VectorOffsetPair trPair = new VectorOffsetPair();
-		VectorOffsetPair brPair = new VectorOffsetPair();
+		List<VectorOffsetPair> extentsPairs = GetExtents();
 		
-		tlPair.vec = transform.position + new Vector3(-m_viewCollider.radius, m_viewCollider.radius, 0.0f);
-		blPair.vec = transform.position + new Vector3(-m_viewCollider.radius, -m_viewCollider.radius, 0.0f);
-		trPair.vec = transform.position + new Vector3(m_viewCollider.radius, m_viewCollider.radius, 0.0f);
-		brPair.vec = transform.position + new Vector3(m_viewCollider.radius, -m_viewCollider.radius, 0.0f);
-		
-		tlPair.offsetVec = Vector3.zero;
-		blPair.offsetVec = Vector3.zero;
-		trPair.offsetVec = Vector3.zero;
-		brPair.offsetVec = Vector3.zero;
-		
-		verts.Add(tlPair);
-		verts.Add(blPair);
-		verts.Add(trPair);
-		verts.Add(brPair);
+		foreach(var pair in extentsPairs)
+		{
+			verts.Add(pair);	
+		}
 	
 		List<Vector3> validVerts = new List<Vector3>();
 		validVerts.Clear();
@@ -246,7 +236,7 @@ public class PlayerView : MonoBehaviour
 					{
 						
 						Debug.DrawRay(this.transform.position + new Vector3(0.0f, 0.0f, -2.0f), newDirection  + new Vector3(0.0f, 0.0f, -2.0f), Color.yellow);
-						//validVerts.Add(maxPosition);
+						validVerts.Add(maxPosition);
 					}
 					else
 					{
@@ -273,6 +263,8 @@ public class PlayerView : MonoBehaviour
 		foreach(Vector3 vert in validVerts)
 		{
 			Vector3 directionToVert = vert - this.transform.position;
+			
+			
 			
 			OccluderVector newOccluder = new OccluderVector();
 			newOccluder.vec = vert;
@@ -307,6 +299,35 @@ public class PlayerView : MonoBehaviour
 		}
 		
 		return occluders;
+	}
+	
+	private List<VectorOffsetPair> GetExtents()
+	{
+		List<VectorOffsetPair> verts = new List<VectorOffsetPair>();
+		
+		VectorOffsetPair tlPair = new VectorOffsetPair();
+		VectorOffsetPair blPair = new VectorOffsetPair();
+		VectorOffsetPair trPair = new VectorOffsetPair();
+		VectorOffsetPair brPair = new VectorOffsetPair();
+		
+		float extentsVal = Mathf.Abs(m_viewCollider.radius * Mathf.Cos(Mathf.PI / 4));
+		
+		tlPair.vec = transform.position + new Vector3(-extentsVal, extentsVal, 0.0f);
+		blPair.vec = transform.position + new Vector3(-extentsVal, -extentsVal, 0.0f);
+		trPair.vec = transform.position + new Vector3(extentsVal, extentsVal, 0.0f);
+		brPair.vec = transform.position + new Vector3(extentsVal, -extentsVal, 0.0f);
+		
+		tlPair.offsetVec = Vector3.zero;
+		blPair.offsetVec = Vector3.zero;
+		trPair.offsetVec = Vector3.zero;
+		brPair.offsetVec = Vector3.zero;
+		
+		verts.Add(tlPair);
+		verts.Add(blPair);
+		verts.Add(trPair);
+		verts.Add(brPair);
+	
+		return verts;
 	}
 			
 	private static int OccluderComparison(OccluderVector v1, OccluderVector v2)

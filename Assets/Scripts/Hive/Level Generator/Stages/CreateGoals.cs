@@ -41,35 +41,57 @@ public class CreateGoals : IGeneratorStage
 		step = Mathf.Min(m_level.Width - 1, m_level.Height - 1);
 		bool foundGoal = false;
 		
-		while(step > 0 && !foundGoal)
-		{
-			if(!m_level.TileBlocked(step, step))
-			{
-				foundGoal = true;
-				m_level.GoalItemSpawnPoint = new Vector2(step, step);
-				GoalItemObject itemObject = new GoalItemObject();
-				itemObject.AgentPrefab = m_level.GoalItemPrefab;
-				itemObject.Position = new Vector3(step, step, -1);
-				m_level.AddLevelObject(itemObject);
-			}
-			
-			step--;	
-		} 
+		LevelObjectDatabase database = GameObject.FindObjectOfType(typeof(LevelObjectDatabase)) as LevelObjectDatabase;
 		
-		step = Mathf.Min(m_level.Width - 1, m_level.Height - 1);
-		foundGoal = false;
-		while(step > 0 && !foundGoal)
+		if(database != null)
 		{
-			if(!m_level.TileBlocked((int)m_level.PlayerSpawnPoint.x + 1, step))
+			
+			while(step > 0 && !foundGoal)
 			{
-				foundGoal = true;
-				GoalAreaObject areaObject = new GoalAreaObject();
-				areaObject.AgentPrefab = m_level.GoalAreaPrefab;
-				areaObject.Position = new Vector3(m_level.PlayerSpawnPoint.x + 0.5f, step + 0.5f, -1);
-				m_level.AddLevelObject(areaObject);
+				if(!m_level.TileBlocked(step, step))
+				{
+					foundGoal = true;
+					m_level.GoalItemSpawnPoint = new Vector2(step, step);
+					LevelObject itemObject = database.GetObject("goalitem");
+					if(itemObject != null)
+					{
+						itemObject.Position = new Vector3(step, step, -1);
+						m_level.AddLevelObject(itemObject);
+					}
+				}
+				
+				step--;	
+			} 
+			
+			step = Mathf.Min(m_level.Width - 1, m_level.Height - 1);
+			foundGoal = false;
+			while(step > 0 && !foundGoal)
+			{
+				if(!m_level.TileBlocked((int)m_level.PlayerSpawnPoint.x + 1, step))
+				{
+					foundGoal = true;
+					LevelObject areaObject = database.GetObject("goalarea");
+					if(areaObject != null)
+					{
+						areaObject.Position = new Vector3(m_level.PlayerSpawnPoint.x + 0.5f, step + 0.5f, -1);
+						m_level.AddLevelObject(areaObject);
+					}
+					
+				}
+				step--;
+			}
+		
+		
+			for(int i = 0; i < 10; i++)
+			{
+				Room currentRoom = m_level.Rooms[i];
+				
+				LevelObject npcObject = database.GetObject("npc");
+				npcObject.Position = new Vector3(currentRoom.startX + 0.5f, currentRoom.startY + 0.5f, 0.0f);
+				m_level.AddLevelObject(npcObject);
+				
 				
 			}
-			step--;
 		}
 	}
 	

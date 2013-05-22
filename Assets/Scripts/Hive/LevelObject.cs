@@ -13,7 +13,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [Serializable]
-public class LevelObject : ICloneable
+public sealed class LevelObject : ICloneable
 {
 	public LevelObject(string objectName)
 	{
@@ -142,17 +142,17 @@ public class LevelObject : ICloneable
 				}
 				else
 				{
-					Debug.LogError("Prefab for LevelObject \"" + this.GetType().ToString() + "\" does not contain a NetworkView component. Admin/Agent objects will not synchronise");
+					Debug.LogWarning("Prefab for LevelObject \"" + this.GetType().ToString() + "\" does not contain a NetworkView component. Admin/Agent objects will not synchronise");
 				}
 			}
 			else
 			{
-				Debug.LogError("Prefab for LevelObject \"" + this.GetType().ToString() + "\" does not contain script \"" + SynchronisationScript + "\". Admin/Agent objects will not synchronise");	
+				Debug.LogWarning("Prefab for LevelObject \"" + this.GetType().ToString() + "\" does not contain script \"" + SynchronisationScript + "\". Admin/Agent objects will not synchronise");	
 			}
 		}
 		else
 		{
-			Debug.LogError("LevelObject \"" + this.GetType().ToString() + "\" has no SynchronisationScript. Admin/Agent objects will not synchronise");	
+			Debug.LogWarning("LevelObject \"" + this.GetType().ToString() + "\" has no SynchronisationScript. Admin/Agent objects will not synchronise");	
 		}
 	}
 	
@@ -177,10 +177,10 @@ public class LevelObject : ICloneable
 	public static int MaxID = 0;
 	
 	[SerializeField]
-	protected int m_ID = -1;
+	private int m_ID = -1;
 	
 	[SerializeField]
-	protected GameObject m_instantiatedPrefab = null;
+	private GameObject m_instantiatedPrefab = null;
 	
 	[SerializeField]
 	private string m_name = string.Empty;

@@ -93,8 +93,6 @@ public class Door : SensorTarget
 		}
 	}
 	
-	
-	
 	public int m_activationCount = 0;
 	public float m_openProgress = 0.0f;
 	public bool m_opening = false;

@@ -111,8 +111,6 @@ public class SearchDropdown
 			GUI.color = newColor;
 			GUIStyle labelStyle = "Label";
 			
-			Rect previousRect = m_dropdownRect;
-			
 			int currentIndex = 0;
 			foreach(var currentString in m_availableStrings)
 			{
@@ -139,12 +137,12 @@ public class SearchDropdown
 		}
 	} 
 	
-	private static string m_lastString 		= string.Empty;
 	private static Rect m_dropdownRect;
-	private static string m_controlID 		= "dropdown";
-	private static float m_overlayAlpha 	= 0.8f;
-	private static float m_overlayTextAlpha = 0.5f;
-	private static int m_selectedIndex = 0;
-	private static List<string> m_availableStrings = new List<string>();
-	private static bool m_showDropDown = false;
+	private static string m_lastString 				= string.Empty;
+	private static string m_controlID 				= "dropdown";
+	private static float m_overlayAlpha 			= 0.8f;
+	private static float m_overlayTextAlpha 		= 0.5f;
+	private static int m_selectedIndex 				= 0;
+	private static List<string> m_availableStrings 	= new List<string>();
+	private static bool m_showDropDown 				= false;
 }

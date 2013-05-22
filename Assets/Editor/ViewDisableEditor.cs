@@ -84,7 +84,6 @@ public class ViewDisableEditor : Editor
 		
 	}
 	
-	private string m_object = string.Empty;
 	private bool m_showAgentFoldout = false;
 	private bool m_showAdminFoldout = false;
 }
