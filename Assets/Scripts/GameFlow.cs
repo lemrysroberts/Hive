@@ -58,6 +58,11 @@ public class GameFlow
 		Application.LoadLevel("Menu");
 	}
 	
+	public void GameLost()
+	{
+		Application.LoadLevel("Menu");
+	}
+	
 	private void BeginAgent()
 	{
 	}

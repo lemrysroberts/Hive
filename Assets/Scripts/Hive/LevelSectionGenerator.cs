@@ -13,11 +13,20 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 	// TODO: Why is this a separate function from BuildColliders :/
 	public void RebuildColliders()
 	{
-		BuildColliders();
+		if(GameFlow.Instance.View == WorldView.Agent)
+		{
+			BuildColliders();
+		}
+		else
+		{
+			Debug.Log("Admin view selected. Skipping collider generation.");
+		}
 	}
 	
 	private void BuildMeshes()
 	{
+		
+		
 		// Initialise the tiles vectors if they're null
 		if(m_tileIDs == null)	
 		{
@@ -45,63 +54,29 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			meshObject.transform.position = m_origin;	
 		}
 		
-		// Build a list of (point, tile-ID) pairs for tile batching.
-		List<TilePointPair> pairs = new List<TilePointPair>();
-		
-		for(int x = 0; x < m_sectionSize; x++)
+		if(GameFlow.Instance.View == WorldView.Admin)
 		{
-			for(int y = 0; y < m_sectionSize; y++)
-			{
-				TilePointPair pair = null;
-				foreach(var currentPair in pairs)
-				{
-					if(currentPair.m_tileID == m_tileIDs[x * m_sectionSize + y])
-					{
-						pair = currentPair;
-						break;
-					}
-				}
-				
-				if(pair == null)
-				{
-					pair = new TilePointPair();
-					pair.m_tileID = m_tileIDs[x * m_sectionSize + y];
-					pairs.Add(pair);
-				}
-				
-				pair.m_points.Add(new Vector2(x, y));	
-			}
-		}
-		
-		// Build the tile meshes
-		
-		foreach(var pair in pairs)
-		{
-			Tile targetTile = TileManager.Instance.GetTile(pair.m_tileID);
-			
-			if(targetTile == null)
-				continue;
-			
-			Material wallMaterial = targetTile.GetMaterial();
-			
+			List<Edge> edges = GetEdges();
 			Mesh newMesh = new Mesh();
+				
+			Vector3[] vertices = new Vector3[edges.Count * 4];
+			Vector2[] uvs = new Vector2[edges.Count * 4];
+			int[] triangles = new int[edges.Count * 6];
 			
-			Vector3[] vertices = new Vector3[pair.m_points.Count * 4];
-			Vector2[] uvs = new Vector2[pair.m_points.Count * 4];
-			int[] triangles = new int[pair.m_points.Count * 6];
+			float wallWidth = 0.05f;
 			
 			int id = 0;
-			foreach(var point in pair.m_points)
+			foreach(var edge in edges)
 			{
-				vertices[id * 4] = point;
-				vertices[id * 4 + 1] = point + new Vector2(0.0f, 1.0f);
-				vertices[id * 4 + 2] = point + new Vector2(1.0f, 0.0f);
-				vertices[id * 4 + 3] = point + new Vector2(1.0f, 1.0f);
+				vertices[id * 4] = new Vector3(edge.Start.x - wallWidth, edge.Start.y - wallWidth, 0.0f);
+				vertices[id * 4 + 1] = new Vector3(edge.Start.x - wallWidth, edge.End.y + wallWidth, 0.0f);
+				vertices[id * 4 + 2] = new Vector3(edge.End.x + wallWidth, edge.Start.y - wallWidth, 0.0f);
+				vertices[id * 4 + 3] = new Vector3(edge.End.x + wallWidth, edge.End.y + wallWidth, 0.0f);
 				
-				uvs[id * 4] = new Vector2(0.0f, 0.0f);
-				uvs[id * 4 + 1] = new Vector2(0.0f, 1.0f);
-				uvs[id * 4 + 2] = new Vector2(1.0f, 0.0f);
-				uvs[id * 4 + 3] = new Vector2(1.0f, 1.0f);
+				uvs[id * 4] = (Vector2)(vertices[id * 4]);
+				uvs[id * 4 + 1] = (Vector2)(vertices[id * 4 + 1]);
+				uvs[id * 4 + 2] = (Vector2)(vertices[id * 4 + 2]);
+				uvs[id * 4 + 3] = (Vector2)(vertices[id * 4 + 3]);
 				
 				triangles[id * 6] = id * 4;
 				triangles[id * 6 + 1] = id * 4 + 1;
@@ -119,18 +94,105 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			
 			GameObject newObject 			= new GameObject();
 			newObject.transform.parent 		= meshObject.transform;
-			newObject.transform.position 	= meshObject.transform.position + new Vector3(0.0f, 0.0f, -targetTile.Elevation);
-			newObject.name					= targetTile.TextureID;
+			newObject.transform.position 	= meshObject.transform.position;
 			
-			AnimatedTileMesh tileMesh 	= newObject.AddComponent<AnimatedTileMesh>();
 			MeshRenderer renderer 		= newObject.AddComponent<MeshRenderer>();
 			MeshFilter filter 			= newObject.AddComponent<MeshFilter>();
 			
 			newMesh.Optimize();						
 			filter.mesh 			= newMesh;
-			renderer.material 		= wallMaterial;
-			tileMesh.SpriteDataPath = targetTile.SpriteDataPath;
-			tileMesh.AnimationSpeed = targetTile.AnimationSpeed;
+			renderer.sharedMaterial = AssetHelper.Instance.GetAsset<Material>("Materials/AdminWall") as Material;
+		}
+		else
+		{
+			
+			// Build a list of (point, tile-ID) pairs for tile batching.
+			List<TilePointPair> pairs = new List<TilePointPair>();
+			
+			for(int x = 0; x < m_sectionSize; x++)
+			{
+				for(int y = 0; y < m_sectionSize; y++)
+				{
+					TilePointPair pair = null;
+					foreach(var currentPair in pairs)
+					{
+						if(currentPair.m_tileID == m_tileIDs[x * m_sectionSize + y])
+						{
+							pair = currentPair;
+							break;
+						}
+					}
+					
+					if(pair == null)
+					{
+						pair = new TilePointPair();
+						pair.m_tileID = m_tileIDs[x * m_sectionSize + y];
+						pairs.Add(pair);
+					}
+					
+					pair.m_points.Add(new Vector2(x, y));	
+				}
+			}
+			
+			// Build the tile meshes
+			
+			foreach(var pair in pairs)
+			{
+				Tile targetTile = TileManager.Instance.GetTile(pair.m_tileID);
+				
+				if(targetTile == null)
+					continue;
+				
+				Material wallMaterial = targetTile.GetMaterial();
+				
+				Mesh newMesh = new Mesh();
+				
+				Vector3[] vertices = new Vector3[pair.m_points.Count * 4];
+				Vector2[] uvs = new Vector2[pair.m_points.Count * 4];
+				int[] triangles = new int[pair.m_points.Count * 6];
+				
+				int id = 0;
+				foreach(var point in pair.m_points)
+				{
+					vertices[id * 4] = point;
+					vertices[id * 4 + 1] = point + new Vector2(0.0f, 1.0f);
+					vertices[id * 4 + 2] = point + new Vector2(1.0f, 0.0f);
+					vertices[id * 4 + 3] = point + new Vector2(1.0f, 1.0f);
+					
+					uvs[id * 4] = new Vector2(0.0f, 0.0f);
+					uvs[id * 4 + 1] = new Vector2(0.0f, 1.0f);
+					uvs[id * 4 + 2] = new Vector2(1.0f, 0.0f);
+					uvs[id * 4 + 3] = new Vector2(1.0f, 1.0f);
+					
+					triangles[id * 6] = id * 4;
+					triangles[id * 6 + 1] = id * 4 + 1;
+					triangles[id * 6 + 2] = id * 4 + 2;
+					
+					triangles[id * 6 + 3] = id * 4 + 2;
+					triangles[id * 6 + 4] = id * 4 + 1;
+					triangles[id * 6 + 5] = id * 4 + 3;
+					id++;
+				}
+				
+				newMesh.vertices = vertices;
+				newMesh.triangles = triangles;
+				newMesh.uv = uvs;
+				
+				GameObject newObject 			= new GameObject();
+				newObject.transform.parent 		= meshObject.transform;
+				newObject.transform.position 	= meshObject.transform.position + new Vector3(0.0f, 0.0f, -targetTile.Elevation);
+				newObject.name					= targetTile.TextureID;
+				
+				AnimatedTileMesh tileMesh 	= newObject.AddComponent<AnimatedTileMesh>();
+				MeshRenderer renderer 		= newObject.AddComponent<MeshRenderer>();
+				MeshFilter filter 			= newObject.AddComponent<MeshFilter>();
+				
+				newMesh.Optimize();						
+				filter.mesh 			= newMesh;
+				renderer.material 		= wallMaterial;
+				tileMesh.SpriteDataPath = targetTile.SpriteDataPath;
+				tileMesh.AnimationSpeed = targetTile.AnimationSpeed;
+			}
 		}
 	}
 	
@@ -246,8 +308,6 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			colliderObject.transform.parent = transform;
 			colliderObject.transform.position = m_origin;	
 		}
-		
-		Debug.Log("Generated " + walls.Count + " walls");
 		
 		foreach(var wall in walls)
 		{

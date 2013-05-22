@@ -21,12 +21,8 @@ public class ViewDisableEditor : Editor
 			
 			if(newBehaviour != null)
 			{
-				
-				//Debug.Log(newBehaviour.GetComponents().Length);
 				Debug.Log(newBehaviour.GetType());
 				viewDisable.AgentDisabledItems.Add(newBehaviour);	
-				
-				
 			}
 			
 			List<MonoBehaviour> toDelete = new List<MonoBehaviour>();

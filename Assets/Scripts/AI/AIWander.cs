@@ -1,17 +1,50 @@
 using UnityEngine;
 using System.Collections;
 
-public class AIWander : MonoBehaviour 
+public class AIWander : MonoBehaviour, IDetectionListener
 {
-	
 	private enum State
 	{
 		Idle,
 		Wandering,
+		RouteToDetection,
+		RouteToDetectionArea,
 		Finished
 	}
 	
+	public void DetectionMade(Vector3 detectionPoint)
+	{
+		m_lastDetectionPoint = detectionPoint;
+		
+		if(m_state != State.RouteToDetection)
+		{
+			m_state = State.RouteToDetection;	
+		}
+	}
 	
+	public void DetectionLost()
+	{
+			
+	}
+	
+	public void OnTriggerEnter(Collider other)
+	{
+		Player player = other.GetComponent<Player>();
+		if(player != null)
+		{
+			m_collidedPlayer = player;		
+			Debug.Log("Player found");
+		}
+	}
+	
+	public void OnTriggerExit(Collider other)
+	{
+		Player player = other.GetComponent<Player>();
+		if(player != null)
+		{
+			m_collidedPlayer = null;		
+		}
+	}
 	
 	// Use this for initialization
 	void Start () 
@@ -51,6 +84,11 @@ public class AIWander : MonoBehaviour
 			return;	
 		}
 		
+		if(m_collidedPlayer != null)
+		{
+			m_collidedPlayer.Health -= m_collidedPlayer.DamageRate;	
+		}
+		
 		switch(m_state)
 		{
 			case State.Idle:
@@ -62,7 +100,7 @@ public class AIWander : MonoBehaviour
 				int iteration = 0;
 				while(targetNode == currentNode || targetNode == null && iteration != bailout)
 				{
-				return;
+					return;
 					targetNode = m_level.AIGraph.GetRandomNode();
 					iteration++;
 				}
@@ -98,6 +136,23 @@ public class AIWander : MonoBehaviour
 			
 				break;
 			}
+			case State.RouteToDetection:
+			{
+				
+				Vector2 direction = (Vector2)m_lastDetectionPoint - (Vector2)transform.position;
+				
+				if(direction.magnitude < 0.1f)
+				{
+					m_state = State.Idle;
+					break;
+				}
+			
+				direction.Normalize();
+			
+				transform.position += (Vector3)(direction * MoveSpeed);
+			
+				break;
+			}
 		}
 	}
 	
@@ -122,4 +177,6 @@ public class AIWander : MonoBehaviour
 	private State m_state = State.Idle;
 	private Route m_currentRoute = null;
 	private bool m_stuck = false;
+	private Vector3 m_lastDetectionPoint = Vector3.zero;
+	private Player m_collidedPlayer = null;
 }

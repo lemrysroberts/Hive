@@ -28,7 +28,10 @@ public class LevelEditor : Editor
 			level.SectionCountX = EditorGUILayout.IntField("X", level.SectionCountX);
 			level.SectionCountY = EditorGUILayout.IntField("Y", level.SectionCountY);
 		}
-
+		
+		level.NPCCount = EditorGUILayout.IntField("NPC Count", level.NPCCount);
+		level.m_npcObject = EditorGUILayout.ObjectField("NPC Object", level.m_npcObject, typeof(GameObject), false) as GameObject;
+		
 		if(GUILayout.Button("Rebuild all sections"))
 		{
 			level.RebuildAllSections();

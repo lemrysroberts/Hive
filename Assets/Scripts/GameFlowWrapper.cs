@@ -21,16 +21,18 @@ public class GameFlowWrapper : MonoBehaviour
 	
 	void OnLevelWasLoaded(int levelID)
 	{
+		if(GameFlow.Instance.View == WorldView.Admin)
+		{
+			TileManager.TileSetFilename = "tilesetalt";	
+		}
+		
 		Level level = FindObjectOfType(typeof(Level)) as Level;
 		if(level != null)
 		{
 			level.Seed = System.DateTime.Now.Millisecond;
-			//level.Load(GameFlow.Instance.CurrentLevel);
 			LevelGenerator generator = new LevelGenerator(level);
 			generator.GenerateLevel(level.Seed, false);
-			Debug.Log("Loading: " + GameFlow.Instance.CurrentLevel);	
 		}
-		
 	}
 	
 	private void OnPlayerConnected()
@@ -40,7 +42,7 @@ public class GameFlowWrapper : MonoBehaviour
 		{
 			Level level = FindObjectOfType(typeof(Level)) as Level;
 			level.SerialiseToNetwork(GameFlow.Instance.CurrentLevel);
-			level.SyncNPCs();
+			level.SerialiseLevelObjectIDs();
 		}
 	}
 	
