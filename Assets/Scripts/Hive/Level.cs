@@ -354,12 +354,6 @@ public partial class Level : MonoBehaviour
 		set { m_goalAreaPrefab = value; }
 	}
 	
-	public GameObject CameraPrefab
-	{
-		get { return m_cameraPrefab; }
-		set { m_cameraPrefab = value; }
-	}
-	
 	public Vector2 PlayerSpawnPoint
 	{
 		get { return m_playerSpawnPoint; }
@@ -514,9 +508,6 @@ public partial class Level : MonoBehaviour
 	
 	[SerializeField]
 	private GameObject m_goalAreaPrefab = null;
-	
-	[SerializeField]
-	private GameObject m_cameraPrefab = null;
 	
 	[SerializeField]
 	private Vector2 m_playerSpawnPoint;
