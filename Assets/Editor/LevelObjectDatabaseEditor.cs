@@ -8,7 +8,7 @@ public class LevelObjectDatabaseEditor : EditorWindow
 	/// <summary>
 	/// Shows the editor window.
 	/// </summary>
-	[MenuItem("Optimism/LevelObject Database")]
+	[MenuItem("Optimism/Level-Object Database")]
 	public static void ShowWindow()
 	{
 		EditorWindow.GetWindow(typeof(LevelObjectDatabaseEditor));
@@ -16,7 +16,7 @@ public class LevelObjectDatabaseEditor : EditorWindow
 	
 	void OnEnable()
 	{
-		m_errorStyle.normal.textColor = Color.red;
+		m_errorStyle.normal.textColor = Color.red; 
 		
 	}
 	
@@ -177,7 +177,6 @@ public class LevelObjectDatabaseEditor : EditorWindow
 	private Vector2 m_scrollPos	= Vector2.zero;
 	private string m_lastError 	= string.Empty; 
 	private GUIStyle m_errorStyle = new GUIStyle(); 
-	private GUIStyle m_listHighlightStyle = new GUIStyle();
 	private const int m_statusBarHeight = 20;
 	private const int m_addBoxHeight = 30;
 	private string m_newObjectName = string.Empty;
