@@ -108,15 +108,6 @@ public class CreateGoals : IGeneratorStage
 		
 		if(m_showFoldout)
 		{
-			GUILayout.BeginHorizontal();
-			GUILayout.Label("Goal Item Prefab", GUILayout.Width(130));
-			m_level.GoalItemPrefab = EditorGUILayout.ObjectField(m_level.GoalItemPrefab, typeof(GameObject), false) as GameObject;
-			GUILayout.EndHorizontal();
-			
-			GUILayout.BeginHorizontal();
-				GUILayout.Label("Goal Area Prefab", GUILayout.Width(130));
-			m_level.GoalAreaPrefab = EditorGUILayout.ObjectField(m_level.GoalAreaPrefab, typeof(GameObject), false) as GameObject;
-			GUILayout.EndHorizontal();
 		}
 #endif
 	}

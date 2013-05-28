@@ -1,11 +1,10 @@
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
-public class AdminDoor : MonoBehaviour 
+public class AdminDoor : LevelNetworkCommandIssuer
 {
 	public Material OpenMaterial;
 	public Material ClosedMaterial;
-		
 		
 	public Door m_door = null;
 	public MeshRenderer m_renderer = null;
@@ -33,9 +32,24 @@ public class AdminDoor : MonoBehaviour
 				m_renderer.material = ClosedMaterial;
 			}
 		}
-
+	}
+	
+	public override List<string> GetCommandNames()
+	{
+		List<string> commands = new List<string>();
+		
+		commands.Add("Open Door");
+		
+		return commands;
+	}
+	
+	public override void IssueCommand(string command)
+	{
+		if(command == "Open Door")
+		{
+			m_door.m_other = true;
+		}
 	}
 			
 	private bool m_lastOpening = false;
-	private bool m_lastOpen = false;
 }

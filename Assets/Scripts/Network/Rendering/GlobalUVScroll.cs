@@ -8,7 +8,7 @@ public class GlobalUVScroll : MonoBehaviour
 	
 	// Update is called once per frame
 	float current = 0.0f;
-	void Update () 
+	void FixedUpdate () 
 	{
 		current += ScrollSpeed;
 		Vector4 texOffset = new Vector4(current, current, 0.0f, 0.0f);

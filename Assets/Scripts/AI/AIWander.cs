@@ -100,7 +100,6 @@ public class AIWander : MonoBehaviour, IDetectionListener
 				int iteration = 0;
 				while(targetNode == currentNode || targetNode == null && iteration != bailout)
 				{
-					return;
 					targetNode = m_level.AIGraph.GetRandomNode();
 					iteration++;
 				}

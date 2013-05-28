@@ -16,13 +16,19 @@ public class MiscInfo : MonoBehaviour
 	{
 		if(Input.GetMouseButtonUp(0))
 		{
-			RaycastHit hit;
         	Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  
 			m_lastRay = ray;
-        	if (Physics.Raycast(ray, out hit, 100.0f, HitLayers.value)) 
+			RaycastHit[] info = Physics.RaycastAll(ray, 100.0f);
+			
+			foreach(var currentHit in info)
 			{
-				m_hitObject = hit.collider.gameObject;
-       		}
+				if(currentHit.collider.gameObject.GetComponent<LevelNetworkNode>() != null)
+				{
+					m_hitObject = currentHit.collider.gameObject;
+					break;
+				}
+			}
+			
 			
 		}
 		
@@ -49,14 +55,14 @@ public class MiscInfo : MonoBehaviour
 			GUILayout.BeginArea(new Rect(point.x + m_objectOffset.x, (Screen.height - point.y) + m_objectOffset.y, 200.0f, 200.0f), (GUIStyle)("Box"));
 			GUILayout.Box(m_hitObject.name);
 			
-			Component[] components = m_hitObject.GetComponents<Component>();
+			
 			
 			GUILayout.BeginVertical((GUIStyle)("Box"));
 			m_scrollPos = GUILayout.BeginScrollView(m_scrollPos);
 			
-			foreach(var current in components)
+			foreach(var current in m_hitObject.GetComponent<LevelNetworkNode>().FunctionNames)
 			{
-				GUILayout.Label(current.GetType().ToString());	
+				GUILayout.Label(current);	
 			}
 			
 			GUILayout.EndScrollView();

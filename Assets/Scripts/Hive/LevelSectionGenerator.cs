@@ -25,8 +25,6 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 	
 	private void BuildMeshes()
 	{
-		
-		
 		// Initialise the tiles vectors if they're null
 		if(m_tileIDs == null)	
 		{

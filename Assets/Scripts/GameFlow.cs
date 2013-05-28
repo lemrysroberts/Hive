@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,8 +13,10 @@ public enum WorldView
 	Admin
 }
 
+[Serializable]
 public class GameFlow
 {
+	[SerializeField]
 	public WorldView View = WorldView.Agent;
 	
 	public string CurrentLevel

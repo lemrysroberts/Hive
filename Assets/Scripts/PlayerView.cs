@@ -146,10 +146,6 @@ public class PlayerView : MonoBehaviour
 	/// </returns>
 	private List<OccluderVector> GetOccluders()
 	{
-		Vector3 cameraDirection = Vector3.up;
-		float viewDistance = m_viewCollider.radius;
-		
-		
 		List<VectorOffsetPair> verts = new List<VectorOffsetPair>();
 		
 		// Loop through each collider and add its vertices to the list
@@ -161,15 +157,7 @@ public class PlayerView : MonoBehaviour
 				Vector3 cameraToVertex = worldPos - transform.position;
 				
 				if(ShowCandidateRays)	Debug.DrawRay (this.transform.position  + new Vector3(0.0f, 0.0f, -4.0f), cameraToVertex , Color.magenta);
-				
-				// This works out the magnitude of the vector if it were to reach the max range.
-				// TODO: This could be removed if the camera area was a correct sweep rather than a triangle. The magnitude of the vector would just be
-				//		 tested against the range. The difficulty is the lateral sweep becomes harder over a curve.
-				float cameraDirVertexDot = Vector3.Dot(cameraDirection, Vector3.Normalize(cameraToVertex));
-				float angle = Mathf.Acos(cameraDirVertexDot);
-				float mag = (cameraToVertex).magnitude;
-				
-				float thing = mag * cameraDirVertexDot;
+		
 				
 				//if(thing < viewDistance)
 				{
@@ -225,13 +213,11 @@ public class PlayerView : MonoBehaviour
 					directionToVert = vert.offsetVec - this.transform.position;
 					directionToVert.z = 0.0f;
 				
-					float cosTheta = Vector3.Dot(cameraDirection, Vector3.Normalize(directionToVert));
 					float maxMagnitude = m_viewCollider.radius;//viewDistance / cosTheta;
 					
 					
 					Vector3 newDirection = Vector3.Normalize(directionToVert) * maxMagnitude ;
 					Vector3 maxPosition = transform.position + (newDirection);
-					float mag = newDirection.magnitude;
 					if(!Physics.Raycast(this.transform.position, newDirection, out hitInfo, newDirection.magnitude, ~collisionLayer))
 					{
 						

@@ -25,6 +25,24 @@ public class DEBUG_KeyMove : MonoBehaviour {
 			m_dragging = false;	
 			Debug.Log("Mouse up");
 		}
+		
+		if(m_dragging && Input.GetMouseButton(2))
+		{
+			Vector2 newPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);	
+			
+			Vector3 camPosition = Camera.mainCamera.ScreenToWorldPoint(newPosition);
+			
+			Vector3 newPos =  transform.position - ( camPosition - m_lastMousePos);
+			transform.position =  new Vector3(newPos.x, newPos.y, transform.position.z);
+			
+			m_lastMousePos = Camera.mainCamera.ScreenToWorldPoint(newPosition);
+		}
+		
+		m_zoom -= Input.GetAxis("Mouse ScrollWheel") * ZoomSpeed;
+		m_zoom = Mathf.Min(m_zoom, 50.0f);
+		m_zoom = Mathf.Max(m_zoom, 9.0f);
+		
+		camera.orthographicSize =  m_zoom;
 	}
 	
 	// Update is called once per frame
@@ -53,23 +71,7 @@ public class DEBUG_KeyMove : MonoBehaviour {
 	*/	
 	
 	
-		if(m_dragging && Input.GetMouseButton(2))
-		{
-			Vector2 newPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);	
-			
-			Vector3 camPosition = Camera.mainCamera.ScreenToWorldPoint(newPosition);
-			
-			Vector3 newPos =  transform.position - ( camPosition - m_lastMousePos);
-			transform.position =  new Vector3(newPos.x, newPos.y, transform.position.z);
-			
-			m_lastMousePos = Camera.mainCamera.ScreenToWorldPoint(newPosition);
-		}
 		
-		m_zoom -= Input.GetAxis("Mouse ScrollWheel") * ZoomSpeed;
-		m_zoom = Mathf.Min(m_zoom, 50.0f);
-		m_zoom = Mathf.Max(m_zoom, 9.0f);
-		
-		camera.orthographicSize =  m_zoom;
 	}
 	
 	private Vector3 m_lastMousePos = new Vector2(0.0f, 0.0f);

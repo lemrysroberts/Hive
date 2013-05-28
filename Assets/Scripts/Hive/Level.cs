@@ -31,54 +31,15 @@ public partial class Level : MonoBehaviour
 		{
 			RebuildAIGraph();	
 		}
-		
-		// TODO: make a function that handles all of this bullshit. 
-		//		 There are loads of places in which I search for a child, create it if it's missing, then clear its children.
-		GameObject npcsObject = null;
-		for(int childID = 0; childID < transform.GetChildCount() && npcsObject == null; childID++)
-		{
-			Transform child = transform.GetChild(childID);
-			if(child.name == "NPCs")
-			{
-				npcsObject = child.gameObject;	
-			}
-		}
-		
-		if(npcsObject == null)
-		{
-			npcsObject = new GameObject("NPCs");
-			npcsObject.transform.parent = transform;
-		}
-		
-		while(npcsObject.transform.GetChildCount() > 0)
-		{
-			DestroyImmediate(npcsObject.transform.GetChild(0).gameObject);
-		}
-		return;
-		Player player = FindObjectOfType(typeof(Player)) as Player;
-		for(int i = 0; i < m_npcCount; i++)
-		{
-			GameObject newObject = GameObject.Instantiate(m_npcObject) as GameObject;
-			
-			// Abuse the AI graph for open nodes.
-			float z = newObject.transform.position.z;
-			newObject.transform.position = (Vector3)m_graph.GetRandomNode().NodePosition + new Vector3(0.0f, 0.0f, z);
-			
-			newObject.transform.parent = npcsObject.transform;
-			newObject.tag = "Entity";
-			AIDetection detection = newObject.GetComponent<AIDetection>();
-			if(detection != null && player != null)
-			{
-				detection.Target = player.gameObject;	
-			}
-		}
 	}
-	
+
 	/// <summary>
 	/// Recreates the level-sections.
 	/// </summary>
 	public void Reload(bool fullReload)
 	{
+		LevelNetwork.Instance.Reset();
+		
 		DeleteSections(fullReload);
 		Transform sectionsTransform = CreateSectionsObject().transform;
 		
@@ -133,7 +94,7 @@ public partial class Level : MonoBehaviour
 					
 					collider.isTrigger = true;
 					collider.center = new Vector3(m_sectionSize / 2, m_sectionSize / 2, 0.0f);
-					collider.size 	= new Vector3(m_sectionSize, m_sectionSize, 10.0f); // The 5.0f is fairly arbitrary
+					collider.size 	= new Vector3(m_sectionSize, m_sectionSize, 10.0f); // The 10.0f is fairly arbitrary
 					
 					section.Origin = new Vector2(x * m_sectionSize, y * m_sectionSize);
 					section.SectionSize = m_sectionSize;
@@ -156,6 +117,16 @@ public partial class Level : MonoBehaviour
 		foreach(var section in m_sections)
 		{
 			section.RebuildData();
+		}
+		
+		// TODO: Split off the child deletion gubbins in GetLevelChild, so these calls are so inscrutable.
+		GetLevelChild("AdminRooms", true);
+		GetLevelChild("AdminCorridors", true);
+		
+		if(GameFlow.Instance.View == WorldView.Admin)
+		{
+			RebuildAdminRooms();
+			RebuildAdminCorridors();
 		}
 	}
 	
@@ -204,6 +175,44 @@ public partial class Level : MonoBehaviour
 		{
 			section.RebuildColliders();
 		}
+	}
+	
+	public void SetNetworkViewEnabled(bool enabled)
+	{
+		GameObject networkObject = GetNetworkParentObject(false);
+		networkObject.SetActive(enabled);
+	}
+	
+	public GameObject GetNetworkParentObject(bool deleteChildren)
+	{
+		const string networkStringID = "LevelNetwork";
+		GameObject networkObject = null;
+		
+		for(int childIndex = 0; childIndex < transform.childCount && networkObject == null; childIndex++)
+		{
+			GameObject current = transform.GetChild(childIndex).gameObject;
+			if(current.name == networkStringID)
+			{
+				networkObject = current;	
+			}
+		}
+		
+		if(networkObject == null)
+		{
+			networkObject = new GameObject(networkStringID);	
+			networkObject.transform.parent = transform;
+			networkObject.transform.position += new Vector3(0.0f, 0.0f, -2.0f);
+		}
+		
+		if(deleteChildren)
+		{
+			while(networkObject.transform.GetChildCount() > 0)
+			{
+				DestroyImmediate(networkObject.transform.GetChild(0).gameObject);
+			}
+		}
+		
+		return networkObject;
 	}
 	
 	public bool TileBlocked(int x, int y)
@@ -262,6 +271,34 @@ public partial class Level : MonoBehaviour
 		}
 		
 		return sectionsTransform.gameObject;
+	}
+	
+	private GameObject GetLevelChild(string childName, bool clearChildren)
+	{
+		GameObject childObject = null;
+		
+		for(int childIndex = 0; childIndex < transform.childCount && childObject == null; childIndex++)
+		{
+			GameObject current = transform.GetChild(childIndex).gameObject;
+			if(current.name == childName)
+			{
+				childObject = current;	
+			}
+		}
+		
+		if(childObject == null)
+		{
+			childObject = new GameObject(childName);	
+			childObject.transform.parent = transform;
+			childObject.transform.position += new Vector3(0.0f, 0.0f, 0.0f);
+		}
+		
+		while(childObject.transform.GetChildCount() > 0)
+		{
+			DestroyImmediate(childObject.transform.GetChild(0).gameObject);
+		}
+		
+		return childObject;
 	}
 	
 	private AIGraph BuildAIGraph()
@@ -372,6 +409,119 @@ public partial class Level : MonoBehaviour
 		*/
 	}
 	
+	private void RebuildAdminRooms()
+	{
+		if(m_rooms == null)
+		{
+			return;	
+		}
+		
+		GameObject roomsObject = GetLevelChild("AdminRooms", true);
+		
+		
+		Mesh newMesh = new Mesh();
+		
+		const int triangleVertexCount = 9;
+		
+		Vector3[] vertices = new Vector3[m_rooms.Count * 4];
+		Vector2[] uvs = new Vector2[m_rooms.Count * 4];
+		int[] triangles = new int[m_rooms.Count * triangleVertexCount];
+		
+		int id = 0;
+		foreach(var room in m_rooms)
+		{
+			vertices[id * 4] = new Vector3(room.startX, room.startY, 0.0f);
+			vertices[id * 4 + 1] = new Vector3(room.startX, room.endY, 0.0f);
+			vertices[id * 4 + 2] = new Vector3(room.endX, room.startY, 0.0f);
+			vertices[id * 4 + 3] = new Vector3(room.endX, room.endY, 0.0f);
+			
+			uvs[id * 4] 	= (Vector2)(vertices[id * 4]);
+			uvs[id * 4 + 1] = (Vector2)(vertices[id * 4 + 1]);
+			uvs[id * 4 + 2] = (Vector2)(vertices[id * 4 + 2]);
+			uvs[id * 4 + 3] = (Vector2)(vertices[id * 4 + 3]);
+			
+			triangles[id * triangleVertexCount] = id * 4;
+			triangles[id * triangleVertexCount + 1] = id * 4 + 1;
+			triangles[id * triangleVertexCount + 2] = id * 4 + 2;
+			triangles[id * triangleVertexCount + 3] = id * 4 + 2;
+			triangles[id * triangleVertexCount + 4] = id * 4 + 1;
+			triangles[id * triangleVertexCount + 5] = id * 4 + 3;
+			triangles[id * triangleVertexCount + 6] = id * 4 + 3;
+			triangles[id * triangleVertexCount + 7] = id * 4 + 3;
+			id++;
+		}
+		
+		newMesh.vertices = vertices;
+		newMesh.triangles = triangles;
+		newMesh.uv = uvs;
+		
+		GameObject newObject 			= new GameObject();
+		newObject.transform.parent = roomsObject.transform;
+		
+		MeshRenderer renderer 		= newObject.AddComponent<MeshRenderer>();
+		MeshFilter filter 			= newObject.AddComponent<MeshFilter>();
+		
+		newMesh.Optimize();						
+		filter.mesh 			= newMesh;
+		renderer.sharedMaterial = AssetHelper.Instance.GetAsset<Material>("Materials/AdminRoom") as Material;
+	}
+	
+	private void RebuildAdminCorridors()
+	{
+		if(Corridors == null)
+		{
+			return;	
+		}
+		
+		GameObject corridorsObject = GetLevelChild("AdminCorridors", true);
+		
+		Mesh newMesh = new Mesh();
+		
+		const int triangleVertexCount = 9;
+		
+		Vector3[] vertices = new Vector3[Corridors.Count * 4];
+		Vector2[] uvs = new Vector2[Corridors.Count * 4];
+		int[] triangles = new int[Corridors.Count * triangleVertexCount];
+		
+		int id = 0;
+		foreach(var corridor in Corridors)
+		{
+			vertices[id * 4] = new Vector3(corridor.startX, corridor.startY, 0.0f);
+			vertices[id * 4 + 1] = new Vector3(corridor.startX, corridor.endY, 0.0f);
+			vertices[id * 4 + 2] = new Vector3(corridor.endX, corridor.startY, 0.0f);
+			vertices[id * 4 + 3] = new Vector3(corridor.endX, corridor.endY, 0.0f);
+			
+			uvs[id * 4] 	= (Vector2)(vertices[id * 4]);
+			uvs[id * 4 + 1] = (Vector2)(vertices[id * 4 + 1]);
+			uvs[id * 4 + 2] = (Vector2)(vertices[id * 4 + 2]);
+			uvs[id * 4 + 3] = (Vector2)(vertices[id * 4 + 3]);
+			
+			triangles[id * triangleVertexCount] = id * 4;
+			triangles[id * triangleVertexCount + 1] = id * 4 + 1;
+			triangles[id * triangleVertexCount + 2] = id * 4 + 2;
+			triangles[id * triangleVertexCount + 3] = id * 4 + 2;
+			triangles[id * triangleVertexCount + 4] = id * 4 + 1;
+			triangles[id * triangleVertexCount + 5] = id * 4 + 3;
+			triangles[id * triangleVertexCount + 6] = id * 4 + 3;
+			triangles[id * triangleVertexCount + 7] = id * 4 + 3;
+			id++;
+		}
+		
+		newMesh.vertices = vertices;
+		newMesh.triangles = triangles;
+		newMesh.uv = uvs;
+		
+		GameObject newObject 		= new GameObject();
+		newObject.transform.parent 	= corridorsObject.transform;
+		
+		MeshRenderer renderer 		= newObject.AddComponent<MeshRenderer>();
+		MeshFilter filter 			= newObject.AddComponent<MeshFilter>();
+		
+		newMesh.Optimize();						
+		filter.mesh 			= newMesh;
+		renderer.sharedMaterial = AssetHelper.Instance.GetAsset<Material>("Materials/AdminCorridor") as Material;
+	}
+	
 	// TODO: These don't need to be properties. 
 	public AIGraph AIGraph
 	{
@@ -384,18 +534,6 @@ public partial class Level : MonoBehaviour
 		set { m_rooms = value; }
 	}
 	
-	
-	public GameObject GoalItemPrefab
-	{
-		get { return m_goalItemPrefab; }
-		set { m_goalItemPrefab = value; }
-	}
-	
-	public GameObject GoalAreaPrefab
-	{
-		get { return m_goalAreaPrefab; }
-		set { m_goalAreaPrefab = value; }
-	}
 	
 	public Vector2 PlayerSpawnPoint
 	{
@@ -505,6 +643,16 @@ public partial class Level : MonoBehaviour
 		}
 		
 		GUI.Label(new Rect(0, 0, 300, 300), "Updating " + sections + " sections");	
+		
+		if(GUI.Button(new Rect(0, 400, 150, 30), "Enable node-view"))
+		{
+			SetNetworkViewEnabled(true);	
+		}
+		
+		if(GUI.Button(new Rect(0, 440, 150, 30), "Disable node-view"))
+		{
+			SetNetworkViewEnabled(false);	
+		}
 	}
 	
 	// Editor variables
@@ -549,12 +697,6 @@ public partial class Level : MonoBehaviour
 	
 	// TODO: All these exist to allow the level-generator function. 
 	//		 They need to go somewhere more sensible.
-	[SerializeField]
-	private GameObject m_goalItemPrefab = null;
-	
-	[SerializeField]
-	private GameObject m_goalAreaPrefab = null;
-	
 	[SerializeField]
 	private Vector2 m_playerSpawnPoint;
 	

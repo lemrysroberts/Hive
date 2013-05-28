@@ -125,6 +125,12 @@ public sealed class LevelObject : ICloneable
 		if(SynchronisationScript != null && m_instantiatedPrefab != null)
 		{
 			Type syncScriptType = Type.GetType(SynchronisationScript);
+			if(SynchronisationScript == string.Empty || SynchronisationScript == null)
+			{
+				Debug.LogWarning("No SynchronisationScript set for object \"" + Name + "\".");
+				return;
+			}
+			
 			if(syncScriptType == null) 
 			{
 				Debug.LogError("Failed to find TypeInfo for " + SynchronisationScript);

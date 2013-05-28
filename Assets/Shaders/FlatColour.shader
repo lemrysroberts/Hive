@@ -8,6 +8,10 @@ Shader "Custom/FlatColour"
 	
 	SubShader 
 	{
+		Tags { "RenderType"="Transparent" "Queue"="Transparent"}
+		LOD 200
+		Blend SrcAlpha OneMinusSrcAlpha
+	
 	    Pass 
 	    {
 		//	Blend DstAlpha DstAlpha

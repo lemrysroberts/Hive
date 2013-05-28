@@ -1,7 +1,5 @@
 /// <summary>
-/// Create goals.
-/// 
-/// Placeholder stage for creating simple goals.
+/// Dumps some simple terminal prefabs about the place.
 /// 
 /// </summary>
 

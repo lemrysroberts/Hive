@@ -1,15 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class Terminal : MonoBehaviour {
+public class Terminal : MonoBehaviour 
+{
 
-	// Use this for initialization
-	void Start () {
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
