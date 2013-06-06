@@ -33,7 +33,6 @@ public class AIWander : MonoBehaviour, IDetectionListener
 		if(player != null)
 		{
 			m_collidedPlayer = player;		
-			Debug.Log("Player found");
 		}
 	}
 	
@@ -58,7 +57,6 @@ public class AIWander : MonoBehaviour, IDetectionListener
 		else
 		{
 			m_stuck = m_level.TileBlocked((int)transform.position.x, (int)transform.position.y);
-			Debug.Log("AI Stuck");
 		}
 	}
 	
@@ -72,7 +70,6 @@ public class AIWander : MonoBehaviour, IDetectionListener
 			if(m_level != null)
 			{
 				m_stuck = m_level.TileBlocked((int)transform.position.x, (int)transform.position.y);
-				Debug.Log("AI Stuck");
 			}
 			
 			// Bail for this frame regardless of whether the level was found.

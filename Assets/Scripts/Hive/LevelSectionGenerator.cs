@@ -5,8 +5,23 @@ using UnityEngine;
 
 public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 {
+	public void InitTileData()
+	{
+		// Initialise the tiles vectors if they're null
+		if(m_tileIDs == null)	
+		{
+			m_tileIDs = new List<int>(m_sectionSize * m_sectionSize);
+			
+			for(int i = m_tileIDs.Count; i < m_sectionSize * m_sectionSize; i++)
+			{
+				m_tileIDs.Add(0);
+			}
+		}
+	}
+	
 	public void RebuildData()
 	{
+		InitTileData();
 		BuildMeshes();
 	}
 	
@@ -25,16 +40,7 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 	
 	private void BuildMeshes()
 	{
-		// Initialise the tiles vectors if they're null
-		if(m_tileIDs == null)	
-		{
-			m_tileIDs = new List<int>(m_sectionSize * m_sectionSize);
-			
-			for(int i = m_tileIDs.Count; i < m_sectionSize * m_sectionSize; i++)
-			{
-				m_tileIDs.Add(0);
-			}
-		}
+		
 		
 		// Look for the "meshes" and flush it if found. Otherwise, create it.
 		Transform meshObject = transform.FindChild("meshes");

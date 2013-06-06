@@ -1,13 +1,21 @@
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
-public class AgentDoor : MonoBehaviour 
+public class AgentDoor : InteractiveObject
 {
 	public GameObject MeshObject = null;
 	public Door m_door = null;
 	
 	private Vector3 m_originalTransform;
 	private Vector3 m_openTransform;
+	
+	public override List<string> GetInteractions()
+	{
+		List<string> test = new List<string>();
+		test.Add("Push button, ja?");
+		
+		return test;
+	}
 
 	void Start () 
 	{

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 public class AdminTerminal : LevelNetworkCommandIssuer 
 {
-	public override List<string> GetCommandNames()
+	public override List<LevelNetworkCommand> GetCommandNames()
 	{
-		List<string> commands = new List<string>();
+		List<LevelNetworkCommand> commands = new List<LevelNetworkCommand>();
 		
-		commands.Add("Deactivate");
+		commands.Add(new LevelNetworkCommand("deactivate", "Deactivate"));
 		
 		return commands;	
 	}
 	
-	public override void IssueCommand(string commandName)
+	public override void IssueCommand(LevelNetworkCommand commandName)
 	{
 		
 	}

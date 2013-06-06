@@ -20,6 +20,7 @@ public class LevelNetworkNodeStage : IGeneratorStage
 	
 	public void Start()
 	{
+		m_level.Network.Reset();
 		m_database = GameObject.FindObjectOfType(typeof(LevelObjectDatabase)) as LevelObjectDatabase;
 		m_prefab = m_database.GetEditorObject(m_networkNodeDatabaseID);
 		m_connectionPrefab = m_database.GetEditorObject(m_networkConnectionDatabaseID);
@@ -29,18 +30,27 @@ public class LevelNetworkNodeStage : IGeneratorStage
 	
 	public void UpdateStep()
 	{
-		LevelNetwork network = LevelNetwork.Instance;
+		LevelNetwork network = m_level.Network;
 		network.Reset();
 		
-		GameObject networkObject = m_level.GetNetworkParentObject(true);
+		// Grab the "Network" child from the "Level" GameObject.
+		GameObject networkObject = m_level.GetNetworkParentObject(false);
 		
+		// Create an empty list for the triangulation.
 		List<Triangulator.Geometry.Point> points = new List<Triangulator.Geometry.Point>();
 		
+		MaxNodeID = 0;
+		
+		// Find all the nodes in the level.
 		Object[] nodes = GameObject.FindObjectsOfType(typeof(LevelNetworkNode));
+		List<LevelNetworkNode> graphNodes = new List<LevelNetworkNode>();
+		
 		foreach(var node in nodes)
 		{
 			LevelNetworkNode networkNode = node as LevelNetworkNode;
 			network.AddNode(networkNode);
+			networkNode.SetID(MaxNodeID);
+			MaxNodeID++;
 			
 			if(GameFlow.Instance.View == WorldView.Admin && m_prefab != null)
 			{
@@ -62,7 +72,14 @@ public class LevelNetworkNodeStage : IGeneratorStage
 					Debug.LogWarning("AdminView network-node prefab does not have a NetworkSelectableNode component");
 				}
 			}
-			points.Add(new Triangulator.Geometry.Point(networkNode.transform.position.x, networkNode.transform.position.y));
+			
+			// Only add nodes to the graph if they have no custom-connection specified.
+			// This prevents special nodes being linked up.
+			if(networkNode.CustomConnection == null)
+			{
+				points.Add(new Triangulator.Geometry.Point(networkNode.transform.position.x, networkNode.transform.position.y));
+				graphNodes.Add(networkNode);
+			}
 		}
 		
 		if(GameFlow.Instance.View == WorldView.Admin)
@@ -73,13 +90,22 @@ public class LevelNetworkNodeStage : IGeneratorStage
 				
 				foreach(var tri in tris)
 				{
-					network.Nodes[tri.p1].ConnectNode(network.Nodes[tri.p2]);
-					network.Nodes[tri.p1].ConnectNode(network.Nodes[tri.p3]);
+					graphNodes[tri.p1].ConnectNode(graphNodes[tri.p2]);
+					graphNodes[tri.p1].ConnectNode(graphNodes[tri.p3]);
 				}
 			}
 			catch(System.Exception e)
 			{
-				Debug.LogError("Error calculating Delauney edges");
+				Debug.LogError("Error calculating Delauney edges: " + e);
+			}
+			
+			// Wire up any custom connections
+			foreach(var node in network.Nodes)
+			{
+				if(node.CustomConnection != null)
+				{
+					node.ConnectNode(node.CustomConnection);	
+				}
 			}
 			
 			// TODO: LineRenderers are currently used by the connection prefab. These aint batched, which be shit.
@@ -92,6 +118,16 @@ public class LevelNetworkNodeStage : IGeneratorStage
 						GameObject connectionObject = GameObject.Instantiate(m_connectionPrefab) as GameObject;
 						connectionObject.transform.parent = networkObject.transform;
 						connectionObject.transform.position = networkObject.transform.position;
+						
+						LevelNetworkConnectionRenderer connectionRenderer = connectionObject.GetComponent<LevelNetworkConnectionRenderer>();
+						if(connectionRenderer != null)
+						{
+							connectionRenderer.m_connection = connection;
+						}
+						else
+						{
+							Debug.LogError("Level-network connection prefab does not have a \"LevelNetworkConnectionRenderer\" component");	
+						}
 						
 						LineRenderer renderer = connectionObject.GetComponent<LineRenderer>();
 						if(renderer != null)
@@ -111,7 +147,6 @@ public class LevelNetworkNodeStage : IGeneratorStage
 					}
 				}
 			}
-			
 		}
 	}
 	
@@ -133,15 +168,15 @@ public class LevelNetworkNodeStage : IGeneratorStage
 				m_database = GameObject.FindObjectOfType(typeof(LevelObjectDatabase)) as LevelObjectDatabase;
 				m_prefab = m_database.GetEditorObject(m_networkNodeDatabaseID);
 				m_connectionPrefab = m_database.GetEditorObject(m_networkConnectionDatabaseID);
+				m_portPrefab = m_database.GetEditorObject(m_networkPortDatabaseID);
 			}
 			
 			GUILayout.BeginVertical();
 			
 			var prefab = EditorGUILayout.ObjectField(m_prefab, typeof(GameObject), false) as GameObject;
 			var connectionPrefab = EditorGUILayout.ObjectField(m_connectionPrefab, typeof(GameObject), false) as GameObject;
-			
-			
-			
+			var portPrefab = EditorGUILayout.ObjectField(m_portPrefab, typeof(GameObject), false) as GameObject;
+						
 			GUILayout.EndVertical();
 			
 			if(prefab != m_prefab)
@@ -155,6 +190,12 @@ public class LevelNetworkNodeStage : IGeneratorStage
 				m_database.AddEditorObject(m_networkConnectionDatabaseID, connectionPrefab);
 				m_connectionPrefab = connectionPrefab;
 			}
+			
+			if(portPrefab != m_portPrefab)
+			{
+				m_database.AddEditorObject(m_networkPortDatabaseID, portPrefab);
+				m_portPrefab = portPrefab;
+			}
 		}
 #endif
 	}
@@ -163,11 +204,15 @@ public class LevelNetworkNodeStage : IGeneratorStage
 	public void UpdateSceneGUI(){ }
 	public string GetStageName(){ return "Create Network"; }
 	
+	public static int MaxNodeID = -1;
+	
 	private Level m_level;
 	private static bool m_showFoldout = false;
 	private static GameObject m_prefab = null;
 	private static GameObject m_connectionPrefab = null;
+	private static GameObject m_portPrefab = null;
 	private LevelObjectDatabase m_database = null;
-	private const string m_networkNodeDatabaseID = "networknodeprefab";
-	private const string m_networkConnectionDatabaseID = "networkconnectionprefab";
+	private const string m_networkNodeDatabaseID 		= "networknodeprefab";
+	private const string m_networkConnectionDatabaseID 	= "networkconnectionprefab";
+	private const string m_networkPortDatabaseID 		= "networkportprefab";
 }

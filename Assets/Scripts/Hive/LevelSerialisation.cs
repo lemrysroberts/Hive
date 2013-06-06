@@ -141,18 +141,10 @@ public partial class Level : MonoBehaviour
 	
 	public void SerialiseToNetwork(string path)
 	{
-		Debug.Log("Serialising RPC data...");
-		TextAsset levelAsset = Resources.Load(path) as TextAsset;
-		if(levelAsset != null)
 		{
 			byte[] bytes = BitConverter.GetBytes(Seed);
 			
 			networkView.RPC("ReceiveLevel", RPCMode.Others, bytes);
-		}
-		else
-		{
-			Debug.Log("Failed to serialise level: " + path);
-			return;	
 		}
 		
 		Debug.Log("Done");

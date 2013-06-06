@@ -34,18 +34,18 @@ public class AdminDoor : LevelNetworkCommandIssuer
 		}
 	}
 	
-	public override List<string> GetCommandNames()
+	public override List<LevelNetworkCommand> GetCommandNames()
 	{
-		List<string> commands = new List<string>();
+		List<LevelNetworkCommand> commands = new List<LevelNetworkCommand>();
 		
-		commands.Add("Open Door");
+		commands.Add(new LevelNetworkCommand("open_door", "Open Door"));
 		
 		return commands;
 	}
 	
-	public override void IssueCommand(string command)
+	public override void IssueCommand(LevelNetworkCommand command)
 	{
-		if(command == "Open Door")
+		if(command.Name == "open_door")
 		{
 			m_door.m_other = true;
 		}

@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour 
 {
@@ -34,6 +34,21 @@ public class Player : MonoBehaviour
 		{
 			m_grabbedObject = other.gameObject;
 		}
+		
+		InteractiveObjectNotifier interactiveObject = other.GetComponent<InteractiveObjectNotifier>();
+		if(interactiveObject != null)
+		{
+			m_currentNotifier = interactiveObject;
+		}
+	}
+	
+	public void OnTriggerExit(Collider other)
+	{
+		InteractiveObjectNotifier interactiveObject = other.GetComponent<InteractiveObjectNotifier>();
+		if(interactiveObject != null && interactiveObject == m_currentNotifier)
+		{
+			m_currentNotifier = null;
+		}
 	}
 	
 	public void OnCollisionEnter(Collision other)
@@ -54,6 +69,25 @@ public class Player : MonoBehaviour
 		}
 	}
 	
+	public void OnGUI()
+	{
+		if(m_currentNotifier != null)
+		{
+			List<string> interactions = m_currentNotifier.TargetObject.GetInteractions();
+			
+			GUILayout.BeginArea(new Rect(250, 300, 100, interactions.Count * 30), (GUIStyle)("Box"));
+			
+			foreach(var interaction in interactions)
+			{
+				GUILayout.Button(interaction);	
+			}
+			
+			GUILayout.EndArea();
+			
+		}
+	}
+	
 	GameObject m_grabbedObject = null;
 	Level m_level = null;
+	InteractiveObjectNotifier m_currentNotifier = null;
 }

@@ -22,6 +22,11 @@ public enum NavState
 [ExecuteInEditMode]
 public partial class Level : MonoBehaviour 
 {
+	void OnEnable()
+	{
+		m_levelNetwork.RebuildNodeConnections();
+	}
+	
 	void Start()
 	{
 		m_previousSectionCountX = SectionCountX;	
@@ -38,7 +43,7 @@ public partial class Level : MonoBehaviour
 	/// </summary>
 	public void Reload(bool fullReload)
 	{
-		LevelNetwork.Instance.Reset();
+		m_levelNetwork.Reset();
 		
 		DeleteSections(fullReload);
 		Transform sectionsTransform = CreateSectionsObject().transform;
@@ -99,13 +104,23 @@ public partial class Level : MonoBehaviour
 					section.Origin = new Vector2(x * m_sectionSize, y * m_sectionSize);
 					section.SectionSize = m_sectionSize;
 					section.Tile = TileType;
-					section.RebuildData();
+					
 					
 					newSections[x * SectionCountY + y] = section;
 				}
 			}
 			
 			m_sections = newSections; 
+		}
+		
+		foreach(var section in m_sections)
+		{
+			section.InitTileData();
+		}
+		
+		foreach(var section in m_sections)
+		{
+			section.RebuildData();	
 		}
 		
 		m_previousSectionCountX = SectionCountX;
@@ -551,7 +566,12 @@ public partial class Level : MonoBehaviour
 	{
 		get { return m_npcCount; }
 		set { m_npcCount = value; }
-	}		
+	}	
+	
+	public LevelNetwork Network
+	{
+		get { return m_levelNetwork; }	
+	}
 	
 	public int Width { get { return m_sectionSize * SectionCountX; } }
 	public int Height { get { return m_sectionSize * SectionCountY; } }
@@ -708,6 +728,9 @@ public partial class Level : MonoBehaviour
 	
 	[SerializeField]
 	private Dictionary<int, NetworkViewID> m_levelObjectIDs = null;
+	
+	[SerializeField]
+	private LevelNetwork m_levelNetwork = new LevelNetwork();
 	
 	//////////////////////////////////////////////////////////////////////////////////
 	// DEBUG

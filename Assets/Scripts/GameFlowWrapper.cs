@@ -4,6 +4,14 @@ using System.Collections.Generic;
 
 public class GameFlowWrapper : MonoBehaviour 
 {
+	void OnEnable()
+	{
+		if(GameFlow.Instance.View == WorldView.None)
+		{
+			GameFlow.Instance.View = m_view;
+		}
+	}
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -29,7 +37,8 @@ public class GameFlowWrapper : MonoBehaviour
 		Level level = FindObjectOfType(typeof(Level)) as Level;
 		if(level != null)
 		{
-			level.Seed = System.DateTime.Now.Millisecond;
+			int customSeed = GameFlow.Instance.CustomSeed;
+			level.Seed = customSeed == -1 ? System.DateTime.Now.Millisecond : customSeed;
 			LevelGenerator generator = new LevelGenerator(level);
 			generator.GenerateLevel(level.Seed, false);
 		}
@@ -51,12 +60,6 @@ public class GameFlowWrapper : MonoBehaviour
 		GUI.Label(new Rect((Screen.width / 2.0f) - 20.0f, 10.0f, 40.0f, 30.0f), Application.loadedLevelName);	
 	}
 	
-	public WorldView View
-	{
-		get { return GameFlow.Instance.View; }
-		set { GameFlow.Instance.View = value; }
-	}
-	
 	public List<GameObject> AgentStartupItems
 	{
 		get { return m_agentStartupObjects; }
@@ -69,10 +72,23 @@ public class GameFlowWrapper : MonoBehaviour
 		set { m_adminStartupObjects = value; }
 	}
 	
+	public WorldView View
+	{
+		get { return m_view; }
+		set 
+		{ 
+			m_view = value; 
+			GameFlow.Instance.View = value;
+		}
+	}
+	
 	[SerializeField]
 	private List<GameObject> m_agentStartupObjects = new List<GameObject>();
 	
 	[SerializeField]
 	private List<GameObject> m_adminStartupObjects = new List<GameObject>();
+	
+	[SerializeField]
+	private WorldView m_view = WorldView.Agent;
 
 }

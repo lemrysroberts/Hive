@@ -7,6 +7,8 @@
 /// classes just to compensate for Unity's interface blindness.
 /// Also, horribly named.
 /// 
+/// Update: I've found some clunky data to store in here. In your face, cleanliness!
+/// 
 /// </summary>
 
 using UnityEngine;
@@ -14,6 +16,13 @@ using System.Collections.Generic;
 
 public abstract class LevelNetworkCommandIssuer : MonoBehaviour 
 {
-	public abstract List<string> GetCommandNames();
-	public abstract void IssueCommand(string commandName);
+	public abstract List<LevelNetworkCommand> GetCommandNames();
+	public abstract void IssueCommand(LevelNetworkCommand commandName);
+	
+	public bool Claimable
+	{
+		get { return m_claimable; }
+	}
+	
+	protected bool m_claimable = true;
 }

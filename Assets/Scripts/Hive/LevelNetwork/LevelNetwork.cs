@@ -18,28 +18,61 @@ public class LevelNetwork
 	{
 		m_nodes.Add(node);
 		
+		
 		if(NodeAdded != null)
 		{
 			NodeAdded(node);	
 		}
 	}
 	
-	private LevelNetwork()
+	public LevelNetwork()
 	{
 		Reset();	
 	}
 	
-	public static LevelNetwork Instance
+	public void RebuildNodeConnections()
 	{
-		get 
+		foreach(var node in m_nodes)
 		{
-			if(s_instance == null)
-			{
-				s_instance = new LevelNetwork();	
-			}
-			
-			return s_instance;
+			node.Reset();	
 		}
+		
+		foreach(var node in m_nodes)
+		{
+			foreach(var id in node.ConnectionIDs)
+			{
+				var otherNode = GetNode(id);
+				
+				if(otherNode == null)
+				{
+					Debug.LogError("Failed to find node with ID: " + id);
+					continue;
+				}
+				
+				node.ConnectNode(otherNode);
+			}
+		}
+	}
+	
+	// TODO: Maybe pre-build a dictionary to make this faster?
+	// 		 Unity refuses to serialize Dictionaries at the moment, so it would have to
+	//		 be done OnEnable().
+	
+	/// <summary>
+	/// Gets a node from a given ID.
+	/// Slow. As. Fuck.
+	/// </summary>
+	public LevelNetworkNode GetNode(int nodeID)
+	{
+		foreach(var node in m_nodes)
+		{
+			if(node.ID == nodeID)
+			{
+				return node;	
+			}
+		}
+		
+		return null;
 	}
 	
 	public List<LevelNetworkNode> Nodes
@@ -50,6 +83,4 @@ public class LevelNetwork
 	
 	[SerializeField]
 	private List<LevelNetworkNode> m_nodes = new List<LevelNetworkNode>();
-	
-	private static LevelNetwork s_instance = null;
 }

@@ -10,14 +10,16 @@ using System.Collections.Generic;
 public enum WorldView
 {
 	Agent, 
-	Admin
+	Admin,
+	
+	None
 }
 
 [Serializable]
 public class GameFlow
 {
 	[SerializeField]
-	public WorldView View = WorldView.Agent;
+	public WorldView View = WorldView.None;
 	
 	public string CurrentLevel
 	{
@@ -33,6 +35,7 @@ public class GameFlow
 			if(m_instance == null)
 			{
 				m_instance = new GameFlow();
+				
 			}
 			
 			return m_instance;
@@ -78,6 +81,11 @@ public class GameFlow
 		}
 	}
 	
+	private GameFlow()
+	{
+		CustomSeed = -1;
+	}
+	
 	public List<GameObject> AgentStartupItems
 	{
 		get { return m_agentStartupObjects; }
@@ -90,6 +98,8 @@ public class GameFlow
 		set { m_adminStartupObjects = value; }
 	}
 	
-	private List<GameObject> m_agentStartupObjects = new List<GameObject>();
-	private List<GameObject> m_adminStartupObjects = new List<GameObject>();
+	public int CustomSeed { get; set; }
+	
+	private List<GameObject> m_agentStartupObjects 	= new List<GameObject>();
+	private List<GameObject> m_adminStartupObjects 	= new List<GameObject>();
 }

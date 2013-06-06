@@ -7,11 +7,11 @@ public class Room
 {
 	public List<Vector2> tileIDs = new List<Vector2>();
 	
-	
 	public int startX 			= 0;
 	public int startY 			= 0;
 	public int endX 			= 0;
 	public int endY				= 0;
+	public bool hasTerminal		= false;
 	
 	public List<Room> ConnectedRooms { get { return m_connectedRooms; } }
 	private List<Room> m_connectedRooms = new List<Room>();

@@ -4,7 +4,6 @@ using System.Collections;
 
 public class Door : SensorTarget
 {
-	
 	public float DoorSpeed = 0.1f;
 	public bool Locked = false;
 	
@@ -52,20 +51,25 @@ public class Door : SensorTarget
 		
 		if(m_other)
 		{
-			networkView.RPC("RequestClose", RPCMode.Others);
+			networkView.RPC("RequestLock", RPCMode.Others);
 			m_other = false;
 		}
 	}
 	
 	[RPC]
-	private void RequestClose()
+	private void RequestLock()
 	{
-		Debug.Log("Close Requested");
+		Locked = true;
+		
+		
 	}
 	
 	private void Open()
 	{
-		m_opening = true;
+		if(!Locked)
+		{
+			m_opening = true;
+		}
 	}
 	
 	private void Close()

@@ -13,7 +13,10 @@ public class ViewDisableEditor : Editor
 		
 		if(m_showAgentFoldout)
 		{
+			viewDisable.DisableEntireObjectAgent = EditorGUILayout.Toggle("Disable GameObject", viewDisable.DisableEntireObjectAgent);
+			
 			GUILayout.BeginVertical((GUIStyle)("Box"));
+			
 			GUILayout.BeginHorizontal();
 			GUILayout.Label("Add Script", GUILayout.Width(100));
 			MonoBehaviour newBehaviour =  EditorGUILayout.ObjectField(null, typeof(MonoBehaviour), true) as MonoBehaviour;
@@ -52,7 +55,10 @@ public class ViewDisableEditor : Editor
 		
 		if(m_showAdminFoldout)
 		{
+			viewDisable.DisableEntireObjectAdmin = EditorGUILayout.Toggle("Disable GameObject", viewDisable.DisableEntireObjectAdmin);
+			
 			GUILayout.BeginVertical((GUIStyle)("Box"));
+			
 			GUILayout.BeginHorizontal();
 			GUILayout.Label("Add Script", GUILayout.Width(100));
 			MonoBehaviour newBehaviour =  EditorGUILayout.ObjectField(null, typeof(MonoBehaviour), true) as MonoBehaviour;

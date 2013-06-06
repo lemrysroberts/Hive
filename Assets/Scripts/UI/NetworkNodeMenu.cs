@@ -48,9 +48,9 @@ public class NetworkNodeMenu : MonoBehaviour
 			GUILayout.BeginVertical((GUIStyle)("Box"));
 			m_scrollPos = GUILayout.BeginScrollView(m_scrollPos);
 			
-			foreach(var current in m_hitObject.GetComponent<LevelNetworkSelectableNode>().m_node.FunctionNames)
+			foreach(var current in m_hitObject.GetComponent<LevelNetworkSelectableNode>().m_node.Commands)
 			{
-				if(GUILayout.Button(current))
+				if(GUILayout.Button(current.DisplayName))
 				{
 					m_hitObject.GetComponent<LevelNetworkSelectableNode>().m_node.IssueCommand(current);
 					m_hitObject = null;

@@ -80,18 +80,6 @@ public class CreateGoals : IGeneratorStage
 				}
 				step--;
 			}
-		
-		
-			for(int i = 0; i < 10; i++)
-			{
-				Room currentRoom = m_level.Rooms[i];
-				
-				LevelObject npcObject = database.GetObject("npc");
-				npcObject.Position = new Vector3(currentRoom.startX + 0.5f, currentRoom.startY + 0.5f, 0.0f);
-				m_level.AddLevelObject(npcObject);
-				
-				
-			}
 		}
 	}
 	

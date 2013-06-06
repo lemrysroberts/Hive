@@ -18,12 +18,10 @@ public class DEBUG_KeyMove : MonoBehaviour {
 			m_dragging = true;
 			
 			m_lastMousePos = Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition);
-			Debug.Log("Mouse down");
 		}
 		else if(Input.GetMouseButtonUp(2))
 		{
 			m_dragging = false;	
-			Debug.Log("Mouse up");
 		}
 		
 		if(m_dragging && Input.GetMouseButton(2))
