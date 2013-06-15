@@ -90,19 +90,19 @@ public class AIWander : MonoBehaviour, IDetectionListener
 		{
 			case State.Idle:
 			{
-				AIGraphNode currentNode = m_level.AIGraph.GetNearestNodeToPosition(transform.position);
-				AIGraphNode targetNode = m_level.AIGraph.GetRandomNode();
+				AIGraphNode currentNode = m_level.AIGraphMap.GetNearestNodeToPosition(transform.position);
+				AIGraphNode targetNode = m_level.AIGraphMap.GetRandomNode();
 				
 				int bailout = 100;
 				int iteration = 0;
 				while(targetNode == currentNode || targetNode == null && iteration != bailout)
 				{
-					targetNode = m_level.AIGraph.GetRandomNode();
+					targetNode = m_level.AIGraphMap.GetRandomNode();
 					iteration++;
 				}
 				
 				RouteFinder routeFinder = new RouteFinder();
-				m_currentRoute = routeFinder.FindRoute(m_level.AIGraph, currentNode, targetNode);
+				m_currentRoute = routeFinder.FindRoute(m_level.AIGraphMap.Graph, currentNode, targetNode);
 				if(m_currentRoute != null && m_currentRoute.m_routePoints.Count > 0)
 				{
 					m_state = State.Wandering;
@@ -151,21 +151,16 @@ public class AIWander : MonoBehaviour, IDetectionListener
 			}
 		}
 	}
-	
+
+#if UNITY_EDITOR
 	void OnDrawGizmos()
 	{
 		if(m_currentRoute != null)
 		{
-			for(int i = 0; i < m_currentRoute.m_routePoints.Count; i++)
-			{
-				Vector2 point = m_currentRoute.m_routePoints[i].NodePosition;
-				Vector2 altPoint = i > 0 ? m_currentRoute.m_routePoints[i - 1].NodePosition : m_currentRoute.m_routePoints[i].NodePosition;
-				
-				Gizmos.DrawLine(point, altPoint);
-			}
-		
+			m_currentRoute.DrawGizmos();
 		}
 	}
+#endif
 	
 	public float MoveSpeed = 0.02f;
 	

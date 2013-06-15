@@ -34,35 +34,47 @@ public class NetworkNodeMenu : MonoBehaviour
 	
 	void OnGUI()
 	{
+		return;
 		if(m_hitObject != null)
 		{
-			Vector3 altVec = m_hitObject.transform.position;
-			var point = Camera.mainCamera.WorldToScreenPoint(altVec);
-			point = GUIUtility.ScreenToGUIPoint(point);
-			
-			GUILayout.BeginArea(new Rect(point.x + m_objectOffset.x, (Screen.height - point.y) + m_objectOffset.y, 200.0f, 200.0f), (GUIStyle)("Box"));
-			GUILayout.Box(m_hitObject.name);
-			
-			
-			
-			GUILayout.BeginVertical((GUIStyle)("Box"));
-			m_scrollPos = GUILayout.BeginScrollView(m_scrollPos);
-			
-			foreach(var current in m_hitObject.GetComponent<LevelNetworkSelectableNode>().m_node.Commands)
+			LevelNetworkNode node = m_hitObject.GetComponent<LevelNetworkSelectableNode>().m_node;
+			if(node.Commands.Count > 0 || node.InfoStrings.Count > 0)
 			{
-				if(GUILayout.Button(current.DisplayName))
+				Vector3 altVec = m_hitObject.transform.position;
+				var point = Camera.mainCamera.WorldToScreenPoint(altVec);
+				point = GUIUtility.ScreenToGUIPoint(point);
+				
+				GUILayout.BeginArea(new Rect(point.x + m_objectOffset.x, (Screen.height - point.y) + m_objectOffset.y, 200.0f, 200.0f), (GUIStyle)("Box"));
+				GUILayout.Box(m_hitObject.name);
+				
+				
+				
+				GUILayout.BeginVertical((GUIStyle)("Box"));
+				m_scrollPos = GUILayout.BeginScrollView(m_scrollPos);
+				
+				foreach(var current in node.Commands)
 				{
-					m_hitObject.GetComponent<LevelNetworkSelectableNode>().m_node.IssueCommand(current);
-					m_hitObject = null;
-					break;
+					if(GUILayout.Button(current.DisplayName))
+					{
+						node.IssueCommand(current);
+						m_hitObject = null;
+						break;
+					}
 				}
+				
+				GUILayout.Box("", GUILayout.Height(1));
+				
+				foreach(var current in node.InfoStrings)
+				{
+					GUILayout.Label(current);	
+				}
+				
+				GUILayout.EndScrollView();
+				
+				GUILayout.EndVertical();
+				
+				GUILayout.EndArea();
 			}
-			
-			GUILayout.EndScrollView();
-			
-			GUILayout.EndVertical();
-			
-			GUILayout.EndArea();
 		}
 	}
 	

@@ -1,3 +1,15 @@
+///////////////////////////////////////////////////////////
+// 
+// LevelNetwork.cs
+//
+// What it does: Contains all the nodes that make up the level-network, as well as an AI-Graph that matches them.
+//
+// Notes:
+// 
+// To-do:
+//
+///////////////////////////////////////////////////////////
+
 using UnityEngine;
 using System;
 using System.Collections.Generic;
@@ -18,6 +30,10 @@ public class LevelNetwork
 	{
 		m_nodes.Add(node);
 		
+		AIGraphNode newAINode =	m_networkGraph.AddNode(node.transform.position);
+		newAINode.NodeObject = node;
+		
+		node.AINode = newAINode;
 		
 		if(NodeAdded != null)
 		{
@@ -30,7 +46,7 @@ public class LevelNetwork
 		Reset();	
 	}
 	
-	public void RebuildNodeConnections()
+	public void BuildNodeConnections()
 	{
 		foreach(var node in m_nodes)
 		{
@@ -81,6 +97,19 @@ public class LevelNetwork
 		set { m_nodes = value; }
 	}
 	
+	public RouteFinder RouteFinder
+	{
+		get { return m_routeFinder; }
+	}
+	
+	public AIGraph RouteGraph
+	{
+		get { return m_networkGraph; }		
+	}		
+	
 	[SerializeField]
 	private List<LevelNetworkNode> m_nodes = new List<LevelNetworkNode>();
+	
+	private AIGraph m_networkGraph = new AIGraph();
+	private RouteFinder m_routeFinder = new RouteFinder();
 }

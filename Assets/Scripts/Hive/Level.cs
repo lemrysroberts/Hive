@@ -24,7 +24,7 @@ public partial class Level : MonoBehaviour
 {
 	void OnEnable()
 	{
-		m_levelNetwork.RebuildNodeConnections();
+		
 	}
 	
 	void Start()
@@ -55,14 +55,7 @@ public partial class Level : MonoBehaviour
 			{
 				for(int y = 0; y < SectionCountY; y++)
 				{
-					if( x < m_previousSectionCountX && 
-						y < m_previousSectionCountY && 
-						x < SectionCountX &&
-						y < SectionCountY &&
-						m_sections.Count > 0)
-					{
-						newSections[x * SectionCountY + y] = m_sections[x * m_previousSectionCountY + y];	
-					}
+					
 					
 					bool sectionExists = false;
 					if(!fullReload)
@@ -316,9 +309,9 @@ public partial class Level : MonoBehaviour
 		return childObject;
 	}
 	
-	private AIGraph BuildAIGraph()
+	private AITileToNodeMap BuildAIGraph()
 	{
-		AIGraph newGraph = new AIGraph(SectionCountX * m_sectionSize, SectionCountY * m_sectionSize);
+		AITileToNodeMap newGraph = new AITileToNodeMap(SectionCountX * m_sectionSize, SectionCountY * m_sectionSize);
 		
 		TileManager tileManager = TileManager.Instance;
 		
@@ -330,20 +323,14 @@ public partial class Level : MonoBehaviour
 				
 				if(currentTile != null && !currentTile.NavBlock)
 				{
-					AIGraphNode newNode = new AIGraphNode();
-					newNode.NodePosition = new Vector2(x + 0.5f, y + 0.5f);
-					
-					newGraph.Add(newNode);
+					newGraph.AddNode(new Vector2(x + 0.5f, y + 0.5f));
 				}
 			}
 		}
 		
 		// Link the nodes. This should live in AIGraph really.
-		foreach(var node in newGraph.Nodes)
+		foreach(var node in newGraph.Graph.Nodes)
 		{
-			if(node != null)
-			{
-				
 				int currentIndex = newGraph.GetNodeIndex(node.NodePosition);
 				
 				int[] indices = new int[4];
@@ -357,13 +344,12 @@ public partial class Level : MonoBehaviour
 				{
 					if(otherIndex >= 0 && otherIndex < (SectionCountX * m_sectionSize) * (SectionCountY * m_sectionSize))
 					{
-						var other = newGraph.Nodes[otherIndex];
+						var other = newGraph.TileMappedNodes[otherIndex];
 						if(other != null)
 						{
 							node.NodeLinks.Add(other);	
 						}	
 					}
-				}
 			}
 		}
 		
@@ -403,25 +389,6 @@ public partial class Level : MonoBehaviour
 		}
 		
 		return m_sections[sectionIDX * SectionCountY + sectionIDY];
-	}
-	
-	public void TestRoutefinder()
-	{
-		/*
-		RouteFinder routeFinder = new RouteFinder();
-		
-		int endPosID = (int)(Random.value * (float)(m_graph.Nodes.Count - 1));
-		if(m_graph != null && m_graph.Nodes.Count > endPosID)
-		{
-			m_lastRouteStart = m_graph.Nodes[0].NodePosition;
-			m_lastRouteEnd = m_graph.Nodes[endPosID].NodePosition;
-			m_lastRoute = routeFinder.FindRoute(m_graph, m_graph.Nodes[0], m_graph.Nodes[endPosID]);
-		}
-		else
-		{
-			Debug.Log("Invalid graph state");	
-		}
-		*/
 	}
 	
 	private void RebuildAdminRooms()
@@ -538,7 +505,7 @@ public partial class Level : MonoBehaviour
 	}
 	
 	// TODO: These don't need to be properties. 
-	public AIGraph AIGraph
+	public AITileToNodeMap AIGraphMap
 	{
 		get { return m_graph; }
 	}
@@ -600,7 +567,7 @@ public partial class Level : MonoBehaviour
 			Gizmos.color = Color.cyan;
 			
 			Vector3 boxSize = new Vector3(0.2f, 0.2f, 0.2f);
-			foreach(var node in m_graph.Nodes)
+			foreach(var node in m_graph.Graph.Nodes)
 			{
 				if(node != null)
 				{
@@ -611,23 +578,6 @@ public partial class Level : MonoBehaviour
 						Gizmos.DrawLine(node.NodePosition, other.NodePosition);	
 					}
 				}
-			}
-			
-			Gizmos.color = Color.magenta;
-			boxSize = new Vector3(0.3f, 0.3f, 0.3f);
-			if(m_lastRoute != null)
-			{
-				for(int i = 0; i < m_lastRoute.m_routePoints.Count; i++)
-				{
-					Vector2 point = m_lastRoute.m_routePoints[i].NodePosition;
-					Vector2 altPoint = i > 0 ? m_lastRoute.m_routePoints[i - 1].NodePosition : m_lastRoute.m_routePoints[i].NodePosition;
-					
-					Gizmos.DrawCube(point, boxSize);
-					Gizmos.DrawLine(point, altPoint);
-				}
-				
-				Gizmos.color = Color.green;
-				boxSize = new Vector3(0.4f, 0.4f, 0.3f);
 			}
 		}
 		
@@ -688,8 +638,6 @@ public partial class Level : MonoBehaviour
 	
 	public static int m_sectionSize = 30;
 	
-	private Route m_lastRoute = null;
-	
 	[SerializeField]
 	public List<LevelSection> m_sections = new List<LevelSection>();
 	
@@ -708,7 +656,7 @@ public partial class Level : MonoBehaviour
 	private VisibilityReporter m_visReporter = null;
 	
 	[SerializeField] 
-	private AIGraph m_graph = null;
+	private AITileToNodeMap m_graph = null;
 	
 	[SerializeField]
 	private List<Room> m_rooms = new List<Room>();

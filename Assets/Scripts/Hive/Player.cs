@@ -73,19 +73,26 @@ public class Player : MonoBehaviour
 	{
 		if(m_currentNotifier != null)
 		{
-			List<string> interactions = m_currentNotifier.TargetObject.GetInteractions();
+			List<ObjectInteraction> interactions = m_currentNotifier.TargetObject.GetInteractions();
 			
-			GUILayout.BeginArea(new Rect(250, 300, 100, interactions.Count * 30), (GUIStyle)("Box"));
+			GUILayout.BeginArea(new Rect(250, 300, 200, interactions.Count * 30), (GUIStyle)("Box"));
 			
 			foreach(var interaction in interactions)
 			{
-				GUILayout.Button(interaction);	
+				if(GUILayout.Button(interaction.DisplayName))
+				{
+					if(interaction.Handler != null)
+					{
+						interaction.Handler();	
+					}
+				}
 			}
 			
 			GUILayout.EndArea();
 			
 		}
 	}
+	
 	
 	GameObject m_grabbedObject = null;
 	Level m_level = null;

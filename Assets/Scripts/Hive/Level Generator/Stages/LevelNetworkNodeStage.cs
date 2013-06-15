@@ -26,7 +26,10 @@ public class LevelNetworkNodeStage : IGeneratorStage
 		m_connectionPrefab = m_database.GetEditorObject(m_networkConnectionDatabaseID);
 	}
 	
-	public void End(){ }
+	public void End()
+	{
+		m_level.Network.BuildNodeConnections();
+	}
 	
 	public void UpdateStep()
 	{

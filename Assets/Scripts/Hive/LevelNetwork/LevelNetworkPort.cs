@@ -18,7 +18,7 @@ public class LevelNetworkPort : LevelNetworkCommandIssuer
 	
 	}
 	
-	public override List<LevelNetworkCommand> GetCommandNames()
+	public override List<LevelNetworkCommand> GetCommands()
 	{
 		List<LevelNetworkCommand> commands = new List<LevelNetworkCommand>();
 		commands.Add(new LevelNetworkCommand("hack_port", "Hack Port"));
@@ -26,9 +26,39 @@ public class LevelNetworkPort : LevelNetworkCommandIssuer
 		return commands;
 	}
 	
-	public override void IssueCommand(LevelNetworkCommand commandName)
+	public override void IssueCommand(LevelNetworkCommand command)
 	{
-		
+		if(command.Name == "hack_port")
+		{
+			m_connectedTerminalNode.SetClaimed();
+			LevelNetworkNode myNode = GetComponent<LevelNetworkNode>();
+			m_connectedTerminalNode.AddLink(myNode);
+			
+		}
 	}
+	
+	public override List<string> GetInfoStrings()
+	{
+		List<string> infoStrings = new List<string>();
+		return infoStrings;
+	}
+	
+	public void SetTerminalNode(LevelNetworkNode terminalNode)
+	{
+		m_connectedTerminalNode = terminalNode;
+		
+		m_connectedTerminalNode.NodeClaimed += TerminalNodeClaimed;
+	}
+	
+	private void TerminalNodeClaimed()
+	{
+		LevelNetworkNode networkNode = GetComponent<LevelNetworkNode>();
+		
+			networkNode.SetClaimed();	
+	}
+	
+	private LevelNetworkNode m_connectedTerminalNode = null;
+	
+	private bool m_hackInProgress = false;
 	
 }

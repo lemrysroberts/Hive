@@ -11,7 +11,12 @@ public class LevelNetworkSelectableNode : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		m_node.NodeClaimed += new LevelNetworkNode.NodeStateChangedHandler(NodeClaimed);
+		NodeUnavailable();
+		
+		m_node.NodeClaimed += new System.Action(NodeClaimed);
+		m_node.NodeRescinded += new System.Action(NodeRescinded);
+		m_node.NodeAvailable += new System.Action(NodeAvailable);
+		m_node.NodeUnavailable += new System.Action(NodeUnavailable);
 		
 		if(ClaimBarBackingObject != null)
 		{
@@ -29,7 +34,7 @@ public class LevelNetworkSelectableNode : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-		if(m_node.ClaimInProgress && ClaimBarObject != null && ClaimBarBackingObject != null)
+		if(m_node.ActivityInProgress && ClaimBarObject != null && ClaimBarBackingObject != null)
 		{
 			if(!ClaimBarObject.activeSelf)
 			{
@@ -37,7 +42,7 @@ public class LevelNetworkSelectableNode : MonoBehaviour
 				ClaimBarBackingObject.SetActive(true);
 			}
 			
-			ClaimBarObject.transform.localScale = new Vector3(m_node.ClaimProgress * ClaimBarWidth, ClaimBarObject.transform.localScale.y, ClaimBarObject.transform.localScale.z);
+			ClaimBarObject.transform.localScale = new Vector3(m_node.ActivityProgress * ClaimBarWidth, ClaimBarObject.transform.localScale.y, ClaimBarObject.transform.localScale.z);
 		}
 		else if(ClaimBarObject != null && ClaimBarBackingObject != null)
 		{
@@ -52,5 +57,20 @@ public class LevelNetworkSelectableNode : MonoBehaviour
 	private void NodeClaimed()
 	{
 		renderer.material.SetColor("_Color", Color.green);
+	}
+	
+	private void NodeRescinded()
+	{
+		renderer.material.SetColor("_Color", Color.white);
+	}
+	
+	private void NodeAvailable()
+	{
+		renderer.material.SetColor("_Color", Color.white);
+	}
+	
+	private void NodeUnavailable()
+	{
+		renderer.material.SetColor("_Color", Color.gray);	
 	}
 }

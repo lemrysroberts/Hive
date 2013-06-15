@@ -34,7 +34,7 @@ public class AdminDoor : LevelNetworkCommandIssuer
 		}
 	}
 	
-	public override List<LevelNetworkCommand> GetCommandNames()
+	public override List<LevelNetworkCommand> GetCommands()
 	{
 		List<LevelNetworkCommand> commands = new List<LevelNetworkCommand>();
 		
@@ -49,6 +49,12 @@ public class AdminDoor : LevelNetworkCommandIssuer
 		{
 			m_door.m_other = true;
 		}
+	}
+	
+	public override List<string> GetInfoStrings()
+	{
+		List<string> infoStrings = new List<string>();
+		return infoStrings;
 	}
 			
 	private bool m_lastOpening = false;

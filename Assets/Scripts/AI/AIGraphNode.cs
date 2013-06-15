@@ -22,8 +22,10 @@ public class AIGraphNode
 		set { m_ID = value; }
 	}
 	
-	public AIGraphNode() 
+	// Miscellaneous reference to identify associated objects when traversing a route.
+	public System.Object NodeObject
 	{
+		get; set;	
 	}
 	
 	private int m_ID = -1;

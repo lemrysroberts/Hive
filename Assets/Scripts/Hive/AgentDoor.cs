@@ -9,10 +9,10 @@ public class AgentDoor : InteractiveObject
 	private Vector3 m_originalTransform;
 	private Vector3 m_openTransform;
 	
-	public override List<string> GetInteractions()
+	public override List<ObjectInteraction> GetInteractions()
 	{
-		List<string> test = new List<string>();
-		test.Add("Push button, ja?");
+		List<ObjectInteraction> test = new List<ObjectInteraction>();
+		test.Add(new ObjectInteraction("Push button, ja?", null));
 		
 		return test;
 	}

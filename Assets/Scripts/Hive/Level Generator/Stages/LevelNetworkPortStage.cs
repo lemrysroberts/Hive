@@ -12,6 +12,7 @@
 // 
 // To-do: Randomise the order in which edges are searched to have a less predictable terminal layout.
 //		  Currently it does all terminals from the left, then right, top, bottom.
+//		  
 //
 ///////////////////////////////////////////////////////////
 
@@ -60,7 +61,7 @@ public class LevelNetworkPortStage : IGeneratorStage
 		}
 		
 		// Search inwards for a valid terminal
-		int searchDepth = 1;
+		int searchDepth = 0;
 		LevelNetworkNode candidateNode = null;
 		PortEdge edge = PortEdge.Top;
 		
@@ -113,6 +114,16 @@ public class LevelNetworkPortStage : IGeneratorStage
 			LevelNetworkNode node = newObject.GetComponent<LevelNetworkNode>();
 			node.CustomConnection = candidateNode;
 			
+			LevelNetworkPort port = newObject.GetComponent<LevelNetworkPort>();
+			
+			if(port == null)
+			{
+				Debug.LogError("Port prefab does not contain \"Port\" component");	
+			}
+			else
+			{
+				port.SetTerminalNode(candidateNode);
+			}
 			
 			switch(edge)
 			{
@@ -121,6 +132,7 @@ public class LevelNetworkPortStage : IGeneratorStage
 				case PortEdge.Left: 	{ newObject.transform.position = new Vector3( -1.0f, candidateNode.transform.position.y, 0.0f); break; }
 				case PortEdge.Right: 	{ newObject.transform.position = new Vector3(m_level.Width + 1.0f, candidateNode.transform.position.y, 0.0f); break; }
 			}
+			
 			candidateNode.ConnectedToPort = true;
 			node.ConnectedToPort = true;
 		}
@@ -173,7 +185,7 @@ public class LevelNetworkPortStage : IGeneratorStage
 	private static GameObject m_portPrefab = null;
 	private LevelObjectDatabase m_database = null;
 	private const string m_networkPortDatabaseID = "networkportprefab";
-	private int m_portCount = 50;
+	private int m_portCount = 20;
 	private int m_portAttempts = 0;
 		
 	/// <summary>

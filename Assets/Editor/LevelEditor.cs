@@ -60,12 +60,6 @@ public class LevelEditor : Editor
 			level.RebuildColliders();	
 		}
 		
-		if(GUILayout.Button("Test Routefinder"))
-		{
-			level.TestRoutefinder();
-			EditorUtility.SetDirty(level);
-		}
-		
 		if(GUILayout.Button("Tile Editor"))
 		{
 			EditorWindow.GetWindow(typeof(TileEditor));	

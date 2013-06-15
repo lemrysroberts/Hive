@@ -17,6 +17,30 @@ using System.Collections.Generic;
 
 public abstract class InteractiveObject : MonoBehaviour 
 {
-	public abstract List<string> GetInteractions();
+	public abstract List<ObjectInteraction> GetInteractions();
 	
+}
+
+public class ObjectInteraction
+{
+	public delegate void ActionSelectedHandler();
+	
+	public ObjectInteraction(string displayName, ActionSelectedHandler handler)
+	{
+		m_displayName = displayName;
+		m_handler = handler;
+	}
+	
+	public string DisplayName
+	{
+		get { return m_displayName; }	
+	}
+	
+	public ActionSelectedHandler Handler
+	{
+		get { return m_handler; }	
+	}
+	
+	private string m_displayName = string.Empty;
+	private ActionSelectedHandler m_handler;
 }
