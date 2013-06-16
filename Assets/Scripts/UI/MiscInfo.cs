@@ -60,10 +60,6 @@ public class MiscInfo : MonoBehaviour
 			GUILayout.BeginVertical((GUIStyle)("Box"));
 			m_scrollPos = GUILayout.BeginScrollView(m_scrollPos);
 			
-			foreach(var current in m_hitObject.GetComponent<LevelNetworkNode>().Commands)
-			{
-				GUILayout.Label(current.DisplayName);	
-			}
 			
 			GUILayout.EndScrollView();
 			

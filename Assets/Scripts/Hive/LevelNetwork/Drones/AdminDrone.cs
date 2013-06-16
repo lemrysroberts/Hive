@@ -2,7 +2,8 @@
 // 
 // AdminDrone.cs
 //
-// What it does: Handles interactions with terminals.
+// What it does: 	Base class for an admin-controlled drone.
+//					Handles issuing of commands.
 //
 // Notes:
 // 
@@ -13,8 +14,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class AdminDrone : MonoBehaviour 
+public abstract class AdminDrone : MonoBehaviour 
 {
+	public abstract List<LevelNetworkCommand> GetCommands();
+	public abstract List<string> GetInfo();
+	
 	protected LevelNetwork m_network 	= null;
 	protected Level m_level 			= null;
 	

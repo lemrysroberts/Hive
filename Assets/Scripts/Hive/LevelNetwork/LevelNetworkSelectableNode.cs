@@ -11,13 +11,6 @@ public class LevelNetworkSelectableNode : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		NodeUnavailable();
-		
-		m_node.NodeClaimed += new System.Action(NodeClaimed);
-		m_node.NodeRescinded += new System.Action(NodeRescinded);
-		m_node.NodeAvailable += new System.Action(NodeAvailable);
-		m_node.NodeUnavailable += new System.Action(NodeUnavailable);
-		
 		if(ClaimBarBackingObject != null)
 		{
 			Vector3 scale = ClaimBarBackingObject.transform.localScale;
@@ -52,25 +45,5 @@ public class LevelNetworkSelectableNode : MonoBehaviour
 				ClaimBarBackingObject.SetActive(false);
 			}
 		}
-	}
-	
-	private void NodeClaimed()
-	{
-		renderer.material.SetColor("_Color", Color.green);
-	}
-	
-	private void NodeRescinded()
-	{
-		renderer.material.SetColor("_Color", Color.white);
-	}
-	
-	private void NodeAvailable()
-	{
-		renderer.material.SetColor("_Color", Color.white);
-	}
-	
-	private void NodeUnavailable()
-	{
-		renderer.material.SetColor("_Color", Color.gray);	
 	}
 }

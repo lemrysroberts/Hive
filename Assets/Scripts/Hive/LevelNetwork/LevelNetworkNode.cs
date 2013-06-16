@@ -1,3 +1,16 @@
+///////////////////////////////////////////////////////////
+// 
+// LevelNetworkNode.cs
+//
+// What it does: Represents a given node in the level-network.
+//
+// Notes:
+// 
+// To-do:
+//
+///////////////////////////////////////////////////////////
+
+
 using UnityEngine;
 using System;
 using System.Reflection;
@@ -8,13 +21,8 @@ public class LevelNetworkNode : MonoBehaviour
 {
 	public LevelNetworkCommandIssuer target;
 	
-	public float HeatCooldown 	= 0.001f;
+	public float HeatCooldown 	= 0.0001f;
 	public float ClaimSpeed 	= 0.1f;
-	
-	public event System.Action NodeClaimed;
-	public event System.Action NodeRescinded;
-	public event System.Action NodeAvailable;
-	public event System.Action NodeUnavailable;
 	
 	public bool ConnectedToPort = false;
 	public LevelNetworkNode CustomConnection = null;
@@ -26,62 +34,12 @@ public class LevelNetworkNode : MonoBehaviour
 		Heat = 0.0f;
 		ActivityProgress = 0.0f;
 		ActivityInProgress = false;
-		Claimed = false;
 	}
 	
 	void FixedUpdate () 
 	{
 		Heat -= HeatCooldown;
 		Heat = Mathf.Max(0.0f, Heat);
-		
-		if(ActivityInProgress)
-		{
-			ActivityProgress += ClaimSpeed;
-			if(ActivityProgress >= 1.0f)
-			{
-				SetClaimed();
-			}
-		}
-	}
-	
-	public void SetClaimed()
-	{
-		ActivityInProgress = false;
-		Claimed = true;
-		
-		// Make sure other neighbours are set to be claimable
-		foreach(var node in m_connectedNodes)
-		{
-			if(!m_claimedLinks.Contains(node))
-			{
-				node.m_claimedLinks.Add(this);
-				node.UpdateState();
-			}
-		}
-		
-		if(NodeClaimed != null)
-		{
-			NodeClaimed();
-		}
-		
-		
-	}
-	
-	public void SetRescinded()
-	{
-		Claimed = false;
-		foreach(var node in m_connectedNodes)
-		{
-			if(node.m_claimedLinks.Remove(this))
-			{
-				node.UpdateState();
-			}
-		}
-		
-		if(NodeRescinded != null)
-		{
-			NodeRescinded();
-		}
 	}
 	
 	public void SetID(int id)
@@ -91,29 +49,7 @@ public class LevelNetworkNode : MonoBehaviour
 	
 	public void UpdateState()
 	{
-		if(m_claimedLinks.Count == 0)
-		{
-			SetRescinded();	
-			
-			if(NodeUnavailable != null)
-			{
-				NodeUnavailable();
-			}
-		}
 		
-		if(Claimed && NodeClaimed != null)
-		{
-			NodeClaimed();
-		}
-		else if(m_claimedLinks.Count > 0 && NodeAvailable != null)
-		{
-			NodeAvailable();
-		}
-	}
-	
-	public void AddLink(LevelNetworkNode other)
-	{
-		m_claimedLinks.Add(other);
 	}
 	
 	public void ConnectNode(LevelNetworkNode other)
@@ -143,44 +79,17 @@ public class LevelNetworkNode : MonoBehaviour
 		other.AINode.NodeLinks.Add(AINode);
 	}
 	
-	public List<LevelNetworkCommand> Commands
+	public List<LevelNetworkCommand> GetCommands(NodeSession session)
 	{
-		get 
-		{ 
-			if(target == null)
-			{
-				Debug.LogError("No Target set");
-				return null;
-			}
-			
-			if(Claimed || !target.Claimable)
-			{
-				List<LevelNetworkCommand> targetCommands = target.GetCommands();
-				
-				targetCommands.Add(new LevelNetworkCommand("rescind_claim", "Rescind Claim"));
-				
-				targetCommands.Add(new LevelNetworkCommand("sdf", "Connections: " + m_claimedLinks.Count));
-				
-				return targetCommands; 
-			}
-			else
-			{
-				List<LevelNetworkCommand> functionNames = new List<LevelNetworkCommand>();
-				
-				if(ActivityInProgress)
-				{
-					functionNames.Add(new LevelNetworkCommand("cancel_claim", "Cancel Claim"));	
-				}
-				else if(m_claimedLinks.Count > 0)
-				{
-					functionNames.Add(new LevelNetworkCommand("claim", "Claim (" + ClaimCost + ")"));	
-				}
-				
-				functionNames.Add(new LevelNetworkCommand("sdf", "Connections: " + m_claimedLinks.Count));
-				return functionNames;
-			}
-			
-		}	
+		if(target == null)
+		{
+			Debug.LogError("No Target set");
+			return null;
+		}
+		
+		List<LevelNetworkCommand> functionNames = target.GetCommands(session.PermissionsLevel);
+		
+		return functionNames;
 	}
 	
 	public List<string> InfoStrings
@@ -196,7 +105,6 @@ public class LevelNetworkNode : MonoBehaviour
 	
 	public void IssueCommand(LevelNetworkCommand command)
 	{
-		Heat = 1.0f;
 		if(!CheckDefaultCommands(command))
 		{
 			target.IssueCommand(command);	
@@ -221,35 +129,40 @@ public class LevelNetworkNode : MonoBehaviour
 		m_connections.Clear();
 	}
 	
-	private bool CheckDefaultCommands(LevelNetworkCommand command)
+	public NodeSession CreateSession(NodeSessionClient client)
 	{
-		if(command.Name == "claim")
-		{
-			ActivityProgress = 0.0f;
-			ActivityInProgress = true;
-			return true;	
-		}
+		NodeSession newSession = new NodeSession(this, client);
+		m_activeSessions.Add(newSession);
 		
-		if(command.Name == "cancel_claim")
-		{
-			ActivityInProgress = false;
-			return true;
-		}
-		
-		if(command.Name == "rescind_claim")
-		{
-			SetRescinded();
-			
-			return true;	
-		}
-		
-		return false;
+		return newSession;
+	}
+	
+	public void EndSession(NodeSession session)
+	{
+		session.EndSession();
+		m_activeSessions.Remove(session);	
+	}
+	
+	public void LogActivity(NodeSession session, string activity)
+	{
+		string logEntry  = session.Client.ClientName + ": " + activity;
+		m_activityLog.Add(logEntry);
 	}
 	
 	public List<LevelNetworkNode> ConnectedNodes
 	{
 		get { return m_connectedNodes; }
 		set { m_connectedNodes = value; }
+	}
+	
+	private bool CheckDefaultCommands(LevelNetworkCommand command)
+	{
+		return false;
+	}
+	
+	public List<string> ActivityLog
+	{
+		get { return m_activityLog; }	
 	}
 	
 	public List<LevelNetworkConnection> Connections
@@ -262,11 +175,6 @@ public class LevelNetworkNode : MonoBehaviour
 		get { return m_connectionIDs; }	
 	}
 	
-	public bool Available
-	{
-		get { return m_claimedLinks.Count > 0 || Claimed; }	
-	}
-	
 	public int ID
 	{
 		get { return m_ID; }	
@@ -277,22 +185,12 @@ public class LevelNetworkNode : MonoBehaviour
 		get; set;	
 	}
 	
-	public float ClaimCost
-	{
-		get { return m_claimCost; }
-	}
-	
 	public float ActivityProgress
 	{
 		get; set;	
 	}
 	
 	public bool ActivityInProgress
-	{
-		get; set;	
-	}
-	
-	public bool Claimed
 	{
 		get; set;	
 	}
@@ -308,10 +206,8 @@ public class LevelNetworkNode : MonoBehaviour
 	[SerializeField]
 	private int m_ID = -1;
 	
-	//[SerializeField]
-	private float m_claimCost = 2.0f; // TODO: Think a bit about these arbitrary units.
-	
 	private List<LevelNetworkNode> m_connectedNodes = new List<LevelNetworkNode>();
 	private List<LevelNetworkConnection> m_connections = new List<LevelNetworkConnection>();
-	private List<LevelNetworkNode> m_claimedLinks = new List<LevelNetworkNode>();
+	private List<NodeSession> m_activeSessions = new List<NodeSession>();
+	private List<string> m_activityLog = new List<string>();
 }

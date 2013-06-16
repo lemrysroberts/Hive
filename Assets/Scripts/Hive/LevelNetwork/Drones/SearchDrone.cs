@@ -27,6 +27,9 @@ public class SearchDrone : AdminDrone
 		transform.position = new Vector3(startNode.transform.position.x, startNode.transform.position.y, transform.position.z);
 		
 		m_originNode = startNode;
+		
+		m_sessionClient = new NodeSessionClient();
+		m_sessionClient.ClientName = "User1134";
 	}
 	
 	// Update is called once per frame
@@ -70,20 +73,25 @@ public class SearchDrone : AdminDrone
 				m_currentRoutePointIndex++;
 				m_currentLerpProgress = 0.0f;
 				
+				LevelNetworkNode node = m_currentRoute.m_routePoints[m_currentRoutePointIndex].NodeObject as LevelNetworkNode;
+					node.Heat += 0.1f;
+				
 				// Bail if the route is finished or a new route has been requested.
 				if(m_currentRoutePointIndex + 1 >= m_currentRoute.m_routePoints.Count || m_targetNode != null)
 				{
 					if(m_targetNode != null)
 					{
 						m_originNode = m_currentRoute.m_routePoints[m_currentRoutePointIndex].NodeObject as LevelNetworkNode;		
+						m_state = State.Idle;
 					}
 					else
 					{
 						m_originNode = m_destinationNode;	
+						m_state = State.Identifying;
 					}
 					
 					m_currentRoutePointIndex = 0;
-					m_state = State.Idle;
+					
 				}
 				else
 				{
@@ -94,7 +102,72 @@ public class SearchDrone : AdminDrone
 			break;
 		}
 			
+		case State.Identifying:
+		{
+			if(m_targetNode != null)
+			{
+				if(m_session != null)
+				{
+					m_originNode.EndSession(m_session);
+				}
+				m_state = State.Idle;
+				return;
+			}	
+			
+			m_session = m_originNode.CreateSession(m_sessionClient);
+			m_state = State.Identified;
+			
+			break;
 		}
+			
+		case State.Identified:
+		{
+			if(m_targetNode != null)
+			{
+				if(m_session != null)
+				{
+					m_originNode.EndSession(m_session);
+				}
+				m_state = State.Idle;
+				return;
+			}
+			
+			
+			
+			break;	
+		}
+			
+		}
+	}
+	
+	public override List<string> GetInfo()
+	{
+		List<string> info = new List<string>();
+		
+		switch(m_state)
+		{
+			case State.Idle: { info.Add("Idle"); break; }	
+			case State.Routing: { info.Add("Routing"); break; }	
+			case State.Identifying: { info.Add("Identifying"); break; }	
+			case State.Identified: { info.Add("Identified"); break; }	
+		}
+		
+		foreach(var logEntry in m_originNode.ActivityLog)
+		{
+			info.Add(logEntry);	
+		}
+		
+		return info;
+	}
+	
+	public override List<LevelNetworkCommand> GetCommands()
+	{
+		if(m_state == State.Identified)
+		{
+			return m_originNode.GetCommands(m_session);	
+		}
+		
+		return new List<LevelNetworkCommand>();
 	}
 	
 #if UNITY_EDITOR
@@ -120,6 +193,7 @@ public class SearchDrone : AdminDrone
 				{
 					LevelNetworkSelectableNode currentNode =  currentHit.collider.gameObject.GetComponent<LevelNetworkSelectableNode>();
 					m_targetNode = currentNode.m_node;
+					m_selected = false;
 					
 					break;
 				}
@@ -141,7 +215,9 @@ public class SearchDrone : AdminDrone
 	private enum State
 	{
 		Idle,
-		Routing
+		Routing,
+		Identifying,
+		Identified
 	}
 	
 	public static SearchDrone m_selectedDrone 	= null;
@@ -154,4 +230,6 @@ public class SearchDrone : AdminDrone
 	private float m_currentLerpSpeed 			= 0.0f;
 	private int m_currentRoutePointIndex 		= 0;
 	private bool m_selected						= false;
+	private NodeSessionClient m_sessionClient	= null;
+	private NodeSession m_session				= null;
 }

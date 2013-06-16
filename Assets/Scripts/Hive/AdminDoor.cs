@@ -34,7 +34,7 @@ public class AdminDoor : LevelNetworkCommandIssuer
 		}
 	}
 	
-	public override List<LevelNetworkCommand> GetCommands()
+	public override List<LevelNetworkCommand> GetCommands(int permissionLevel)
 	{
 		List<LevelNetworkCommand> commands = new List<LevelNetworkCommand>();
 		

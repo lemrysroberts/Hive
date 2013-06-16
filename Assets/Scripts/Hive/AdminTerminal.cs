@@ -10,7 +10,7 @@ public class AdminTerminal : LevelNetworkCommandIssuer
 		m_terminal.HackedStateChanged += HandleHackedStateChanged;
 	}
 	
-	public override List<LevelNetworkCommand> GetCommands()
+	public override List<LevelNetworkCommand> GetCommands(int permissionLevel)
 	{
 		List<LevelNetworkCommand> commands = new List<LevelNetworkCommand>();
 		
@@ -32,12 +32,7 @@ public class AdminTerminal : LevelNetworkCommandIssuer
 	
 	private void HandleHackedStateChanged()
 	{
-		LevelNetworkNode networkNode = GetComponent<LevelNetworkNode>();
-		
-		if(m_terminal.m_hacked)
-		{
-			networkNode.SetClaimed();	
-		}
+
 	}
 	
 	private Terminal m_terminal = null;
