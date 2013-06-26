@@ -21,7 +21,7 @@ public class HackDrone : AdminDrone
 	public override event System.Action Deactivated;
 	
 	// Use this for initialization
-	void Start () 
+	protected override void StartInternal () 
 	{
 		m_level = FindObjectOfType(typeof(Level)) as Level;
 		m_network = m_level.Network;
@@ -37,7 +37,7 @@ public class HackDrone : AdminDrone
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate() 
+	void blargh() 
 	{
 		switch(m_state)
 		{
@@ -297,9 +297,6 @@ public class HackDrone : AdminDrone
 	private Route m_currentRoute 				= null;
 	private float m_currentLerpProgress 		= 0.0f;
 	private int m_currentRoutePointIndex 		= 0;
-	private bool m_selected						= false;
-	private NodeSessionClient m_sessionClient	= null;
-	private NodeSession m_session				= null;
 	private LevelNetworkCommandRequest m_request = null;
 	private string m_currentStateString			= string.Empty;
 }

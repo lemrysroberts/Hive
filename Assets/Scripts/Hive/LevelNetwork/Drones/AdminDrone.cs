@@ -21,21 +21,24 @@ public abstract class AdminDrone : MonoBehaviour
 	public virtual event System.Action Deselected;
 	public virtual event System.Action Selected;
 	public virtual event StateChangedHandler HighLightStateChanged;
-	public abstract event System.Action Activated;
-	public abstract event System.Action Deactivated;
+	public virtual event System.Action Activated;
+	public virtual event System.Action Deactivated;
 	
 	public abstract List<LevelNetworkCommand> GetCommands();
 	public abstract List<string> GetInfo(bool getNodeInfo);
+	protected abstract void StartInternal();
 	
-	public bool SupportsSelection
+	
+	
+	public bool SupportsSelection 	{	get { return m_supportsSelection; }	}
+	public bool Highlighted			{	get { return m_highlighted; } }
+	
+	public AdminDrone()
 	{
-		get { return m_supportsSelection; }	
+		m_sessionClient 			= new NodeSessionClient();
+		m_sessionClient.ClientName 	= "User1134"; // TODO: pointless	
 	}
 	
-	public bool Highlighted
-	{
-		get { return m_highlighted; }	
-	}
 	
 	public void SetSelected(bool selected)
 	{
@@ -74,14 +77,64 @@ public abstract class AdminDrone : MonoBehaviour
 		return 0.0f;	
 	}
 	
-	public Color defaultColor = Color.white;
+	public void Start()
+	{
+		StartInternal();
+		ResetState();
+	}
+	
+	public void FixedUpdate()
+	{
+		if(m_currentState != null)
+		{
+			UpdateResult result = m_currentState.Update();
+			
+			switch(result)
+			{
+				case UpdateResult.Updating: break;
+				case UpdateResult.Complete:
+				{
+					if(m_currentStateIndex < m_states.Count - 1)
+					{
+						m_currentStateIndex++;
+						m_currentState = m_states[m_currentStateIndex];
+						m_currentState.Start();
+					}
+					else
+					{
+						ResetState();	
+					}
+					break;
+				}
+				case UpdateResult.Failed: { ResetState(); break; }
+			}
+		}
+	}
+	
+	private void ResetState()
+	{
+		m_currentStateIndex = 0;
+			
+		if(m_states.Count > 0)
+		{
+			m_currentState = m_states[0];
+			m_currentState.Start();
+		}
+	}
+	
+	public Color defaultColor 						= Color.white;
+	public LevelNetworkNode m_originNode 			= null;
+	public LevelNetworkNode m_destinationNode 		= null;
+	public NodeSessionClient m_sessionClient		= null;
+	public NodeSession m_session					= null;
 	
 	protected LevelNetwork m_network 				= null;
 	protected Level m_level 						= null;
-	protected LevelNetworkNode m_originNode 		= null;
-	protected LevelNetworkNode m_destinationNode 	= null;
 	protected float m_progress 						= 0.0f;
 	protected float m_lerpSpeed 					= 0.0f;
 	protected bool m_supportsSelection				= true;
 	protected bool m_highlighted					= false;
+	protected List<IDroneState> m_states			= new List<IDroneState>();
+	protected IDroneState m_currentState			= null;
+	protected int m_currentStateIndex				= 0;
 }
