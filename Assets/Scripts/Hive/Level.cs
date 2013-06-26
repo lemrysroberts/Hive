@@ -29,8 +29,6 @@ public partial class Level : MonoBehaviour
 	
 	void Start()
 	{
-		m_previousSectionCountX = SectionCountX;	
-		m_previousSectionCountY = SectionCountY;
 		
 		if(m_graph == null)
 		{
@@ -116,8 +114,6 @@ public partial class Level : MonoBehaviour
 			section.RebuildData();	
 		}
 		
-		m_previousSectionCountX = SectionCountX;
-		m_previousSectionCountY = SectionCountY;
 	}
 	
 	public void RebuildAllSections()
@@ -281,7 +277,7 @@ public partial class Level : MonoBehaviour
 		return sectionsTransform.gameObject;
 	}
 	
-	private GameObject GetLevelChild(string childName, bool clearChildren)
+	public GameObject GetLevelChild(string childName, bool clearChildren)
 	{
 		GameObject childObject = null;
 		
@@ -645,12 +641,6 @@ public partial class Level : MonoBehaviour
 	public GameObject m_npcObject = null;
 	
 	private const string s_sectionsID = "sections";
-	
-	[SerializeField]
-	private int m_previousSectionCountX = 30;
-	
-	[SerializeField]
-	private int m_previousSectionCountY = 30;
 	
 	[SerializeField]
 	private VisibilityReporter m_visReporter = null;

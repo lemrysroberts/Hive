@@ -21,7 +21,6 @@ public class RouteFinder
 {
 	public Route FindRoute(AIGraph searchGraph, AIGraphNode start, AIGraphNode end)
 	{
-		m_graph = searchGraph;
 		Route route = new Route();
 		m_targetPos = end.NodePosition;
 		
@@ -129,7 +128,6 @@ public class RouteFinder
 		}
 	}
 	
-	private AIGraph m_graph;
 	private Vector2 m_targetPos;
 	private int[] m_parentList;
 	private bool[] m_closedList;

@@ -15,14 +15,19 @@ using System.Collections.Generic;
 
 public class SearchDrone : AdminDrone 
 {
-
+	public bool DrawRoute = false;
+	
+	public override event System.Action Activated;
+	public override event System.Action Deactivated;
+	
 	// Use this for initialization
 	void Start () 
 	{
+		m_supportsSelection = false;
 		m_level = FindObjectOfType(typeof(Level)) as Level;
 		m_network = m_level.Network;
 		
-		int startIndex = Random.Range(0, m_network.Nodes.Count);
+		int startIndex = 0;//Random.Range(0, m_network.Nodes.Count);
 		LevelNetworkNode startNode = m_network.Nodes[startIndex];
 		transform.position = new Vector3(startNode.transform.position.x, startNode.transform.position.y, transform.position.z);
 		
@@ -39,9 +44,30 @@ public class SearchDrone : AdminDrone
 		{
 		case State.Idle:
 		{
-			if(m_targetNode != null)
+			m_currentStateString = "Idle";
+			LevelNetworkNode currentNearest = null;
+			float currentDistance = float.MaxValue;
+			
+			// Find the nearest unclaimed node
+			List<LevelNetworkNode> validNodes = m_network.UnidentifiedNodes;
+			foreach(var node in validNodes)
 			{
+				if(node.Claimant == null)
+				{
+					float distance = (node.transform.position - m_originNode.transform.position).sqrMagnitude;
+					if(distance  < currentDistance)
+					{
+						currentNearest = node;
+						currentDistance = distance;
+					}
+				}
+			}
+			
+			if(currentNearest != null)
+			{
+				m_targetNode = currentNearest;
 				m_currentRoute = m_network.RouteFinder.FindRoute(m_network.RouteGraph, m_originNode.AINode, m_targetNode.AINode);
+				m_targetNode.Claimant = this;
 				
 				if(m_currentRoute != null && m_currentRoute.m_routePoints.Count > 1)
 				{
@@ -52,21 +78,21 @@ public class SearchDrone : AdminDrone
 					m_currentRoutePointIndex 	= 0;
 					m_currentLerpProgress 		= 0.0f;
 					m_lerpSpeed 				= (1.0f /  MoveTime) / ((m_currentRoute.m_routePoints[1].NodePosition - m_currentRoute.m_routePoints[0].NodePosition).magnitude);
-					
-					Debug.Log("New Target...");
 				}
 			}
-			
 			
 			break;
 		}
 			
 		case State.Routing:
 		{
+			m_currentStateString = "Routing: " + m_currentLerpProgress.ToString("0.00") + "%";
 			m_currentLerpProgress += m_lerpSpeed;
 			m_currentLerpProgress = Mathf.Min(m_currentLerpProgress, 1.0f);
 			
+			float z = transform.position.z;
 			transform.position = Vector2.Lerp(m_currentRoute.m_routePoints[m_currentRoutePointIndex].NodePosition, m_currentRoute.m_routePoints[m_currentRoutePointIndex + 1].NodePosition, m_currentLerpProgress);
+			transform.position = new Vector3(transform.position.x, transform.position.y, z);
 			
 			if(m_currentLerpProgress >= 1.0f)
 			{
@@ -104,6 +130,8 @@ public class SearchDrone : AdminDrone
 			
 		case State.Identifying:
 		{
+			m_currentStateString = "Starting identification";
+				
 			if(m_targetNode != null)
 			{
 				if(m_session != null)
@@ -115,14 +143,33 @@ public class SearchDrone : AdminDrone
 			}	
 			
 			m_session = m_originNode.CreateSession(m_sessionClient);
-			m_state = State.Identified;
+			
+			List<LevelNetworkCommand> commands =  m_originNode.GetCommands(m_session);
+			
+			foreach(var command in commands)
+			{
+				if(command.Name == "identify")
+				{
+					m_request = m_session.IssueCommand(command);
+					m_state = State.Identified;
+					if(Activated != null)
+					{
+						Activated();	
+					}
+					
+					return;
+				}
+			}
+			
+			m_state = State.Idle;
 			
 			break;
 		}
 			
 		case State.Identified:
 		{
-			if(m_targetNode != null)
+			
+			if(m_targetNode != null || m_originNode == null)
 			{
 				if(m_session != null)
 				{
@@ -132,7 +179,19 @@ public class SearchDrone : AdminDrone
 				return;
 			}
 			
+			m_currentStateString = "Running Identify: " + m_request.Progress.ToString("0.00") + "%";
 			
+			if(m_request.State == LevelNetworkCommandRequest.CommandState.Completed)
+			{
+				m_originNode.Claimant = null;
+				m_originNode.SetIdentified();
+				m_state = State.Idle;
+				
+				if(Deactivated != null)
+				{
+					Deactivated();	
+				}
+			}
 			
 			break;	
 		}
@@ -140,21 +199,18 @@ public class SearchDrone : AdminDrone
 		}
 	}
 	
-	public override List<string> GetInfo()
+	public override List<string> GetInfo(bool getNodeInfo)
 	{
 		List<string> info = new List<string>();
 		
-		switch(m_state)
-		{
-			case State.Idle: { info.Add("Idle"); break; }	
-			case State.Routing: { info.Add("Routing"); break; }	
-			case State.Identifying: { info.Add("Identifying"); break; }	
-			case State.Identified: { info.Add("Identified"); break; }	
-		}
+		info.Add(m_currentStateString);
 		
-		foreach(var logEntry in m_originNode.ActivityLog)
+		if(m_originNode != null && getNodeInfo)
 		{
-			info.Add(logEntry);	
+			foreach(var logEntry in m_originNode.ActivityLog)
+			{
+				info.Add(logEntry);	
+			}
 		}
 		
 		return info;
@@ -170,47 +226,22 @@ public class SearchDrone : AdminDrone
 		return new List<LevelNetworkCommand>();
 	}
 	
+	public override float GetResourceUsage()
+	{
+		return 10.0f;	
+	}
+	
 #if UNITY_EDITOR
 	void OnDrawGizmos()
 	{
-		if(m_currentRoute != null)
+		if(m_currentRoute != null && DrawRoute)
 		{
 			m_currentRoute.DrawGizmos();	
 		}
 	}
 #endif
 	
-	void OnGUI()
-	{
-		if(Event.current.type == EventType.mouseDown && Input.GetMouseButtonDown(0) && m_selected)
-		{
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  
-			RaycastHit[] info = Physics.RaycastAll(ray, 100.0f);
-			
-			foreach(var currentHit in info)
-			{
-				if(currentHit.collider.gameObject.GetComponent<LevelNetworkSelectableNode>() != null)
-				{
-					LevelNetworkSelectableNode currentNode =  currentHit.collider.gameObject.GetComponent<LevelNetworkSelectableNode>();
-					m_targetNode = currentNode.m_node;
-					m_selected = false;
-					
-					break;
-				}
-			}
-		}
-		
-		if(GUI.Button(new Rect(10, Screen.height / 2 - 20, 130, 40), m_selected ? "Drone Selected" : "Select Drone"))
-		{
-			if(m_selectedDrone != null)
-			{
-				m_selectedDrone.m_selected = false;
-			}
-			
-			m_selected = true;
-			m_selectedDrone = this;
-		}
-	}
+	
 	
 	private enum State
 	{
@@ -221,15 +252,16 @@ public class SearchDrone : AdminDrone
 	}
 	
 	public static SearchDrone m_selectedDrone 	= null;
-	public float MoveTime 						= 8.0f;
+	private float MoveTime 						= 2.0f;
 	
 	private LevelNetworkNode m_targetNode		= null;
 	private State m_state 						= State.Idle;
 	private Route m_currentRoute 				= null;
 	private float m_currentLerpProgress 		= 0.0f;
-	private float m_currentLerpSpeed 			= 0.0f;
 	private int m_currentRoutePointIndex 		= 0;
 	private bool m_selected						= false;
 	private NodeSessionClient m_sessionClient	= null;
 	private NodeSession m_session				= null;
+	private LevelNetworkCommandRequest m_request = null;
+	private string m_currentStateString				= string.Empty;
 }

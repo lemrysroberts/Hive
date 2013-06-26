@@ -51,6 +51,11 @@ public class LevelNetworkNodeStage : IGeneratorStage
 		foreach(var node in nodes)
 		{
 			LevelNetworkNode networkNode = node as LevelNetworkNode;
+			if(!networkNode.enabled)
+			{
+				continue;	
+			}
+			
 			network.AddNode(networkNode);
 			networkNode.SetID(MaxNodeID);
 			MaxNodeID++;

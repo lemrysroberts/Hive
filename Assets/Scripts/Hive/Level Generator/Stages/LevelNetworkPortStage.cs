@@ -114,17 +114,6 @@ public class LevelNetworkPortStage : IGeneratorStage
 			LevelNetworkNode node = newObject.GetComponent<LevelNetworkNode>();
 			node.CustomConnection = candidateNode;
 			
-			LevelNetworkPort port = newObject.GetComponent<LevelNetworkPort>();
-			
-			if(port == null)
-			{
-				Debug.LogError("Port prefab does not contain \"Port\" component");	
-			}
-			else
-			{
-				port.SetTerminalNode(candidateNode);
-			}
-			
 			switch(edge)
 			{
 				case PortEdge.Top: 		{ newObject.transform.position = new Vector3(candidateNode.transform.position.x, m_level.Height + 1.0f, 0.0f); break; }	

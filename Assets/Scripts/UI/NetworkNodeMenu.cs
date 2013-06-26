@@ -22,7 +22,7 @@ public class NetworkNodeMenu : MonoBehaviour
 		bool hit = false;
 		foreach(var currentHit in info)
 		{
-			if(currentHit.collider.gameObject.GetComponent<AdminDrone>() != null)
+			if(currentHit.collider.gameObject.GetComponent<AdminDrone>() != null || currentHit.collider.gameObject.GetComponent<LevelNetworkSelectableNode>())
 			{
 				hit = true;
 				m_hoverObject = currentHit.collider.gameObject;
@@ -49,7 +49,8 @@ public class NetworkNodeMenu : MonoBehaviour
 	
 	void OnGUI()
 	{
-		AdminDrone drone = null;
+		AdminDrone drone 					= null;
+		LevelNetworkSelectableNode node 	= null;
 		
 		if(m_hitObject != null)
 		{
@@ -62,7 +63,7 @@ public class NetworkNodeMenu : MonoBehaviour
 		
 		if(drone != null)
 		{
-			if(drone.GetCommands().Count > 0 || drone.GetInfo().Count > 0)
+			if(drone.GetCommands().Count > 0 || drone.GetInfo(true).Count > 0)
 			{
 				Vector3 altVec = drone.transform.position;
 				var point = Camera.mainCamera.WorldToScreenPoint(altVec);
@@ -97,12 +98,10 @@ public class NetworkNodeMenu : MonoBehaviour
 				GUILayout.BeginVertical((GUIStyle)("Box"));
 				
 				GUILayout.Label("Node Info");
-				foreach(var current in drone.GetInfo())
+				foreach(var current in drone.GetInfo(true))
 				{
 					GUILayout.Label(current);	
 				}
-				
-				
 				
 				GUILayout.EndVertical();
 				GUILayout.EndScrollView();
@@ -112,6 +111,22 @@ public class NetworkNodeMenu : MonoBehaviour
 			else
 			{
 				m_hitObject = null;	
+			}
+		}
+		else if(m_hoverObject != null)
+		{
+			// Handle node hover.
+			node = m_hoverObject.GetComponent<LevelNetworkSelectableNode>();
+			if(node != null && node.m_node.Identified)
+			{
+				Vector3 altVec = node.transform.position;
+				var point = Camera.mainCamera.WorldToScreenPoint(altVec);
+				point = GUIUtility.ScreenToGUIPoint(point);
+				
+				GUILayout.BeginArea(new Rect(point.x + m_objectOffset.x, (Screen.height - point.y) + m_objectOffset.y, 200.0f, 200.0f), (GUIStyle)("Box"));
+				GUILayout.Box(node.name);
+				
+				GUILayout.EndArea();
 			}
 		}
 	}

@@ -4,7 +4,7 @@
 //
 // What it does: Represents a given node in the level-network.
 //
-// Notes:
+// Notes: This has been a hub for sin, so double-check everything.
 // 
 // To-do:
 //
@@ -19,37 +19,45 @@ using System.Collections.Generic;
 [Serializable]
 public class LevelNetworkNode : MonoBehaviour 
 {
-	public LevelNetworkCommandIssuer target;
-	
-	public float HeatCooldown 	= 0.0001f;
-	public float ClaimSpeed 	= 0.1f;
-	
-	public bool ConnectedToPort = false;
-	public LevelNetworkNode CustomConnection = null;
-	
-	public Texture2D NodeTexture = null;
-	
 	void Start () 
 	{
-		Heat = 0.0f;
-		ActivityProgress = 0.0f;
-		ActivityInProgress = false;
+		m_identified 		= false;
+		Claimant 			= null;
+		Heat 				= 0.0f;
+		ActivityProgress 	= 0.0f;
+		ActivityInProgress 	= false;
 	}
 	
 	void FixedUpdate () 
 	{
 		Heat -= HeatCooldown;
 		Heat = Mathf.Max(0.0f, Heat);
+		
+		List<LevelNetworkCommandRequest> completedRequests = new List<LevelNetworkCommandRequest>();
+		
+		foreach(var request in m_activeRequests)
+		{
+			Heat += request.Command.UpdateHeat;
+			request.UpdateProgress(Time.deltaTime);
+			
+			
+			if(request.State == LevelNetworkCommandRequest.CommandState.Completed)
+			{
+				IssueCommand(request.Session, request.Command);
+				completedRequests.Add(request);
+			}
+		}
+		
+		// Remove completed requests
+		foreach(var request in completedRequests)
+		{
+			m_activeRequests.Remove(request);	
+		}
 	}
 	
 	public void SetID(int id)
 	{
 		m_ID = id;	
-	}
-	
-	public void UpdateState()
-	{
-		
 	}
 	
 	public void ConnectNode(LevelNetworkNode other)
@@ -87,9 +95,12 @@ public class LevelNetworkNode : MonoBehaviour
 			return null;
 		}
 		
-		List<LevelNetworkCommand> functionNames = target.GetCommands(session.PermissionsLevel);
+		List<LevelNetworkCommand> commands = target.GetCommands(session.PermissionsLevel);
 		
-		return functionNames;
+		commands.Add(new LevelNetworkCommand("identify", "Identify", 3.0f, 0.001f));
+		commands.Add(new LevelNetworkCommand("hack_clearance", "Hack Clearance Level", 15.0f, 0.002f));
+		
+		return commands;
 	}
 	
 	public List<string> InfoStrings
@@ -103,9 +114,20 @@ public class LevelNetworkNode : MonoBehaviour
 		}	
 	}
 	
-	public void IssueCommand(LevelNetworkCommand command)
+	public LevelNetworkCommandRequest RequestCommand(NodeSession session, LevelNetworkCommand command)
 	{
-		if(!CheckDefaultCommands(command))
+		string logString = session.Client.ClientName + ": [" + command.Name + "]";
+		m_activityLog.Add(logString);
+		
+		LevelNetworkCommandRequest newRequest = new LevelNetworkCommandRequest(session, command);	
+		m_activeRequests.Add(newRequest);
+		
+		return newRequest;
+	} 
+	
+	public void IssueCommand(NodeSession session, LevelNetworkCommand command)
+	{
+		if(!CheckDefaultCommands(session, command))
 		{
 			target.IssueCommand(command);	
 		}
@@ -149,14 +171,29 @@ public class LevelNetworkNode : MonoBehaviour
 		m_activityLog.Add(logEntry);
 	}
 	
+	public void SetIdentified()
+	{
+		m_identified = true;
+		if(NodeIdentified != null)
+		{
+			NodeIdentified(this);
+		}
+	}
+	
+	#region Properties
 	public List<LevelNetworkNode> ConnectedNodes
 	{
 		get { return m_connectedNodes; }
 		set { m_connectedNodes = value; }
 	}
 	
-	private bool CheckDefaultCommands(LevelNetworkCommand command)
+	private bool CheckDefaultCommands(NodeSession session, LevelNetworkCommand command)
 	{
+		if(command.Name == "hack_clearance")
+		{
+			session.PermissionsLevel++;
+		}
+		
 		return false;
 	}
 	
@@ -200,14 +237,36 @@ public class LevelNetworkNode : MonoBehaviour
 		get; set;	
 	}
 	
-	[SerializeField]
-	private List<int> m_connectionIDs = new List<int>();
+	public bool Identified
+	{
+		get { return m_identified; }
+	}
 	
-	[SerializeField]
-	private int m_ID = -1;
+	public AdminDrone Claimant
+	{
+		get; set;
+	}
+	#endregion
 	
-	private List<LevelNetworkNode> m_connectedNodes = new List<LevelNetworkNode>();
-	private List<LevelNetworkConnection> m_connections = new List<LevelNetworkConnection>();
-	private List<NodeSession> m_activeSessions = new List<NodeSession>();
-	private List<string> m_activityLog = new List<string>();
+	#region Fields
+	public delegate void NodeIdentifiedHandler(LevelNetworkNode node);
+	public event NodeIdentifiedHandler NodeIdentified;
+	
+	public Texture2D NodeTexture 								= null;
+	public Texture2D IdentifiedTexture							= null;
+	public LevelNetworkNode CustomConnection 					= null;
+	public LevelNetworkCommandIssuer target 					= null;
+	public float HeatCooldown 									= 0.0001f;
+	public float ClaimSpeed 									= 0.1f;
+	public bool ConnectedToPort 								= false;
+	
+	private bool m_identified 									= false;
+	private int m_ID 											= -1;
+	private List<int> m_connectionIDs 							= new List<int>();
+	private List<LevelNetworkNode> m_connectedNodes 			= new List<LevelNetworkNode>();
+	private List<LevelNetworkConnection> m_connections 			= new List<LevelNetworkConnection>();
+	private List<NodeSession> m_activeSessions					= new List<NodeSession>();
+	private List<LevelNetworkCommandRequest> m_activeRequests 	= new List<LevelNetworkCommandRequest>();
+	private List<string> m_activityLog 							= new List<string>();
+	#endregion
 }

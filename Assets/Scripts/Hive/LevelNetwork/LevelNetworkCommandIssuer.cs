@@ -16,14 +16,7 @@ using System.Collections.Generic;
 
 public abstract class LevelNetworkCommandIssuer : MonoBehaviour 
 {
-	public abstract List<LevelNetworkCommand> GetCommands(int permissionLevel);
-	public abstract void IssueCommand(LevelNetworkCommand commandName);
-	public abstract List<string> GetInfoStrings();
-	
-	public bool Claimable
-	{
-		get { return m_claimable; }
-	}
-	
-	protected bool m_claimable = true;
+	public abstract List<LevelNetworkCommand> 	GetCommands(int permissionLevel);
+	public abstract void 						IssueCommand(LevelNetworkCommand commandName);
+	public abstract List<string> 				GetInfoStrings();
 }

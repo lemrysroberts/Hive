@@ -14,7 +14,7 @@ public class AdminTerminal : LevelNetworkCommandIssuer
 	{
 		List<LevelNetworkCommand> commands = new List<LevelNetworkCommand>();
 		
-		commands.Add(new LevelNetworkCommand("deactivate", "Deactivate"));
+		commands.Add(new LevelNetworkCommand("deactivate", "Deactivate", 1.0f, 0.0f));
 		
 		return commands;	
 	}

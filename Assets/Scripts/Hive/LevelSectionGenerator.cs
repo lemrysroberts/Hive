@@ -60,6 +60,7 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 		
 		if(GameFlow.Instance.View == WorldView.Admin)
 		{
+			/*
 			List<Edge> edges = GetEdges();
 			Mesh newMesh = new Mesh();
 				
@@ -106,6 +107,7 @@ public partial class LevelSection : MonoBehaviour, IVisibilityReceiver
 			newMesh.Optimize();						
 			filter.mesh 			= newMesh;
 			renderer.sharedMaterial = AssetHelper.Instance.GetAsset<Material>("Materials/AdminWall") as Material;
+			*/
 		}
 		else
 		{

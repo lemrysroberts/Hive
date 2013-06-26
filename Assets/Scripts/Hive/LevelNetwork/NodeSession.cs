@@ -29,6 +29,12 @@ public class NodeSession
 		m_node.LogActivity(this, "Session Ended");
 	}
 	
+	public LevelNetworkCommandRequest IssueCommand(LevelNetworkCommand command)
+	{
+		return m_node.RequestCommand(this, command);
+	}
+	
+	
 	public NodeSessionClient Client
 	{
 		get { return m_client; }
@@ -42,6 +48,7 @@ public class NodeSession
 	public int PermissionsLevel
 	{
 		get { return m_permissionsLevel; }
+		set { m_permissionsLevel = value; }
 	}
 	
 	private int m_permissionsLevel = 0;

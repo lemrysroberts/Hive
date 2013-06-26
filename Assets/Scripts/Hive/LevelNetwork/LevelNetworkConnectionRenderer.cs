@@ -48,8 +48,6 @@ public class LevelNetworkConnectionRenderer : MonoBehaviour
 	
 	}
 	
-	private bool m_active = false;
-	
 	private float m_lastStartHeat = 0.0f;
 	private float m_lastEndHeat = 0.0f;
 	

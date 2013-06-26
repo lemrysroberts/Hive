@@ -3,25 +3,10 @@ using System.Collections.Generic;
 
 public class LevelNetworkPort : LevelNetworkCommandIssuer 
 {
-	public LevelNetworkPort()
-	{
-		m_claimable = false;	
-	}
-	
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	
 	public override List<LevelNetworkCommand> GetCommands(int permissionLevel)
 	{
 		List<LevelNetworkCommand> commands = new List<LevelNetworkCommand>();
-		commands.Add(new LevelNetworkCommand("hack_port", "Hack Port"));
+		commands.Add(new LevelNetworkCommand("hack_port", "Hack Port", 10.0f, 1.0f));
 			
 		return commands;
 	}
@@ -35,19 +20,4 @@ public class LevelNetworkPort : LevelNetworkCommandIssuer
 		List<string> infoStrings = new List<string>();
 		return infoStrings;
 	}
-	
-	public void SetTerminalNode(LevelNetworkNode terminalNode)
-	{
-		m_connectedTerminalNode = terminalNode;
-	}
-	
-	private void TerminalNodeClaimed()
-	{
-		LevelNetworkNode networkNode = GetComponent<LevelNetworkNode>();
-	}
-	
-	private LevelNetworkNode m_connectedTerminalNode = null;
-	
-	private bool m_hackInProgress = false;
-	
 }

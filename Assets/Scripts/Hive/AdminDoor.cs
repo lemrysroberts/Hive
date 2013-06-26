@@ -38,7 +38,7 @@ public class AdminDoor : LevelNetworkCommandIssuer
 	{
 		List<LevelNetworkCommand> commands = new List<LevelNetworkCommand>();
 		
-		commands.Add(new LevelNetworkCommand("open_door", "Open Door"));
+		commands.Add(new LevelNetworkCommand("open_door", "Open Door", 1.0f, 0.0f));
 		
 		return commands;
 	}

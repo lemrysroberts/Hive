@@ -28,7 +28,10 @@ public class LevelNetwork
 	
 	public void AddNode(LevelNetworkNode node)
 	{
+		node.NodeIdentified += new LevelNetworkNode.NodeIdentifiedHandler(HandleNodeIdentified);
+		
 		m_nodes.Add(node);
+		m_unidentifiedNodes.Add(node);
 		
 		AIGraphNode newAINode =	m_networkGraph.AddNode(node.transform.position);
 		newAINode.NodeObject = node;
@@ -91,6 +94,12 @@ public class LevelNetwork
 		return null;
 	}
 	
+	private void HandleNodeIdentified(LevelNetworkNode identifiedNode)
+	{
+		m_unidentifiedNodes.Remove(identifiedNode);
+		m_identifiedNodes.Add(identifiedNode);
+	}
+	
 	public List<LevelNetworkNode> Nodes
 	{
 		get { return m_nodes; }
@@ -107,8 +116,15 @@ public class LevelNetwork
 		get { return m_networkGraph; }		
 	}		
 	
+	public List<LevelNetworkNode> UnidentifiedNodes
+	{
+		get { return m_unidentifiedNodes; }	
+	}
+	
 	[SerializeField]
 	private List<LevelNetworkNode> m_nodes = new List<LevelNetworkNode>();
+	private List<LevelNetworkNode> m_unidentifiedNodes = new List<LevelNetworkNode>();
+	private List<LevelNetworkNode> m_identifiedNodes = new List<LevelNetworkNode>();
 	
 	private AIGraph m_networkGraph = new AIGraph();
 	private RouteFinder m_routeFinder = new RouteFinder();

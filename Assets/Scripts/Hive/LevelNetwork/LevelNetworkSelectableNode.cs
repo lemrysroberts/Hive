@@ -7,10 +7,13 @@ public class LevelNetworkSelectableNode : MonoBehaviour
 	public GameObject ClaimBarBackingObject = null;
 	public LevelNetworkNode m_node = null;
 	public float ClaimBarWidth = 3.0f;
+	public Color IdentifiedTint = Color.white;
 	
 	// Use this for initialization
 	void Start () 
 	{
+		m_node.NodeIdentified += new LevelNetworkNode.NodeIdentifiedHandler(HandleNodeIdentified);
+		
 		if(ClaimBarBackingObject != null)
 		{
 			Vector3 scale = ClaimBarBackingObject.transform.localScale;
@@ -45,5 +48,11 @@ public class LevelNetworkSelectableNode : MonoBehaviour
 				ClaimBarBackingObject.SetActive(false);
 			}
 		}
+	}
+		
+	private void HandleNodeIdentified(LevelNetworkNode node)
+	{
+		renderer.material.mainTexture = node.IdentifiedTexture;
+		renderer.material.SetColor("_Color", IdentifiedTint);
 	}
 }
