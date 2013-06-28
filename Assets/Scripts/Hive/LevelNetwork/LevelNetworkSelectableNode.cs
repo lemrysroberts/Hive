@@ -7,6 +7,7 @@ public class LevelNetworkSelectableNode : MonoBehaviour
 	public GameObject ClaimBarBackingObject = null;
 	public LevelNetworkNode m_node = null;
 	public float ClaimBarWidth = 3.0f;
+	public Color UnidentifiedNode = Color.red;
 	public Color IdentifiedTint = Color.white;
 	
 	// Use this for initialization
@@ -23,7 +24,7 @@ public class LevelNetworkSelectableNode : MonoBehaviour
 		if(m_node.NodeTexture != null)
 		{
 			renderer.material.mainTexture = m_node.NodeTexture;
-			renderer.material.SetColor("_Color", Color.white);
+			renderer.material.SetColor("_Color", UnidentifiedNode);
 		}
 	}
 	

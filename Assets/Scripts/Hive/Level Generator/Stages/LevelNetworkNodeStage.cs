@@ -66,7 +66,7 @@ public class LevelNetworkNodeStage : IGeneratorStage
 				newObject.transform.parent = networkObject.transform;
 				
 				Vector3 newPosition = networkNode.transform.position;
-				newPosition.z = networkObject.transform.position.z;
+				newPosition.z = networkObject.transform.position.z - 0.1f;
 				newObject.transform.position = newPosition;
 				
 				

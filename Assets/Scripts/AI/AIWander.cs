@@ -155,13 +155,14 @@ public class AIWander : MonoBehaviour, IDetectionListener
 #if UNITY_EDITOR
 	void OnDrawGizmos()
 	{
-		if(m_currentRoute != null)
+		if(m_currentRoute != null && RenderRoute)
 		{
 			m_currentRoute.DrawGizmos();
 		}
 	}
 #endif
 	
+	public bool RenderRoute = false;
 	public float MoveSpeed = 0.02f;
 	
 	private Level m_level = null;

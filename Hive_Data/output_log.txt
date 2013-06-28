@@ -13,7 +13,7 @@ Platform assembly: C:\Unity\Hive\Hive_Data\Managed\Assembly-CSharp.dll (this mes
 Loading C:\Unity\Hive\Hive_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Unity\Hive\Hive_Data\Managed\Triangulator.dll (this message is harmless)
 Loading C:\Unity\Hive\Hive_Data\Managed\Triangulator.dll into Unity Child Domain
-- Completed reload, in  0.123 seconds
+- Completed reload, in  0.340 seconds
 desktop: 1680x1050 60Hz; virtual: 3360x1050 at -1680,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -22,5 +22,2734 @@ Platform assembly: C:\Unity\Hive\Hive_Data\Managed\System.Xml.dll (this message 
 Profiler is only supported with Pro License
  
 (Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Profiler/ProfilerConnection.cpp Line: 197)
+
+Undefined Queue: 'Transparent + 1'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/External/shaderlab/Library/intshader.cpp Line: 206)
+
+System memory in use before: 4.2 MB.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 4.1 MB.
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 1102.
+Total: 5.576923 ms (FindLiveObjects: 0.054321 ms CreateObjectMapping: 0.036093 ms MarkObjects: 0.506031 ms  DeleteObjects: 0.009114 ms)
+
+Platform assembly: C:\Unity\Hive\Hive_Data\Managed\System.dll (this message is harmless)
+Failed to locate "goalitem" in the LevelObject database. Returning null
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObjectDatabase:GetObject(String) (at C:\Unity\Hive\Assets\Scripts\LevelObjectDatabase.cs:34)
+CreateGoals:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateGoals.cs:55)
+CreateGoals:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateGoals.cs:88)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "goalarea".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+GameFlowWrapper:OnLevelWasLoaded(Int32) (at C:\Unity\Hive\Assets\Scripts\GameFlowWrapper.cs:43)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Received RPC data
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:115)
+ 
+(Filename: C Line: 0)
+
+Failed to locate "goalitem" in the LevelObject database. Returning null
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObjectDatabase:GetObject(String) (at C:\Unity\Hive\Assets\Scripts\LevelObjectDatabase.cs:34)
+CreateGoals:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateGoals.cs:55)
+CreateGoals:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateGoals.cs:88)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "goalarea".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+No SynchronisationScript set for object "camera".
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+LevelObject:LinkNetworkViewToSyncScript() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:130)
+LevelObject:InstantiateAdmin() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelObject.cs:113)
+LevelSection:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSection.cs:73)
+Level:CreateLevelObjects() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:233)
+CreateLevelObjects:UpdateStep() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:20)
+CreateLevelObjects:UpdateAll() (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\Stages\CreateLevelObjects.cs:25)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:51)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+Admin view selected. Skipping collider generation.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelSection:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSectionGenerator.cs:37)
+Level:RebuildColliders() (at C:\Unity\Hive\Assets\Scripts\Hive\Level.cs:180)
+LevelGenerator:GenerateLevel(Int32, Boolean) (at C:\Unity\Hive\Assets\Scripts\Hive\Level Generator\LevelGenerator.cs:54)
+Level:ReceiveLevel(Byte[]) (at C:\Unity\Hive\Assets\Scripts\Hive\LevelSerialisation.cs:119)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
+
+Failed to load asset: C:/Unity/Hive/Assets/Resources/Sprites/map
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+AssetHelper:GetAsset(String) (at C:\Unity\Hive\Assets\Scripts\Debug\AssetHelper.cs:23)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:19)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+SpriteAnimationSet:Load(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\SpriteAnimationSet.cs:26)
+Sprite:LoadSpriteData(String) (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:63)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:26)
+ 
+(Filename: C Line: 0)
+
+Failed to load sprite data: C:/Unity/Hive/Assets/Resources/Sprites/map.xml
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogError(Object)
+Sprite:Start() (at C:\Unity\Hive\Assets\Scripts\Rendering\Sprites\Sprite.cs:36)
+ 
+(Filename: C Line: 0)
 
 Waiting for finish

@@ -3,10 +3,13 @@ using System.Collections;
 
 public class LevelNetworkConnectionRenderer : MonoBehaviour 
 {
+	public Color ColdColor = Color.white;
+	public Color HotColor = Color.red;
+	public float ScaleFactor = 1.0f;
+	
 	public LevelNetworkConnection m_connection = null;
 	
 	private LineRenderer m_renderer = null;
-	private float alpha = 0.2f;
 	
 	void Start () 
 	{
@@ -17,8 +20,8 @@ public class LevelNetworkConnectionRenderer : MonoBehaviour
 			m_lastStartHeat = m_connection.startNode.Heat;
 			m_lastEndHeat 	= m_connection.endNode.Heat;
 			
-			m_renderer.material.SetVector("_StartColor", new Vector4(1.0f, 1.0f - m_lastStartHeat, 1.0f - m_lastStartHeat, alpha));
-			m_renderer.material.SetVector("_EndColor", new Vector4(1.0f, 1.0f - m_lastEndHeat, 1.0f - m_lastEndHeat, alpha));
+			m_renderer.material.SetVector("_StartColor", Vector4.Lerp(ColdColor, HotColor, m_lastStartHeat));
+			m_renderer.material.SetVector("_EndColor", Vector4.Lerp(ColdColor, HotColor, m_lastEndHeat));
 		}	
 	}
 	
@@ -31,14 +34,18 @@ public class LevelNetworkConnectionRenderer : MonoBehaviour
 			return;	
 		}
 		
+		m_renderer.SetWidth(Camera.main.orthographicSize * ScaleFactor, Camera.main.orthographicSize * ScaleFactor);
+		
 		if( m_lastStartHeat != m_connection.startNode.Heat || 
 			m_lastEndHeat != m_connection.endNode.Heat )
 		{
+			
+			
 			m_lastStartHeat = m_connection.startNode.Heat;
 			m_lastEndHeat = m_connection.endNode.Heat;
 			
-			m_renderer.material.SetVector("_StartColor", new Vector4(1.0f, 1.0f - m_lastStartHeat, 1.0f - m_lastStartHeat, Mathf.Max(m_lastStartHeat, alpha)));
-			m_renderer.material.SetVector("_EndColor", new Vector4(1.0f, 1.0f - m_lastEndHeat, 1.0f - m_lastEndHeat, Mathf.Max(m_lastEndHeat, alpha)));
+			m_renderer.material.SetVector("_StartColor", Vector4.Lerp(ColdColor, HotColor, m_lastStartHeat));
+			m_renderer.material.SetVector("_EndColor", Vector4.Lerp(ColdColor, HotColor, m_lastEndHeat));
 		}
 		
 	}

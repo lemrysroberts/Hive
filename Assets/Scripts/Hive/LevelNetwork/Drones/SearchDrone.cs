@@ -15,13 +15,23 @@ using System.Collections.Generic;
 
 public class SearchDrone : AdminDrone 
 {
+	public override event System.Action Activated;
+	public override event System.Action Deactivated;
+	
 	public SearchDrone()
 	{
-		DroneStateRoute routeState 			= new DroneStateRoute(this, new DroneStateRoute.PositionProvider(GetRouteDestination), 4.5f);
-		DroneStateIdentify identifyState 	= new DroneStateIdentify(this, m_sessionClient, ref m_session);
+		DroneStateRoute routeState 					= new DroneStateRoute(this, new DroneStateRoute.PositionProvider(GetRouteDestination), 4.5f);
+		DroneStateStartSession startSessionState	= new DroneStateStartSession(this, m_sessionClient, ref m_session);
+		DroneStateIdentify identifyState 			= new DroneStateIdentify(this, m_sessionClient, ref m_session);
+		DroneStateEndSession endSessionState		= new DroneStateEndSession(this, m_sessionClient, ref m_session);
+		
+		identifyState.Activated 	+= new System.Action(HandleActivated);
+		identifyState.Deactivated 	+= new System.Action(HandleDeactivated);
 		
 		m_states.Add(routeState);
+		m_states.Add(startSessionState);
 		m_states.Add(identifyState);
+		m_states.Add(endSessionState);
 	}
 	
 	protected override void StartInternal() 
@@ -45,7 +55,10 @@ public class SearchDrone : AdminDrone
 	{
 		List<string> info = new List<string>();
 		
-		info.Add(m_currentStateString);
+		if(m_currentState != null)
+		{
+			info.Add(m_currentState.GetStateInfo());
+		}
 		
 		if(m_originNode != null && getNodeInfo)
 		{
@@ -68,5 +81,13 @@ public class SearchDrone : AdminDrone
 		return 10.0f;	
 	}
 	
-	private string m_currentStateString	= string.Empty;
+	private void HandleActivated()
+	{
+		if(Activated != null) { Activated(); }	
+	}
+	
+	private void HandleDeactivated()
+	{
+		if(Deactivated != null) { Deactivated(); }	
+	}
 }

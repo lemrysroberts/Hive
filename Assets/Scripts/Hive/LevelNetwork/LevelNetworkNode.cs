@@ -151,12 +151,10 @@ public class LevelNetworkNode : MonoBehaviour
 		m_connections.Clear();
 	}
 	
-	public NodeSession CreateSession(NodeSessionClient client)
+	public void StartSession(NodeSessionClient client, ref NodeSession session)
 	{
-		NodeSession newSession = new NodeSession(this, client);
-		m_activeSessions.Add(newSession);
-		
-		return newSession;
+		session.StartSession(this, client);
+		m_activeSessions.Add(session);
 	}
 	
 	public void EndSession(NodeSession session)

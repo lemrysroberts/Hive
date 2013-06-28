@@ -31,7 +31,6 @@ public class NetworkNodeMenu : MonoBehaviour
 				{
 					m_hitObject = currentHit.collider.gameObject;	
 				}
-				
 				break;
 			}
 		}
@@ -73,20 +72,11 @@ public class NetworkNodeMenu : MonoBehaviour
 				GUILayout.Box(drone.name);
 				
 				
-				
 				GUILayout.BeginVertical((GUIStyle)("Box"));
 				m_scrollPos = GUILayout.BeginScrollView(m_scrollPos);
 				
 				GUILayout.Label("Commands");
-				foreach(var current in drone.GetCommands())
-				{
-					if(GUILayout.Button(current.DisplayName))
-					{
-						//node.IssueCommand(current);
-						m_hitObject = null;
-						break;
-					}
-				}
+				drone.DroneGUI();
 				
 				GUILayout.EndVertical();
 				GUILayout.EndScrollView();

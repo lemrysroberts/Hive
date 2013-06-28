@@ -15,8 +15,10 @@ using System.Collections;
 
 public interface IDroneState
 {
-	void Start();
-	UpdateResult Update();
+	void 			Start();
+	UpdateResult 	Update();
+	string			GetStateInfo();
+	void 			OnGUI();
 }
 
 public enum UpdateResult

@@ -43,7 +43,6 @@ public class DroneControlSystem : MonoBehaviour
 				m_lerping = false;	
 			}
 		}
-	
 	}
 	
 	void OnGUI()
@@ -71,8 +70,8 @@ public class DroneControlSystem : MonoBehaviour
 			
 			foreach(var currentHit in info)
 			{
-				selectedDrone = currentHit.collider.gameObject.GetComponent<AdminDrone>();
-				selectedNode = currentHit.collider.gameObject.GetComponent<LevelNetworkSelectableNode>();
+				selectedDrone 	= currentHit.collider.gameObject.GetComponent<AdminDrone>();
+				selectedNode 	= currentHit.collider.gameObject.GetComponent<LevelNetworkSelectableNode>();
 				
 				if(selectedDrone != null)
 				{
@@ -87,7 +86,12 @@ public class DroneControlSystem : MonoBehaviour
 				}
 				else if(selectedNode != null)
 				{
-					LevelNetworkSelectableNode currentNode = selectedNode;
+					if(m_selectedDrone != null && m_selectedDrone.SupportsSelection)
+					{
+						m_selectedDrone.m_targetNode = selectedNode.m_node;
+					}
+					
+					
 					break;
 				}
 			}
@@ -212,6 +216,17 @@ public class DroneControlSystem : MonoBehaviour
 				m_lerpDelta = 1.0f / 10.0f;
 				m_lerpProgress = 0.0f;
 				m_lerping = true;
+			}
+			
+			if(Event.current.type == EventType.mouseDown && Input.GetMouseButtonDown(0) && m_lastHighlightedDrone != null)
+			{
+				if(m_selectedDrone != null)
+				{
+					m_selectedDrone.SetSelected(false);	
+				}
+				
+				m_selectedDrone = m_lastHighlightedDrone;
+				m_selectedDrone.SetSelected(true);
 			}
 			
 			GUI.color = oldColor;

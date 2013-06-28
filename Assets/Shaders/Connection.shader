@@ -8,13 +8,12 @@ Shader "Custom/Connection"
 	
 	SubShader 
 	{
-		Tags { "RenderType"="Transparent" "Queue"="Transparent"}
+		Tags { "RenderType"="Transparent" "Queue"="Transparent + 1"}
 		LOD 200
 		Blend SrcAlpha OneMinusSrcAlpha
 	
 	    Pass 
 	    {
-		//	Blend DstAlpha DstAlpha
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
